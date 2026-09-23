@@ -1,0 +1,137 @@
+{
+  "experiment": "B_behavioral_agreement_fresh_heldout_states",
+  "environment": "CartPole-v1",
+  "source_seeds": [
+    11,
+    29
+  ],
+  "actor_architecture": "The project's actual Actor class from grammar_audit_experiment.py (64 hidden units); no duplicate network definition.",
+  "actor_checkpoint_paths": [
+    "C:\\AI\\RL\\runs\\shared_multienv_gpi\\CartPole-v1\\grammar_audit_only\\seed-11_20260922T033619Z\\actor.pt",
+    "C:\\AI\\RL\\runs\\shared_multienv_gpi\\CartPole-v1\\grammar_audit_only\\seed-29_20260922T033755Z\\actor.pt"
+  ],
+  "actor_checkpoint_sha256": [
+    "02c7b6cc264e117700b251c3ea3abfef4b853a172f0f7a4e7662300ede27a49f",
+    "34494236d9be2c0b371343efd922c51550ab92cbb12934574ba72a84d5c2e726"
+  ],
+  "shared_symbolizer_sha256": "1e97ef1ffb8bebf0bdad2785c900d749e708d705f339c5f7eaec975415fba8cc",
+  "grammar_rule_jaccard_seed_11_vs_29": 0.5833333333333334,
+  "heldout_design": {
+    "episodes_per_actor": 100,
+    "fresh_reset_seed_ranges": {
+      "11": [
+        40000000,
+        40000099
+      ],
+      "29": [
+        41000000,
+        41000099
+      ]
+    },
+    "resets_disjoint_from_primary_composition_eval": true,
+    "sampled_states_per_actor_occupancy": 5000,
+    "sampling": "Uniform without replacement from each actor's fresh held-out deterministic rollouts; actor occupancies receive equal sample weight."
+  },
+  "results": {
+    "n_states": 10000,
+    "states_per_source_occupancy": 5000,
+    "n_agree": 5138,
+    "n_disagree": 4862,
+    "pooled_state_agreement": 0.5138,
+    "episode_cluster_balanced_agreement": 0.5135563560588144,
+    "episode_cluster_balanced_bootstrap_ci95": [
+      0.5048269884462553,
+      0.52258030474536
+    ],
+    "source_occupancy_results": {
+      "11": {
+        "n_states": 5000,
+        "n_agree": 2528,
+        "pooled_state_agreement": 0.5056,
+        "episode_cluster_mean_agreement": 0.5055592286973338,
+        "episode_cluster_bootstrap_ci95": [
+          0.4927340268204633,
+          0.5186176743853784
+        ],
+        "action_histogram_seed11": {
+          "0": 2472,
+          "1": 2528
+        },
+        "action_histogram_seed29": {
+          "0": 0,
+          "1": 5000
+        }
+      },
+      "29": {
+        "n_states": 5000,
+        "n_agree": 2610,
+        "pooled_state_agreement": 0.522,
+        "episode_cluster_mean_agreement": 0.5215534834202951,
+        "episode_cluster_bootstrap_ci95": [
+          0.5099422694215388,
+          0.5339007177218329
+        ],
+        "action_histogram_seed11": {
+          "0": 4994,
+          "1": 6
+        },
+        "action_histogram_seed29": {
+          "0": 2604,
+          "1": 2396
+        }
+      }
+    },
+    "stratified_by_absolute_pole_angle": {
+      "near_zero": {
+        "n_states": 7807,
+        "agreement_rate": 0.5016011271935442
+      },
+      "mid": {
+        "n_states": 2182,
+        "agreement_rate": 0.5577451879010082
+      },
+      "large": {
+        "n_states": 11,
+        "agreement_rate": 0.45454545454545453
+      }
+    },
+    "state_feature_ranges": {
+      "dim_0": {
+        "min": -2.3994174003601074,
+        "max": 0.31737399101257324
+      },
+      "dim_1": {
+        "min": -1.5208693742752075,
+        "max": 0.6292675137519836
+      },
+      "dim_2": {
+        "min": -0.15464480221271515,
+        "max": 0.059909772127866745
+      },
+      "dim_3": {
+        "min": -0.8261326551437378,
+        "max": 0.49318796396255493
+      }
+    },
+    "state_array_sha256": "8b8e089ae7ff32af1fc492eacdab35500770478ee954912a9c42ecd502018818",
+    "actor_action_arrays_sha256": {
+      "seed_11": "6e5f18011cce482bc12db2a93e1abeea1adc8d5dcfa41c4dcc6f4619fc181f9c",
+      "seed_29": "d3c4f348c762fc5bbdb1d756899d8af97b4cbe3e4a7ffe1d387f408909d9a533"
+    },
+    "claim_boundary": "Deterministic argmax action agreement over equally sized fresh held-out state pools from each actor's occupancy; does not establish causal rationale, value agreement, training-process agreement, or action agreement outside sampled support."
+  },
+  "source_episode_returns": {
+    "11": {
+      "mean": 500.0,
+      "median": 500.0,
+      "episodes": 100,
+      "candidate_state_count": 50000
+    },
+    "29": {
+      "mean": 130.85,
+      "median": 131.0,
+      "episodes": 100,
+      "candidate_state_count": 13085
+    }
+  }
+}

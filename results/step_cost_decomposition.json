@@ -1,0 +1,41 @@
+{
+  "environment": "Acrobot-v1",
+  "torch_version": "2.2.0+cpu",
+  "torch_cuda_available": false,
+  "torch_threads": 12,
+  "actor": {
+    "architecture": "6-64-64-3",
+    "parameters": 4803,
+    "flops_per_forward": 9344,
+    "actors_in_ensemble": 2
+  },
+  "per_step_seconds": {
+    "env_step_only_constant_action": 3.4516240004450083e-05,
+    "network_only_isolated": 5.102144000120461e-05,
+    "full_rollout_with_network": 0.0001245584090197967,
+    "network_contribution_implied": 9.004216901534662e-05
+  },
+  "step_counts": {
+    "env_only": 2500,
+    "full_rollout": 440
+  },
+  "batched_forward_seconds_per_call": {
+    "1": 4.994000773876906e-05,
+    "256": 0.0001723600085824728,
+    "4096": 0.000934480014257133,
+    "118806": 0.019788019987754524
+  },
+  "batched_forward_per_sample_seconds": {
+    "1": 4.994000773876906e-05,
+    "256": 6.732812835252844e-07,
+    "4096": 2.2814453473074537e-07,
+    "118806": 1.6655741282220195e-07
+  },
+  "per_sample_speedup_vs_batch_of_1": {
+    "1": 1.0,
+    "256": 74.17406210563941,
+    "4096": 218.89635795005088,
+    "118806": 299.83659623771547
+  },
+  "interpretation": "env_step_only_constant_action is pure gymnasium/NumPy with no network, so a GPU cannot reduce it. batched_forward_* shows how much of the network cost is kernel-launch and Python-loop latency rather than arithmetic: the per-sample forward cost collapses as the batch grows, which is the only lever a GPU pulls."
+}

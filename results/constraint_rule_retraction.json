@@ -1,0 +1,180 @@
+{
+  "purpose": "Test the fixed-point prediction of the self-confirming loop: in the rule-constrained arm, an admitted rule can neither be retracted nor change its action, because the mask prevents any contradicting observation from being recorded.",
+  "environment": "CartPole-v1",
+  "seeds": [
+    11,
+    29,
+    43,
+    71,
+    101,
+    149,
+    211,
+    307
+  ],
+  "per_seed": [
+    {
+      "seed": 11,
+      "run_dir": "C:\\AI\\RL\\runs\\shared_multienv_gpi\\CartPole-v1\\grammar_constrained\\seed-11_20260922T033701Z",
+      "reinduction_interval_episodes": 50,
+      "training_steps": 74320,
+      "generations_observed": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "conditions_ever_covered": 97,
+      "conditions_ever_visited": 199,
+      "retraction_events": 0,
+      "action_flip_events": 0,
+      "retraction_examples": [],
+      "action_flip_examples": []
+    },
+    {
+      "seed": 29,
+      "run_dir": "C:\\AI\\RL\\runs\\shared_multienv_gpi\\CartPole-v1\\grammar_constrained\\seed-29_20260922T033811Z",
+      "reinduction_interval_episodes": 50,
+      "training_steps": 33310,
+      "generations_observed": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "conditions_ever_covered": 76,
+      "conditions_ever_visited": 164,
+      "retraction_events": 0,
+      "action_flip_events": 0,
+      "retraction_examples": [],
+      "action_flip_examples": []
+    },
+    {
+      "seed": 43,
+      "run_dir": "C:\\AI\\RL\\runs\\shared_multienv_gpi\\CartPole-v1\\grammar_constrained\\seed-43_20260922T033956Z",
+      "reinduction_interval_episodes": 50,
+      "training_steps": 115884,
+      "generations_observed": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "conditions_ever_covered": 120,
+      "conditions_ever_visited": 199,
+      "retraction_events": 0,
+      "action_flip_events": 0,
+      "retraction_examples": [],
+      "action_flip_examples": []
+    },
+    {
+      "seed": 71,
+      "run_dir": "C:\\AI\\RL\\runs\\shared_multienv_gpi\\CartPole-v1\\grammar_constrained\\seed-71_20260922T034154Z",
+      "reinduction_interval_episodes": 50,
+      "training_steps": 60084,
+      "generations_observed": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "conditions_ever_covered": 77,
+      "conditions_ever_visited": 190,
+      "retraction_events": 0,
+      "action_flip_events": 0,
+      "retraction_examples": [],
+      "action_flip_examples": []
+    },
+    {
+      "seed": 101,
+      "run_dir": "C:\\AI\\RL\\runs\\shared_multienv_gpi\\CartPole-v1\\grammar_constrained\\seed-101_20260922T034330Z",
+      "reinduction_interval_episodes": 50,
+      "training_steps": 85706,
+      "generations_observed": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "conditions_ever_covered": 115,
+      "conditions_ever_visited": 203,
+      "retraction_events": 0,
+      "action_flip_events": 0,
+      "retraction_examples": [],
+      "action_flip_examples": []
+    },
+    {
+      "seed": 149,
+      "run_dir": "C:\\AI\\RL\\runs\\shared_multienv_gpi\\CartPole-v1\\grammar_constrained\\seed-149_20260922T034502Z",
+      "reinduction_interval_episodes": 50,
+      "training_steps": 11387,
+      "generations_observed": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "conditions_ever_covered": 64,
+      "conditions_ever_visited": 143,
+      "retraction_events": 0,
+      "action_flip_events": 0,
+      "retraction_examples": [],
+      "action_flip_examples": []
+    },
+    {
+      "seed": 211,
+      "run_dir": "C:\\AI\\RL\\runs\\shared_multienv_gpi\\CartPole-v1\\grammar_constrained\\seed-211_20260922T034627Z",
+      "reinduction_interval_episodes": 50,
+      "training_steps": 87441,
+      "generations_observed": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "conditions_ever_covered": 113,
+      "conditions_ever_visited": 201,
+      "retraction_events": 0,
+      "action_flip_events": 0,
+      "retraction_examples": [],
+      "action_flip_examples": []
+    },
+    {
+      "seed": 307,
+      "run_dir": "C:\\AI\\RL\\runs\\shared_multienv_gpi\\CartPole-v1\\grammar_constrained\\seed-307_20260922T034828Z",
+      "reinduction_interval_episodes": 50,
+      "training_steps": 51019,
+      "generations_observed": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "conditions_ever_covered": 91,
+      "conditions_ever_visited": 173,
+      "retraction_events": 0,
+      "action_flip_events": 0,
+      "retraction_examples": [],
+      "action_flip_examples": []
+    }
+  ],
+  "total_retraction_events": 0,
+  "total_action_flip_events": 0,
+  "bank_is_monotone": true,
+  "verdict": "MONOTONE: no rule was ever retracted and no forced action ever changed, in any seed"
+}

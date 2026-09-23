@@ -1,0 +1,1451 @@
+{
+  "environment": "Acrobot-v1",
+  "environment_spaces": {
+    "state_dim": 6,
+    "action_dim": 3
+  },
+  "experiment_design": {
+    "seeds": [
+      11,
+      29,
+      43,
+      71,
+      101,
+      149,
+      211,
+      307
+    ],
+    "episodes_per_seed_arm": 300,
+    "arms": [
+      "baseline",
+      "grammar_audit_only",
+      "grammar_constrained"
+    ],
+    "shared_calibration": {
+      "method": "pooled empirical quantiles from separate random-policy roll-ins; frozen for every seed and arm",
+      "environment": "Acrobot-v1",
+      "calibration_seeds": [
+        11,
+        29,
+        43,
+        71,
+        101,
+        149,
+        211,
+        307
+      ],
+      "calibration_episodes_per_seed": 24,
+      "state_bins": {
+        "method": "per-dimension empirical quantiles",
+        "n_bins": 4,
+        "edges": [
+          [
+            0.8665410876274109,
+            0.96077761054039,
+            0.9925754070281982
+          ],
+          [
+            -0.27729979157447815,
+            -0.00010593337356112897,
+            0.27733296900987625
+          ],
+          [
+            0.5592346042394638,
+            0.86370649933815,
+            0.9730549305677414
+          ],
+          [
+            -0.4944238141179085,
+            -0.0021389975445345044,
+            0.4933825582265854
+          ],
+          [
+            -0.724904254078865,
+            -0.002031134208664298,
+            0.7227569371461868
+          ],
+          [
+            -1.234644889831543,
+            -0.004996149335056543,
+            1.230846256017685
+          ]
+        ]
+      },
+      "state_bins_canonical_sha256": "651ca4b3ce3b3dbcb7fa59fd43869f2e31eaf67b3bdd7c1989cf3ee2e1c3dd48"
+    },
+    "grammar_min_support": 8,
+    "grammar_min_confidence": 0.7,
+    "evaluation_episodes": 100
+  },
+  "per_seed": [
+    {
+      "seed": 11,
+      "runs": {
+        "baseline": {
+          "actor_sha256": "dc71c7f62a21ba0770d648722107de205b13553bf572502556789f25f2ee9276",
+          "trace_sha256": "fa79bb62634c1b509e4166a8118ec7fbba549bf40f86b52ca525d5a293f59e9f",
+          "update_core_sha256": "d25a65d2926ff464548a7a8b1f643a3df799cb6ea968216f249c311f12e38371",
+          "trace_valid": true,
+          "trace_records": 79162,
+          "update_valid": true,
+          "update_records": 300,
+          "training_mean_return": -263.03,
+          "heldout_mean_return": -500.0,
+          "grammar_rule_count": 0
+        },
+        "grammar_audit_only": {
+          "actor_sha256": "dc71c7f62a21ba0770d648722107de205b13553bf572502556789f25f2ee9276",
+          "trace_sha256": "fa79bb62634c1b509e4166a8118ec7fbba549bf40f86b52ca525d5a293f59e9f",
+          "update_core_sha256": "d25a65d2926ff464548a7a8b1f643a3df799cb6ea968216f249c311f12e38371",
+          "trace_valid": true,
+          "trace_records": 79162,
+          "update_valid": true,
+          "update_records": 300,
+          "training_mean_return": -263.03,
+          "heldout_mean_return": -500.0,
+          "grammar_rule_count": 301
+        },
+        "grammar_constrained": {
+          "actor_sha256": "4597d51b1e731db302ee1f49be24aa53e8dee22779f00163325228e11b404c3d",
+          "trace_sha256": "9f538fff1b3e54704af86343865a9e69104cc957814a80859f8a8a1353fa94fa",
+          "update_core_sha256": "01ede8682a7df3aa1c61e0feb5ae78d7d8947b8e6f686e375d59c64575131769",
+          "trace_valid": true,
+          "trace_records": 101334,
+          "update_valid": true,
+          "update_records": 300,
+          "training_mean_return": -337.2633333333333,
+          "heldout_mean_return": -500.0,
+          "grammar_rule_count": 241
+        }
+      },
+      "baseline_audit_only_exact_training_equivalence": true,
+      "environment_replay": {
+        "valid": true,
+        "transition_count": 79162,
+        "episode_count": 300,
+        "reconstructed_reward_sum": -78909.0,
+        "replay_method": "Gymnasium reset seed + recorded action, exact float32 state/reward/terminated/truncated comparison"
+      }
+    },
+    {
+      "seed": 29,
+      "runs": {
+        "baseline": {
+          "actor_sha256": "4e879d32310e3d33ba7460e40a2d64713b28814d748613c5987352cd5898628c",
+          "trace_sha256": "53c0fef932a2507f590a5601528dadd2d578b72c80b1a6d8accbb6139332e0e8",
+          "update_core_sha256": "c9fe0010b64cfdc02d6a19df16148d656ffe6184e168a203a3127c94e7ecbe91",
+          "trace_valid": true,
+          "trace_records": 139965,
+          "update_valid": true,
+          "update_records": 300,
+          "training_mean_return": -466.42333333333335,
+          "heldout_mean_return": -500.0,
+          "grammar_rule_count": 0
+        },
+        "grammar_audit_only": {
+          "actor_sha256": "4e879d32310e3d33ba7460e40a2d64713b28814d748613c5987352cd5898628c",
+          "trace_sha256": "53c0fef932a2507f590a5601528dadd2d578b72c80b1a6d8accbb6139332e0e8",
+          "update_core_sha256": "c9fe0010b64cfdc02d6a19df16148d656ffe6184e168a203a3127c94e7ecbe91",
+          "trace_valid": true,
+          "trace_records": 139965,
+          "update_valid": true,
+          "update_records": 300,
+          "training_mean_return": -466.42333333333335,
+          "heldout_mean_return": -500.0,
+          "grammar_rule_count": 143
+        },
+        "grammar_constrained": {
+          "actor_sha256": "f672db12cb5cff58f67ead159e70243cde335927f3e4f9ed646aea0bef2d9f7c",
+          "trace_sha256": "677b4d6fcbc30b0398c3b407eb86fef06c81b4b4027f870f11e592c180740358",
+          "update_core_sha256": "e3b435aec92c7e17f46bce41ad60faba7b76022e4648a4072bb42dc27eaea655",
+          "trace_valid": true,
+          "trace_records": 139820,
+          "update_valid": true,
+          "update_records": 300,
+          "training_mean_return": -465.93666666666667,
+          "heldout_mean_return": -500.0,
+          "grammar_rule_count": 141
+        }
+      },
+      "baseline_audit_only_exact_training_equivalence": true,
+      "environment_replay": {
+        "valid": true,
+        "transition_count": 139965,
+        "episode_count": 300,
+        "reconstructed_reward_sum": -139927.0,
+        "replay_method": "Gymnasium reset seed + recorded action, exact float32 state/reward/terminated/truncated comparison"
+      }
+    },
+    {
+      "seed": 43,
+      "runs": {
+        "baseline": {
+          "actor_sha256": "20e33d791d62cf9a0fc98bf532c30b56612f3a7be946def5abb09ab118bb3a92",
+          "trace_sha256": "13d579a3d3c3735726f456029ebd416d310165a091f84dfd57fe1c5a34ad6fd7",
+          "update_core_sha256": "fc57d5e6ddb9c755eee140a730778f36ec0e290ff2294f16d66c1d0f58e626e2",
+          "trace_valid": true,
+          "trace_records": 75651,
+          "update_valid": true,
+          "update_records": 300,
+          "training_mean_return": -251.29666666666665,
+          "heldout_mean_return": -500.0,
+          "grammar_rule_count": 0
+        },
+        "grammar_audit_only": {
+          "actor_sha256": "20e33d791d62cf9a0fc98bf532c30b56612f3a7be946def5abb09ab118bb3a92",
+          "trace_sha256": "13d579a3d3c3735726f456029ebd416d310165a091f84dfd57fe1c5a34ad6fd7",
+          "update_core_sha256": "fc57d5e6ddb9c755eee140a730778f36ec0e290ff2294f16d66c1d0f58e626e2",
+          "trace_valid": true,
+          "trace_records": 75651,
+          "update_valid": true,
+          "update_records": 300,
+          "training_mean_return": -251.29666666666665,
+          "heldout_mean_return": -500.0,
+          "grammar_rule_count": 303
+        },
+        "grammar_constrained": {
+          "actor_sha256": "29caf3acd0c36ec84a50837171ef2be054f7b06d4d77bec382cd2d71691bc2c7",
+          "trace_sha256": "88e31697c253ab420c7b3f1b93f94418719d2adfa81430d5ee3ff7c91018eae5",
+          "update_core_sha256": "fe5a8acdc66efc3d0ed8048421d2038da10888be8314f1043d1f4f68c98d2041",
+          "trace_valid": true,
+          "trace_records": 128197,
+          "update_valid": true,
+          "update_records": 300,
+          "training_mean_return": -427.0966666666667,
+          "heldout_mean_return": -500.0,
+          "grammar_rule_count": 155
+        }
+      },
+      "baseline_audit_only_exact_training_equivalence": true,
+      "environment_replay": {
+        "valid": true,
+        "transition_count": 75651,
+        "episode_count": 300,
+        "reconstructed_reward_sum": -75389.0,
+        "replay_method": "Gymnasium reset seed + recorded action, exact float32 state/reward/terminated/truncated comparison"
+      }
+    },
+    {
+      "seed": 71,
+      "runs": {
+        "baseline": {
+          "actor_sha256": "73fe3aa9bbdc12e9d73856bc05f5ad2efebf8f0dbe27a226f5f38d984947f3c4",
+          "trace_sha256": "5c875a81880939e3777e5bc55e1c124d72613ecdef3cae1079e656c052b3a992",
+          "update_core_sha256": "e6ee7637d27913d9f686a85ad1bc025eefdf546b30f835bbf58354f74ee3a883",
+          "trace_valid": true,
+          "trace_records": 146613,
+          "update_valid": true,
+          "update_records": 300,
+          "training_mean_return": -488.63666666666666,
+          "heldout_mean_return": -500.0,
+          "grammar_rule_count": 0
+        },
+        "grammar_audit_only": {
+          "actor_sha256": "73fe3aa9bbdc12e9d73856bc05f5ad2efebf8f0dbe27a226f5f38d984947f3c4",
+          "trace_sha256": "5c875a81880939e3777e5bc55e1c124d72613ecdef3cae1079e656c052b3a992",
+          "update_core_sha256": "e6ee7637d27913d9f686a85ad1bc025eefdf546b30f835bbf58354f74ee3a883",
+          "trace_valid": true,
+          "trace_records": 146613,
+          "update_valid": true,
+          "update_records": 300,
+          "training_mean_return": -488.63666666666666,
+          "heldout_mean_return": -500.0,
+          "grammar_rule_count": 186
+        },
+        "grammar_constrained": {
+          "actor_sha256": "d73a2c262684ae4a0cebbfed98da37853ae0c25ebad0b77dd29724a2c1846a87",
+          "trace_sha256": "711785781e5749723ec1515a3604c4b51964d07877525bd631ba9cdf0c74afe7",
+          "update_core_sha256": "57fe0f4d81c6a2ee359aa630b1445f8c52413cd787dab8db21d2c405b9bcdc68",
+          "trace_valid": true,
+          "trace_records": 146753,
+          "update_valid": true,
+          "update_records": 300,
+          "training_mean_return": -489.11,
+          "heldout_mean_return": -500.0,
+          "grammar_rule_count": 97
+        }
+      },
+      "baseline_audit_only_exact_training_equivalence": true,
+      "environment_replay": {
+        "valid": true,
+        "transition_count": 146613,
+        "episode_count": 300,
+        "reconstructed_reward_sum": -146591.0,
+        "replay_method": "Gymnasium reset seed + recorded action, exact float32 state/reward/terminated/truncated comparison"
+      }
+    },
+    {
+      "seed": 101,
+      "runs": {
+        "baseline": {
+          "actor_sha256": "9d00671fbbcb489b59f788e979207995e1ed85635e7075e24344eb1e301d4e25",
+          "trace_sha256": "8b549ed83d12d4ba1e588a027b0d17358de3aa88c9a5e66b2985fe44a96d0d26",
+          "update_core_sha256": "e209a2eeb7cb10f3ced9e9617c4f0f5d9b63e4c705040477445cc8e24ea9e662",
+          "trace_valid": true,
+          "trace_records": 89411,
+          "update_valid": true,
+          "update_records": 300,
+          "training_mean_return": -297.37,
+          "heldout_mean_return": -500.0,
+          "grammar_rule_count": 0
+        },
+        "grammar_audit_only": {
+          "actor_sha256": "9d00671fbbcb489b59f788e979207995e1ed85635e7075e24344eb1e301d4e25",
+          "trace_sha256": "8b549ed83d12d4ba1e588a027b0d17358de3aa88c9a5e66b2985fe44a96d0d26",
+          "update_core_sha256": "e209a2eeb7cb10f3ced9e9617c4f0f5d9b63e4c705040477445cc8e24ea9e662",
+          "trace_valid": true,
+          "trace_records": 89411,
+          "update_valid": true,
+          "update_records": 300,
+          "training_mean_return": -297.37,
+          "heldout_mean_return": -500.0,
+          "grammar_rule_count": 77
+        },
+        "grammar_constrained": {
+          "actor_sha256": "858259bcc620eb38a8b9134eead8ec888c15e074e136bd703ec0c34c115f7b86",
+          "trace_sha256": "06d4b142b67799650ca8b1f4552c997e995b0edbd9aa139cbeec09d8e0513f7f",
+          "update_core_sha256": "d84bab04309432289cc2eee7de6fc0c5ea7b147669b9c068b3ae0e8e8093235d",
+          "trace_valid": true,
+          "trace_records": 91169,
+          "update_valid": true,
+          "update_records": 300,
+          "training_mean_return": -303.21,
+          "heldout_mean_return": -500.0,
+          "grammar_rule_count": 226
+        }
+      },
+      "baseline_audit_only_exact_training_equivalence": true,
+      "environment_replay": {
+        "valid": true,
+        "transition_count": 89411,
+        "episode_count": 300,
+        "reconstructed_reward_sum": -89211.0,
+        "replay_method": "Gymnasium reset seed + recorded action, exact float32 state/reward/terminated/truncated comparison"
+      }
+    },
+    {
+      "seed": 149,
+      "runs": {
+        "baseline": {
+          "actor_sha256": "630c481259c7154902db942eb5e928adc06efd650c73e6fde797a97dae8e78df",
+          "trace_sha256": "839d2a8dcf8aff58716cf053b7d0f6790913ac5108295f205d4c4ddb0d8cde9a",
+          "update_core_sha256": "d66894619cb3a7005c273ce84d0f39a7b00883a53509142f1125aae5bf69dfa3",
+          "trace_valid": true,
+          "trace_records": 124592,
+          "update_valid": true,
+          "update_records": 300,
+          "training_mean_return": -415.0366666666667,
+          "heldout_mean_return": -500.0,
+          "grammar_rule_count": 0
+        },
+        "grammar_audit_only": {
+          "actor_sha256": "630c481259c7154902db942eb5e928adc06efd650c73e6fde797a97dae8e78df",
+          "trace_sha256": "839d2a8dcf8aff58716cf053b7d0f6790913ac5108295f205d4c4ddb0d8cde9a",
+          "update_core_sha256": "d66894619cb3a7005c273ce84d0f39a7b00883a53509142f1125aae5bf69dfa3",
+          "trace_valid": true,
+          "trace_records": 124592,
+          "update_valid": true,
+          "update_records": 300,
+          "training_mean_return": -415.0366666666667,
+          "heldout_mean_return": -500.0,
+          "grammar_rule_count": 94
+        },
+        "grammar_constrained": {
+          "actor_sha256": "9d62ac1dae9ce8cb1827e284a0f503711d828821a753b25b722a3caf2a2750da",
+          "trace_sha256": "386c6b8218fd8f3884cdf540c34e7cc071be39bfa9dca09edd91315e30344a8d",
+          "update_core_sha256": "54c9ba768ebdc0565ba787f53198884c932f1e7d370c6fe4f4dc75db6f213285",
+          "trace_valid": true,
+          "trace_records": 117303,
+          "update_valid": true,
+          "update_records": 300,
+          "training_mean_return": -390.69,
+          "heldout_mean_return": -500.0,
+          "grammar_rule_count": 119
+        }
+      },
+      "baseline_audit_only_exact_training_equivalence": true,
+      "environment_replay": {
+        "valid": true,
+        "transition_count": 124592,
+        "episode_count": 300,
+        "reconstructed_reward_sum": -124511.0,
+        "replay_method": "Gymnasium reset seed + recorded action, exact float32 state/reward/terminated/truncated comparison"
+      }
+    },
+    {
+      "seed": 211,
+      "runs": {
+        "baseline": {
+          "actor_sha256": "282df1a6f10b93ddf35be0d25d3e15f260852af665516646ea647d39319cef85",
+          "trace_sha256": "08d17b9b5fb482e122cd762c5a6b9c02761765f90e53de85d1fa1ecf6dcd7da3",
+          "update_core_sha256": "b8b9f3a985c70b6aa5ed318b6964452a7a006f45264cf44e47c2eb7dfd8c36a5",
+          "trace_valid": true,
+          "trace_records": 57965,
+          "update_valid": true,
+          "update_records": 300,
+          "training_mean_return": -192.28,
+          "heldout_mean_return": -500.0,
+          "grammar_rule_count": 0
+        },
+        "grammar_audit_only": {
+          "actor_sha256": "282df1a6f10b93ddf35be0d25d3e15f260852af665516646ea647d39319cef85",
+          "trace_sha256": "08d17b9b5fb482e122cd762c5a6b9c02761765f90e53de85d1fa1ecf6dcd7da3",
+          "update_core_sha256": "b8b9f3a985c70b6aa5ed318b6964452a7a006f45264cf44e47c2eb7dfd8c36a5",
+          "trace_valid": true,
+          "trace_records": 57965,
+          "update_valid": true,
+          "update_records": 300,
+          "training_mean_return": -192.28,
+          "heldout_mean_return": -500.0,
+          "grammar_rule_count": 301
+        },
+        "grammar_constrained": {
+          "actor_sha256": "77a56e65e90513db102416391ae774d82c012028e753edb6050df77538c16ebf",
+          "trace_sha256": "173f3095c28ac8edd6b45fb352ca3f99b1fccb16a09fbe14554a14623392bdb2",
+          "update_core_sha256": "6508a6f7c8f921a00309dfd72765744f266819d078795889dd0ea9cf86316f62",
+          "trace_valid": true,
+          "trace_records": 75979,
+          "update_valid": true,
+          "update_records": 300,
+          "training_mean_return": -252.59333333333333,
+          "heldout_mean_return": -500.0,
+          "grammar_rule_count": 259
+        }
+      },
+      "baseline_audit_only_exact_training_equivalence": true,
+      "environment_replay": {
+        "valid": true,
+        "transition_count": 57965,
+        "episode_count": 300,
+        "reconstructed_reward_sum": -57684.0,
+        "replay_method": "Gymnasium reset seed + recorded action, exact float32 state/reward/terminated/truncated comparison"
+      }
+    },
+    {
+      "seed": 307,
+      "runs": {
+        "baseline": {
+          "actor_sha256": "33112f20ab8eeead8aa688d0c4b610953df25a52024217ceb4fed630f60fdb45",
+          "trace_sha256": "56cbe9cad2037f9af4179ccf679e1befea844bb521ac360d1f8e6500bcd778c2",
+          "update_core_sha256": "086d5b7221a03a9c73a16e5ceea9be1160dae95bf5cc80fafcb2eafbf115cd55",
+          "trace_valid": true,
+          "trace_records": 88584,
+          "update_valid": true,
+          "update_records": 300,
+          "training_mean_return": -294.45666666666665,
+          "heldout_mean_return": -500.0,
+          "grammar_rule_count": 0
+        },
+        "grammar_audit_only": {
+          "actor_sha256": "33112f20ab8eeead8aa688d0c4b610953df25a52024217ceb4fed630f60fdb45",
+          "trace_sha256": "56cbe9cad2037f9af4179ccf679e1befea844bb521ac360d1f8e6500bcd778c2",
+          "update_core_sha256": "086d5b7221a03a9c73a16e5ceea9be1160dae95bf5cc80fafcb2eafbf115cd55",
+          "trace_valid": true,
+          "trace_records": 88584,
+          "update_valid": true,
+          "update_records": 300,
+          "training_mean_return": -294.45666666666665,
+          "heldout_mean_return": -500.0,
+          "grammar_rule_count": 289
+        },
+        "grammar_constrained": {
+          "actor_sha256": "17c331647968ec2c89dd1cd0e761e696610f9854a2ffc3660b1ed2113376be7c",
+          "trace_sha256": "0d30875bc4cf477325d7f047c119baef2951749d3eb857afc530538c58e6670d",
+          "update_core_sha256": "b95e54993ac6b1e700db03e77d5e196ccb3e11aead1e88ac3b7344b9ee5db92a",
+          "trace_valid": true,
+          "trace_records": 140072,
+          "update_valid": true,
+          "update_records": 300,
+          "training_mean_return": -466.76,
+          "heldout_mean_return": -500.0,
+          "grammar_rule_count": 178
+        }
+      },
+      "baseline_audit_only_exact_training_equivalence": true,
+      "environment_replay": {
+        "valid": true,
+        "transition_count": 88584,
+        "episode_count": 300,
+        "reconstructed_reward_sum": -88337.0,
+        "replay_method": "Gymnasium reset seed + recorded action, exact float32 state/reward/terminated/truncated comparison"
+      }
+    }
+  ],
+  "grammar_core": {
+    "seed_count": 8,
+    "seeds": [
+      11,
+      29,
+      43,
+      71,
+      101,
+      149,
+      211,
+      307
+    ],
+    "shared_rule_conditions_present_in_at_least_two_seeds": 445,
+    "all_seed_rule_condition_intersection": 2,
+    "all_seed_same_action_core": 0,
+    "all_seed_core_rules": [],
+    "per_seed_rule_counts": [
+      301,
+      143,
+      303,
+      186,
+      77,
+      94,
+      301,
+      289
+    ],
+    "conflicting_conditions_in_all_seed_intersection": 2
+  },
+  "composition_evaluation": {
+    "heldout_episodes": 100,
+    "heldout_reset_seed_formula": "20000000 + episode_index; same reset seeds for every policy",
+    "fallback_best_single_seed": 211,
+    "fallback_selection_basis": "training episode_return_mean only",
+    "policies": {
+      "best_single": {
+        "mean_return": -500.0,
+        "median_return": -500.0,
+        "sample_std_return": 0.0,
+        "return_by_episode": [
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0
+        ]
+      },
+      "actor_mean_logits": {
+        "mean_return": -500.0,
+        "median_return": -500.0,
+        "sample_std_return": 0.0,
+        "return_by_episode": [
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0
+        ]
+      },
+      "grammar_fusion": {
+        "mean_return": -443.37,
+        "median_return": -500.0,
+        "sample_std_return": 90.76995620520565,
+        "return_by_episode": [
+          -321.0,
+          -185.0,
+          -500.0,
+          -293.0,
+          -500.0,
+          -300.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -437.0,
+          -313.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -375.0,
+          -471.0,
+          -500.0,
+          -500.0,
+          -474.0,
+          -458.0,
+          -500.0,
+          -426.0,
+          -449.0,
+          -462.0,
+          -500.0,
+          -500.0,
+          -403.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -480.0,
+          -500.0,
+          -253.0,
+          -500.0,
+          -370.0,
+          -462.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -343.0,
+          -500.0,
+          -500.0,
+          -427.0,
+          -500.0,
+          -500.0,
+          -306.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -209.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -242.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -422.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -377.0,
+          -500.0,
+          -500.0,
+          -346.0,
+          -500.0,
+          -265.0,
+          -500.0,
+          -372.0,
+          -500.0,
+          -261.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -407.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -274.0,
+          -126.0,
+          -466.0,
+          -500.0,
+          -402.0,
+          -500.0,
+          -500.0,
+          -315.0,
+          -340.0,
+          -387.0,
+          -216.0,
+          -402.0
+        ]
+      },
+      "gpi_mc_q": {
+        "mean_return": -500.0,
+        "median_return": -500.0,
+        "sample_std_return": 0.0,
+        "return_by_episode": [
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0,
+          -500.0
+        ]
+      }
+    },
+    "paired_bootstrap_difference_vs_best_single": {
+      "actor_mean_logits": {
+        "mean_delta": 0.0,
+        "ci95_percentile": [
+          0.0,
+          0.0
+        ]
+      },
+      "grammar_fusion": {
+        "mean_delta": 56.63,
+        "ci95_percentile": [
+          39.32,
+          75.15
+        ]
+      },
+      "gpi_mc_q": {
+        "mean_delta": 0.0,
+        "ci95_percentile": [
+          0.0,
+          0.0
+        ]
+      }
+    },
+    "grammar_fusion_decision_mix": {
+      "grammar_fusion_total_steps": 44376,
+      "grammar_fusion_covered_steps": 42467,
+      "grammar_fusion_conflicts": 39602,
+      "grammar_fusion_blind_spots": 1909
+    },
+    "illustrative_composition_actions_first_3_episodes": [
+      {
+        "policy": "grammar_fusion",
+        "episode": 0,
+        "reset_seed": 20000000,
+        "step": 0,
+        "action": 1,
+        "covered": true,
+        "conflict": true,
+        "candidate_count": 7,
+        "selected_rule": {
+          "action": 1,
+          "confidence": 0.9809163195759182,
+          "support": 12953,
+          "mean_reward": -1.0,
+          "source_seed": 29,
+          "source_rule_id": "S:STATE_3_1_3_2_1_2->ACTION_1",
+          "source_run": "runs\\shared_multienv_gpi\\Acrobot-v1\\grammar_audit_only\\seed-29_20260922T035727Z",
+          "source_grammar_sha256": "f2357894b0b50503344ec788bd2a98e3746390bb4bc2513baccfb019fd36b4f5"
+        }
+      },
+      {
+        "policy": "grammar_fusion",
+        "episode": 0,
+        "reset_seed": 20000000,
+        "step": 1,
+        "action": 1,
+        "covered": true,
+        "conflict": true,
+        "candidate_count": 7,
+        "selected_rule": {
+          "action": 1,
+          "confidence": 0.9817761064506798,
+          "support": 3394,
+          "mean_reward": -1.0,
+          "source_seed": 149,
+          "source_rule_id": "S:STATE_3_1_3_2_2_2->ACTION_1",
+          "source_run": "runs\\shared_multienv_gpi\\Acrobot-v1\\grammar_audit_only\\seed-149_20260922T041356Z",
+          "source_grammar_sha256": "9cc4458d7ae318636200244912f0985aa92c5e8d9f8b08b7a245b805a07908a4"
+        }
+      },
+      {
+        "policy": "grammar_fusion",
+        "episode": 0,
+        "reset_seed": 20000000,
+        "step": 2,
+        "action": 1,
+        "covered": true,
+        "conflict": true,
+        "candidate_count": 7,
+        "selected_rule": {
+          "action": 1,
+          "confidence": 0.9780985062575697,
+          "support": 9691,
+          "mean_reward": -1.0,
+          "source_seed": 149,
+          "source_rule_id": "S:STATE_3_1_3_2_2_1->ACTION_1",
+          "source_run": "runs\\shared_multienv_gpi\\Acrobot-v1\\grammar_audit_only\\seed-149_20260922T041356Z",
+          "source_grammar_sha256": "9cc4458d7ae318636200244912f0985aa92c5e8d9f8b08b7a245b805a07908a4"
+        }
+      },
+      {
+        "policy": "grammar_fusion",
+        "episode": 0,
+        "reset_seed": 20000000,
+        "step": 3,
+        "action": 1,
+        "covered": true,
+        "conflict": true,
+        "candidate_count": 7,
+        "selected_rule": {
+          "action": 1,
+          "confidence": 0.9780985062575697,
+          "support": 9691,
+          "mean_reward": -1.0,
+          "source_seed": 149,
+          "source_rule_id": "S:STATE_3_1_3_2_2_1->ACTION_1",
+          "source_run": "runs\\shared_multienv_gpi\\Acrobot-v1\\grammar_audit_only\\seed-149_20260922T041356Z",
+          "source_grammar_sha256": "9cc4458d7ae318636200244912f0985aa92c5e8d9f8b08b7a245b805a07908a4"
+        }
+      },
+      {
+        "policy": "grammar_fusion",
+        "episode": 0,
+        "reset_seed": 20000000,
+        "step": 4,
+        "action": 1,
+        "covered": true,
+        "conflict": true,
+        "candidate_count": 7,
+        "selected_rule": {
+          "action": 1,
+          "confidence": 0.9774719423281724,
+          "support": 11932,
+          "mean_reward": -1.0,
+          "source_seed": 29,
+          "source_rule_id": "S:STATE_3_2_3_1_2_1->ACTION_1",
+          "source_run": "runs\\shared_multienv_gpi\\Acrobot-v1\\grammar_audit_only\\seed-29_20260922T035727Z",
+          "source_grammar_sha256": "f2357894b0b50503344ec788bd2a98e3746390bb4bc2513baccfb019fd36b4f5"
+        }
+      },
+      {
+        "policy": "grammar_fusion",
+        "episode": 0,
+        "reset_seed": 20000000,
+        "step": 5,
+        "action": 1,
+        "covered": true,
+        "conflict": true,
+        "candidate_count": 7,
+        "selected_rule": {
+          "action": 1,
+          "confidence": 0.9774719423281724,
+          "support": 11932,
+          "mean_reward": -1.0,
+          "source_seed": 29,
+          "source_rule_id": "S:STATE_3_2_3_1_2_1->ACTION_1",
+          "source_run": "runs\\shared_multienv_gpi\\Acrobot-v1\\grammar_audit_only\\seed-29_20260922T035727Z",
+          "source_grammar_sha256": "f2357894b0b50503344ec788bd2a98e3746390bb4bc2513baccfb019fd36b4f5"
+        }
+      },
+      {
+        "policy": "grammar_fusion",
+        "episode": 0,
+        "reset_seed": 20000000,
+        "step": 6,
+        "action": 1,
+        "covered": true,
+        "conflict": true,
+        "candidate_count": 7,
+        "selected_rule": {
+          "action": 1,
+          "confidence": 0.9859747545582047,
+          "support": 4921,
+          "mean_reward": -1.0,
+          "source_seed": 29,
+          "source_rule_id": "S:STATE_3_2_3_1_2_2->ACTION_1",
+          "source_run": "runs\\shared_multienv_gpi\\Acrobot-v1\\grammar_audit_only\\seed-29_20260922T035727Z",
+          "source_grammar_sha256": "f2357894b0b50503344ec788bd2a98e3746390bb4bc2513baccfb019fd36b4f5"
+        }
+      },
+      {
+        "policy": "grammar_fusion",
+        "episode": 0,
+        "reset_seed": 20000000,
+        "step": 7,
+        "action": 1,
+        "covered": true,
+        "conflict": true,
+        "candidate_count": 8,
+        "selected_rule": {
+          "action": 1,
+          "confidence": 0.9876885446392173,
+          "support": 12114,
+          "mean_reward": -1.0,
+          "source_seed": 29,
+          "source_rule_id": "S:STATE_3_2_3_1_1_2->ACTION_1",
+          "source_run": "runs\\shared_multienv_gpi\\Acrobot-v1\\grammar_audit_only\\seed-29_20260922T035727Z",
+          "source_grammar_sha256": "f2357894b0b50503344ec788bd2a98e3746390bb4bc2513baccfb019fd36b4f5"
+        }
+      },
+      {
+        "policy": "gpi_mc_q",
+        "episode": 0,
+        "reset_seed": 20000000,
+        "step": 0,
+        "action": 0,
+        "max_over_policy_action_values": [
+          -14.559103012084961,
+          -23.398588180541992,
+          -25.519332885742188
+        ]
+      },
+      {
+        "policy": "gpi_mc_q",
+        "episode": 0,
+        "reset_seed": 20000000,
+        "step": 1,
+        "action": 0,
+        "max_over_policy_action_values": [
+          -14.581382751464844,
+          -23.371660232543945,
+          -25.489524841308594
+        ]
+      },
+      {
+        "policy": "gpi_mc_q",
+        "episode": 0,
+        "reset_seed": 20000000,
+        "step": 2,
+        "action": 0,
+        "max_over_policy_action_values": [
+          -14.635320663452148,
+          -23.30293846130371,
+          -25.41381072998047
+        ]
+      },
+      {
+        "policy": "gpi_mc_q",
+        "episode": 0,
+        "reset_seed": 20000000,
+        "step": 3,
+        "action": 0,
+        "max_over_policy_action_values": [
+          -14.671149253845215,
+          -23.256786346435547,
+          -25.36309814453125
+        ]
+      },
+      {
+        "policy": "gpi_mc_q",
+        "episode": 0,
+        "reset_seed": 20000000,
+        "step": 4,
+        "action": 0,
+        "max_over_policy_action_values": [
+          -14.630120277404785,
+          -23.307619094848633,
+          -25.4189395904541
+        ]
+      },
+      {
+        "policy": "gpi_mc_q",
+        "episode": 0,
+        "reset_seed": 20000000,
+        "step": 5,
+        "action": 0,
+        "max_over_policy_action_values": [
+          -14.580098152160645,
+          -23.36993408203125,
+          -25.487598419189453
+        ]
+      },
+      {
+        "policy": "gpi_mc_q",
+        "episode": 0,
+        "reset_seed": 20000000,
+        "step": 6,
+        "action": 0,
+        "max_over_policy_action_values": [
+          -14.558685302734375,
+          -23.3952579498291,
+          -25.515623092651367
+        ]
+      },
+      {
+        "policy": "gpi_mc_q",
+        "episode": 0,
+        "reset_seed": 20000000,
+        "step": 7,
+        "action": 0,
+        "max_over_policy_action_values": [
+          -14.55159854888916,
+          -23.401613235473633,
+          -25.5226993560791
+        ]
+      }
+    ]
+  },
+  "gpi_critic_fit_diagnostics": [
+    {
+      "seed": 11,
+      "training_transitions": 57812,
+      "heldout_validation_transitions": 21350,
+      "episodes_held_out_by_time": 60,
+      "training_action_counts": {
+        "0": 8035,
+        "1": 5618,
+        "2": 44159
+      },
+      "validation_action_counts": {
+        "0": 899,
+        "1": 507,
+        "2": 19944
+      },
+      "actions_unseen_in_training": [],
+      "mc_return_mae": 43.220394134521484,
+      "mc_return_rmse": 47.60349655151367,
+      "epochs": 8,
+      "target": "discounted Monte Carlo return for the source policy's sampled state-action pairs",
+      "support_limit": "Q values for actions absent from the source-policy training data rely on neural extrapolation"
+    },
+    {
+      "seed": 29,
+      "training_transitions": 109965,
+      "heldout_validation_transitions": 30000,
+      "episodes_held_out_by_time": 60,
+      "training_action_counts": {
+        "0": 4602,
+        "1": 98635,
+        "2": 6728
+      },
+      "validation_action_counts": {
+        "0": 8,
+        "1": 29923,
+        "2": 69
+      },
+      "actions_unseen_in_training": [],
+      "mc_return_mae": 28.815156936645508,
+      "mc_return_rmse": 31.11823081970215,
+      "epochs": 8,
+      "target": "discounted Monte Carlo return for the source policy's sampled state-action pairs",
+      "support_limit": "Q values for actions absent from the source-policy training data rely on neural extrapolation"
+    },
+    {
+      "seed": 43,
+      "training_transitions": 62212,
+      "heldout_validation_transitions": 13439,
+      "episodes_held_out_by_time": 60,
+      "training_action_counts": {
+        "0": 48481,
+        "1": 4989,
+        "2": 8742
+      },
+      "validation_action_counts": {
+        "0": 11243,
+        "1": 196,
+        "2": 2000
+      },
+      "actions_unseen_in_training": [],
+      "mc_return_mae": 33.965126037597656,
+      "mc_return_rmse": 39.19457244873047,
+      "epochs": 8,
+      "target": "discounted Monte Carlo return for the source policy's sampled state-action pairs",
+      "support_limit": "Q values for actions absent from the source-policy training data rely on neural extrapolation"
+    },
+    {
+      "seed": 71,
+      "training_transitions": 116613,
+      "heldout_validation_transitions": 30000,
+      "episodes_held_out_by_time": 60,
+      "training_action_counts": {
+        "0": 14797,
+        "1": 56821,
+        "2": 44995
+      },
+      "validation_action_counts": {
+        "0": 4896,
+        "1": 10202,
+        "2": 14902
+      },
+      "actions_unseen_in_training": [],
+      "mc_return_mae": 27.90469741821289,
+      "mc_return_rmse": 30.23299789428711,
+      "epochs": 8,
+      "target": "discounted Monte Carlo return for the source policy's sampled state-action pairs",
+      "support_limit": "Q values for actions absent from the source-policy training data rely on neural extrapolation"
+    },
+    {
+      "seed": 101,
+      "training_transitions": 59411,
+      "heldout_validation_transitions": 30000,
+      "episodes_held_out_by_time": 60,
+      "training_action_counts": {
+        "0": 9986,
+        "1": 23936,
+        "2": 25489
+      },
+      "validation_action_counts": {
+        "0": 47,
+        "1": 27339,
+        "2": 2614
+      },
+      "actions_unseen_in_training": [],
+      "mc_return_mae": 49.84412384033203,
+      "mc_return_rmse": 53.40979766845703,
+      "epochs": 8,
+      "target": "discounted Monte Carlo return for the source policy's sampled state-action pairs",
+      "support_limit": "Q values for actions absent from the source-policy training data rely on neural extrapolation"
+    },
+    {
+      "seed": 149,
+      "training_transitions": 94592,
+      "heldout_validation_transitions": 30000,
+      "episodes_held_out_by_time": 60,
+      "training_action_counts": {
+        "0": 9123,
+        "1": 76964,
+        "2": 8505
+      },
+      "validation_action_counts": {
+        "0": 151,
+        "1": 29826,
+        "2": 23
+      },
+      "actions_unseen_in_training": [],
+      "mc_return_mae": 34.066654205322266,
+      "mc_return_rmse": 36.53915023803711,
+      "epochs": 8,
+      "target": "discounted Monte Carlo return for the source policy's sampled state-action pairs",
+      "support_limit": "Q values for actions absent from the source-policy training data rely on neural extrapolation"
+    },
+    {
+      "seed": 211,
+      "training_transitions": 41254,
+      "heldout_validation_transitions": 16711,
+      "episodes_held_out_by_time": 60,
+      "training_action_counts": {
+        "0": 11799,
+        "1": 9507,
+        "2": 19948
+      },
+      "validation_action_counts": {
+        "0": 1865,
+        "1": 378,
+        "2": 14468
+      },
+      "actions_unseen_in_training": [],
+      "mc_return_mae": 46.2081184387207,
+      "mc_return_rmse": 51.62765121459961,
+      "epochs": 8,
+      "target": "discounted Monte Carlo return for the source policy's sampled state-action pairs",
+      "support_limit": "Q values for actions absent from the source-policy training data rely on neural extrapolation"
+    },
+    {
+      "seed": 307,
+      "training_transitions": 66441,
+      "heldout_validation_transitions": 22143,
+      "episodes_held_out_by_time": 60,
+      "training_action_counts": {
+        "0": 6935,
+        "1": 41587,
+        "2": 17919
+      },
+      "validation_action_counts": {
+        "0": 2423,
+        "1": 19548,
+        "2": 172
+      },
+      "actions_unseen_in_training": [],
+      "mc_return_mae": 40.64178466796875,
+      "mc_return_rmse": 44.64203643798828,
+      "epochs": 8,
+      "target": "discounted Monte Carlo return for the source policy's sampled state-action pairs",
+      "support_limit": "Q values for actions absent from the source-policy training data rely on neural extrapolation"
+    }
+  ],
+  "audit_integrity": {
+    "hash_chains_valid": true,
+    "update_ledgers_valid_and_observer_equivalent": true,
+    "baseline_traces_environment_replayed": true,
+    "baseline_audit_only_pairs_exactly_equal": true,
+    "baseline_trace_records_across_three_arms": 2544513,
+    "optimizer_update_records_across_three_arms": 7200,
+    "one_lossless_trace_codec": {
+      "token_count": 8549496,
+      "production_count": 16,
+      "roundtrip_exact": true,
+      "input_sha256": "fa79bb62634c1b509e4166a8118ec7fbba549bf40f86b52ca525d5a293f59e9f",
+      "decoded_sha256": "fa79bb62634c1b509e4166a8118ec7fbba549bf40f86b52ca525d5a293f59e9f",
+      "raw_trace_bytes": 57636966,
+      "raw_trace_gzip_bytes": 12499612,
+      "grammar_gzip_bytes": 13738167
+    }
+  },
+  "gpi_method": {
+    "definition": "approximate sampled-policy GPI: fit one action-value regressor per frozen source policy from its logged Monte Carlo returns, then select argmax_a max_i Q_i(s,a)",
+    "theory_scope": "the classical GPI bound depends on value-estimation error; these fitted neural Q estimates are approximate and do not inherit an exact guarantee",
+    "data_split": "last 20 percent of each source agent's episodes held out by time for critic prediction diagnostics; all policy evaluation uses disjoint reset seeds"
+  },
+  "claim_scope": "shared-symbolizer, fixed discrete Gymnasium tasks; composition comparison is empirical, with approximate fitted-MC GPI and no universal auditability claim",
+  "posthoc_artifact_audit": {
+    "environment": "Acrobot-v1",
+    "seeds": [
+      11,
+      29,
+      43,
+      71,
+      101,
+      149,
+      211,
+      307
+    ],
+    "all_hash_chains_valid": true,
+    "all_update_ledgers_valid": true,
+    "all_baseline_audit_only_pairs_exactly_equivalent": true,
+    "all_baseline_traces_environment_replayed": true,
+    "all_constraint_traces_environment_replayed": true,
+    "all_constraint_rule_references_resolve_and_verify": true,
+    "trace_records_across_all_arms": 2544513,
+    "optimizer_update_records_across_all_arms": 7200,
+    "environment_replay_records": 1742570,
+    "constraint_rule_decision_references": 697817
+  },
+  "posthoc_artifact_audit_file": "artifact_audit.json"
+}

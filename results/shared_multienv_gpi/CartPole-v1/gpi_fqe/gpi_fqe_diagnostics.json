@@ -1,0 +1,203 @@
+{
+  "environment": "CartPole-v1",
+  "seeds": [
+    11,
+    29
+  ],
+  "episodes_per_actor": 50,
+  "reset_seeds": "disjoint deterministic range, separate from train and primary eval",
+  "source_actor_checkpoint_sha256": [
+    "02c7b6cc264e117700b251c3ea3abfef4b853a172f0f7a4e7662300ede27a49f",
+    "34494236d9be2c0b371343efd922c51550ab92cbb12934574ba72a84d5c2e726"
+  ],
+  "fqe_critic_file_sha256": [
+    "23e7160de1afae1ad3d03b308fa2a616e1d38ec426a9b2f89d969dd5cc8a4f7e",
+    "c125284e74ddbcd2c6c3743793d7e02a4b5929f79ede8f042a010751da5c0d9c"
+  ],
+  "diagnostics": {
+    "heldout_state_count": 31563,
+    "episode_return_quartile_cutoffs": {
+      "q25": 132.0,
+      "q75": 500.0
+    },
+    "actor_logit_ensemble_vs_fqe_gpi_action_agreement": 0.3526914425118018,
+    "actor_logit_ensemble_action_histogram": {
+      "0": 11755,
+      "1": 19808
+    },
+    "fqe_gpi_action_histogram": {
+      "0": 30758,
+      "1": 805
+    },
+    "per_heldout_state_origin": {
+      "11": {
+        "states": 25000,
+        "actor_ensemble_gpi_action_agreement": 0.21348,
+        "critic_q_distributions": {
+          "11": {
+            "count": 50000,
+            "mean": 10.948526156921387,
+            "std": 0.1439394532050433,
+            "p10": 10.699429988861084,
+            "median": 11.001373291015625,
+            "p90": 11.077168464660645
+          },
+          "29": {
+            "count": 50000,
+            "mean": 10.501767347126007,
+            "std": 0.1888083588560457,
+            "p10": 10.201872158050538,
+            "median": 10.531880378723145,
+            "p90": 10.731241512298585
+          }
+        }
+      },
+      "29": {
+        "states": 6563,
+        "actor_ensemble_gpi_action_agreement": 0.8829803443547158,
+        "critic_q_distributions": {
+          "11": {
+            "count": 13126,
+            "mean": 9.616829915143324,
+            "std": 1.28164080492411,
+            "p10": 7.56411075592041,
+            "median": 10.057926177978516,
+            "p90": 10.871770858764648
+          },
+          "29": {
+            "count": 13126,
+            "mean": 10.497709020143526,
+            "std": 0.22510993813391988,
+            "p10": 10.182875156402588,
+            "median": 10.549147129058838,
+            "p90": 10.745659351348877
+          }
+        }
+      }
+    },
+    "q_function_cross_seed_agreement": {
+      "11_vs_29": {
+        "pearson_flat_q": 0.2986549917889855,
+        "mean_absolute_q_difference": 0.5788304209709167,
+        "greedy_action_agreement": 0.8377213826315623,
+        "q_i_all_actions": {
+          "count": 63126,
+          "mean": 10.671622109942664,
+          "std": 0.8062398032251936,
+          "p10": 9.976048946380615,
+          "median": 10.946290016174316,
+          "p90": 11.073279857635498
+        },
+        "q_j_all_actions": {
+          "count": 63126,
+          "mean": 10.500923485643067,
+          "std": 0.1969135311715846,
+          "p10": 10.20079231262207,
+          "median": 10.534077644348145,
+          "p90": 10.732521057128906
+        }
+      }
+    },
+    "q_direction_by_heldout_episode_return": {
+      "discriminative": true,
+      "low_return_q1": {
+        "states": 3571,
+        "source_policy_values": {
+          "11": {
+            "count": 3571,
+            "mean": 9.425030185140772,
+            "std": 1.4398695367735095,
+            "p10": 7.075093746185303,
+            "median": 9.798919677734375,
+            "p90": 10.898734092712402
+          },
+          "29": {
+            "count": 3571,
+            "mean": 10.51778493185265,
+            "std": 0.18759749231918688,
+            "p10": 10.23985767364502,
+            "median": 10.552430152893066,
+            "p90": 10.725067138671875
+          }
+        }
+      },
+      "high_return_q4": {
+        "states": 25000,
+        "source_policy_values": {
+          "11": {
+            "count": 25000,
+            "mean": 10.986237497634887,
+            "std": 0.06669488797406255,
+            "p10": 10.887117862701416,
+            "median": 11.001237869262695,
+            "p90": 11.060101890563965
+          },
+          "29": {
+            "count": 25000,
+            "mean": 10.346607341537476,
+            "std": 0.13487403696103276,
+            "p10": 10.161097526550293,
+            "median": 10.373705863952637,
+            "p90": 10.51633005142212
+          }
+        }
+      }
+    },
+    "cartpole_balanced_vs_perturbed_anchor_states": {
+      "balanced_origin": {
+        "state": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "actor_ensemble_argmax": 1,
+        "gpi_argmax": 0,
+        "per_critic_q_all_actions": {
+          "11": [
+            11.05871868133545,
+            10.926891326904297
+          ],
+          "29": [
+            10.667277336120605,
+            10.35910701751709
+          ]
+        }
+      },
+      "perturbed_low_return_candidate": {
+        "state": [
+          0.0,
+          0.0,
+          0.25,
+          2.0
+        ],
+        "actor_ensemble_argmax": 1,
+        "gpi_argmax": 1,
+        "per_critic_q_all_actions": {
+          "11": [
+            10.805333137512207,
+            10.95453929901123
+          ],
+          "29": [
+            10.392022132873535,
+            10.084537506103516
+          ]
+        }
+      },
+      "value_direction_check": {
+        "11": {
+          "balanced_q_max": 11.05871868133545,
+          "perturbed_q_max": 10.95453929901123,
+          "balanced_exceeds_perturbed": true
+        },
+        "29": {
+          "balanced_q_max": 10.667277336120605,
+          "perturbed_q_max": 10.392022132873535,
+          "balanced_exceeds_perturbed": true
+        }
+      }
+    },
+    "raw_state_array_sha256": "3e6ece9ecd7388377fa330ed5067c3ff8de9441844fa7640340c4f5671088f2c"
+  },
+  "interpretation_limit": "These are held-out state-distribution diagnostics; action agreement and Q direction do not establish policy value accuracy or a classical GPI performance guarantee."
+}

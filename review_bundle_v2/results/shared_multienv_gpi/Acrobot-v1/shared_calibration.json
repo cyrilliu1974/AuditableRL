@@ -1,0 +1,52 @@
+{
+  "method": "pooled empirical quantiles from separate random-policy roll-ins; frozen for every seed and arm",
+  "environment": "Acrobot-v1",
+  "calibration_seeds": [
+    11,
+    29,
+    43,
+    71,
+    101,
+    149,
+    211,
+    307
+  ],
+  "calibration_episodes_per_seed": 24,
+  "state_bins": {
+    "method": "per-dimension empirical quantiles",
+    "n_bins": 4,
+    "edges": [
+      [
+        0.8665410876274109,
+        0.96077761054039,
+        0.9925754070281982
+      ],
+      [
+        -0.27729979157447815,
+        -0.00010593337356112897,
+        0.27733296900987625
+      ],
+      [
+        0.5592346042394638,
+        0.86370649933815,
+        0.9730549305677414
+      ],
+      [
+        -0.4944238141179085,
+        -0.0021389975445345044,
+        0.4933825582265854
+      ],
+      [
+        -0.724904254078865,
+        -0.002031134208664298,
+        0.7227569371461868
+      ],
+      [
+        -1.234644889831543,
+        -0.004996149335056543,
+        1.230846256017685
+      ]
+    ]
+  },
+  "state_bins_canonical_sha256": "651ca4b3ce3b3dbcb7fa59fd43869f2e31eaf67b3bdd7c1989cf3ee2e1c3dd48"
+}

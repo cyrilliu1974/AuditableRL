@@ -1,0 +1,41 @@
+{
+  "environment": "Acrobot-v1",
+  "horizon": 500,
+  "actor_rollout_states": {
+    "states": 30,
+    "fraction_all_three_values_equal": 0.0,
+    "fraction_all_values_at_floor": 0.0,
+    "mean_spread": 91.86666666666666,
+    "median_spread": 30.5,
+    "fraction_spread_zero": 0.0,
+    "argmax_histogram": {
+      "0": 23,
+      "1": 4,
+      "2": 3
+    },
+    "mean_value_by_action": {
+      "0": -94.93333333333334,
+      "1": -172.23333333333332,
+      "2": -111.7
+    }
+  },
+  "always_action_0_states": {
+    "states": 3000,
+    "fraction_all_three_values_equal": 0.004333333333333333,
+    "fraction_all_values_at_floor": 0.0,
+    "mean_spread": 62.927,
+    "median_spread": 24.0,
+    "fraction_spread_zero": 0.004333333333333333,
+    "argmax_histogram": {
+      "0": 1000,
+      "1": 950,
+      "2": 1050
+    },
+    "mean_value_by_action": {
+      "0": -114.183,
+      "1": -115.11166666666666,
+      "2": -101.98166666666667
+    }
+  },
+  "interpretation": "If the always-action-0 population shows a high fraction of zero-spread states while the actor-rollout population does not, the collapse of mc_ranked is a property of the estimator on the visited distribution, not a harness bug."
+}

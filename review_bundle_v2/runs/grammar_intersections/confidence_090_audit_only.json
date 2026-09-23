@@ -1,0 +1,133 @@
+{
+  "comparison_scope": "exact symbol/action production identity; equal state-symbol indices are not guaranteed to denote identical raw-state intervals",
+  "left": {
+    "run_dir": "runs\\grammar_audit_pilot\\grammar_audit_only\\seed-11_20260922T023607Z",
+    "seed": 11,
+    "arm": "grammar_audit_only",
+    "state_bins": 4,
+    "min_support": 8,
+    "min_confidence": 0.9,
+    "rule_count": 26
+  },
+  "right": {
+    "run_dir": "runs\\grammar_audit_pilot\\grammar_audit_only\\seed-29_20260922T023725Z",
+    "seed": 29,
+    "arm": "grammar_audit_only",
+    "state_bins": 4,
+    "min_support": 8,
+    "min_confidence": 0.9,
+    "rule_count": 11
+  },
+  "rule_overlap": {
+    "intersection_count": 3,
+    "union_count": 34,
+    "jaccard": 0.08823529411764706,
+    "left_contained_in_right": false,
+    "right_contained_in_left": false,
+    "shared_rules": [
+      {
+        "state_symbol": "STATE_0_2_2_0",
+        "action_symbol": "ACTION_0",
+        "left_support": 122,
+        "right_support": 101,
+        "left_confidence": 0.991869918699187,
+        "right_confidence": 0.926605504587156,
+        "left_source_step_count": 122,
+        "right_source_step_count": 101
+      },
+      {
+        "state_symbol": "STATE_2_0_0_3",
+        "action_symbol": "ACTION_1",
+        "left_support": 13,
+        "right_support": 11,
+        "left_confidence": 1.0,
+        "right_confidence": 1.0,
+        "left_source_step_count": 13,
+        "right_source_step_count": 11
+      },
+      {
+        "state_symbol": "STATE_3_2_2_3",
+        "action_symbol": "ACTION_1",
+        "left_support": 11,
+        "right_support": 12,
+        "left_confidence": 0.9166666666666666,
+        "right_confidence": 0.9230769230769231,
+        "left_source_step_count": 11,
+        "right_source_step_count": 12
+      }
+    ]
+  },
+  "condition_overlap": {
+    "left_condition_count": 26,
+    "right_condition_count": 11,
+    "shared_condition_count": 3,
+    "same_action_for_shared_condition_count": 3,
+    "shared_condition_action_conflicts": []
+  },
+  "calibration_edge_alignment": {
+    "exactly_equal": false,
+    "per_dimension_absolute_differences": [
+      {
+        "dimension": 0,
+        "absolute_edge_differences": [
+          0.015867624431848526,
+          0.005745210684835911,
+          0.004179697483778
+        ]
+      },
+      {
+        "dimension": 1,
+        "absolute_edge_differences": [
+          0.011749722063541412,
+          0.02141930954530835,
+          0.156857430934906
+        ]
+      },
+      {
+        "dimension": 2,
+        "absolute_edge_differences": [
+          0.004944317042827606,
+          0.015574391698464751,
+          0.012557579204440117
+        ]
+      },
+      {
+        "dimension": 3,
+        "absolute_edge_differences": [
+          0.13915356248617172,
+          0.061718774028122425,
+          0.032865747809410095
+        ]
+      }
+    ],
+    "maximum_absolute_edge_difference": 0.156857430934906,
+    "mean_absolute_edge_difference": 0.040219447284471244
+  },
+  "interpretation_limit": "Raw set overlap is a fast syntactic estimate of a shared core. Because each seed currently fits its own quantile boundaries, semantic overlap requires a follow-up with a shared frozen symbolizer or raw-state remapping.",
+  "raw_state_trace_overlap": {
+    "comparison_scope": "both induced grammars are applied to the exact raw states in each recorded training trace, each with its own fitted quantile edges",
+    "both_grammars_on_left_seed_trace": {
+      "total_steps": 97646,
+      "left_covered": 2200,
+      "right_covered": 1156,
+      "both_covered": 242,
+      "same_action": 242,
+      "left_coverage": 0.02253036478708805,
+      "right_coverage": 0.01183868258812445,
+      "joint_coverage": 0.002478340126579686,
+      "agreement_when_both_covered": 1.0
+    },
+    "both_grammars_on_right_seed_trace": {
+      "total_steps": 37781,
+      "left_covered": 1288,
+      "right_covered": 444,
+      "both_covered": 100,
+      "same_action": 100,
+      "left_coverage": 0.03409120986739366,
+      "right_coverage": 0.011751938805219554,
+      "joint_coverage": 0.0026468330642386386,
+      "agreement_when_both_covered": 1.0
+    },
+    "interpretation_limit": "This is a state-occupancy-weighted cross-seed rule-agreement estimate on recorded training states, not an independent held-out causal test."
+  }
+}

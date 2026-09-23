@@ -1,0 +1,76 @@
+{
+  "environment": "CartPole-v1",
+  "thresholds": {
+    "min_support": 8,
+    "min_confidence": 0.7
+  },
+  "episodes_per_evaluation": 20,
+  "reset_seed_formula": "seed * 10000 + 900000 + episode_index",
+  "measurement_caveat": "Each arm is evaluated on its own state occupancy, so the per-seed pairing is a same-seed comparison, not a matched-state one.",
+  "per_seed": [
+    {
+      "seed": 11,
+      "grammar_audit_only_coverage": 0.1827,
+      "grammar_audit_only_agreement": 0.9233716475095786,
+      "grammar_constrained_coverage": 0.7004936917169501,
+      "grammar_constrained_agreement": 0.6550509005481597
+    },
+    {
+      "seed": 29,
+      "grammar_audit_only_coverage": 0.36717557251908395,
+      "grammar_audit_only_agreement": 0.8929313929313929,
+      "grammar_constrained_coverage": 0.6143100511073254,
+      "grammar_constrained_agreement": 0.7864669994453688
+    },
+    {
+      "seed": 43,
+      "grammar_audit_only_coverage": 0.6289430894308943,
+      "grammar_audit_only_agreement": 0.8024819027921406,
+      "grammar_constrained_coverage": 0.6652,
+      "grammar_constrained_agreement": 0.7393265183403488
+    },
+    {
+      "seed": 71,
+      "grammar_audit_only_coverage": 0.593545908567038,
+      "grammar_audit_only_agreement": 0.8601941747572815,
+      "grammar_constrained_coverage": 0.7156141030608292,
+      "grammar_constrained_agreement": 0.7572640317632197
+    },
+    {
+      "seed": 101,
+      "grammar_audit_only_coverage": 0.8343268753104819,
+      "grammar_audit_only_agreement": 0.8922298303066388,
+      "grammar_constrained_coverage": 0.9279249078109286,
+      "grammar_constrained_agreement": 0.6752167630057804
+    },
+    {
+      "seed": 149,
+      "grammar_audit_only_coverage": 0.2764,
+      "grammar_audit_only_agreement": 0.9178726483357453,
+      "grammar_constrained_coverage": 0.7554630593132154,
+      "grammar_constrained_agreement": 0.6184573002754821
+    },
+    {
+      "seed": 211,
+      "grammar_audit_only_coverage": 0.3864,
+      "grammar_audit_only_agreement": 0.9358178053830227,
+      "grammar_constrained_coverage": 0.7589285714285714,
+      "grammar_constrained_agreement": 0.6238562091503268
+    },
+    {
+      "seed": 307,
+      "grammar_audit_only_coverage": 0.5473,
+      "grammar_audit_only_agreement": 0.8737438333637858,
+      "grammar_constrained_coverage": 0.951302729528536,
+      "grammar_constrained_agreement": 0.5542875774372351
+    }
+  ],
+  "aggregate": {
+    "audit_only_coverage_mean": 0.47709893072843723,
+    "constrained_coverage_mean": 0.7611546392457945,
+    "audit_only_agreement_mean": 0.8873304044224483,
+    "constrained_agreement_mean": 0.6762407874957402,
+    "seeds_with_coverage_increase": 8,
+    "seeds_with_agreement_decrease": 8
+  }
+}

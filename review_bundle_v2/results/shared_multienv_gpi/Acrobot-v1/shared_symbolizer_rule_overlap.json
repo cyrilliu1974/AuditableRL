@@ -1,0 +1,1241 @@
+{
+  "environment": "Acrobot-v1",
+  "confidence_threshold": 0.7,
+  "support_threshold": 8,
+  "shared_symbolizer_sha256": "651ca4b3ce3b3dbcb7fa59fd43869f2e31eaf67b3bdd7c1989cf3ee2e1c3dd48",
+  "shared_symbolizer_verified_across_seeds": true,
+  "seed_11_vs_29": {
+    "seed_11_run": "runs\\shared_multienv_gpi\\Acrobot-v1\\grammar_audit_only\\seed-11_20260922T035207Z",
+    "seed_29_run": "runs\\shared_multienv_gpi\\Acrobot-v1\\grammar_audit_only\\seed-29_20260922T035727Z",
+    "left_rule_count": 301,
+    "right_rule_count": 143,
+    "exact_state_action_intersection": 21,
+    "exact_state_action_union": 423,
+    "state_action_jaccard": 0.04964539007092199,
+    "condition_intersection": 98,
+    "condition_union": 346,
+    "condition_jaccard": 0.2832369942196532,
+    "shared_condition_action_conflict_count": 77,
+    "shared_conditions_same_action_count": 21,
+    "shared_exact_rules": [
+      {
+        "condition": [
+          0,
+          0,
+          0,
+          1,
+          3,
+          0
+        ],
+        "action": 0
+      },
+      {
+        "condition": [
+          0,
+          0,
+          0,
+          1,
+          3,
+          1
+        ],
+        "action": 0
+      },
+      {
+        "condition": [
+          0,
+          0,
+          0,
+          2,
+          3,
+          0
+        ],
+        "action": 0
+      },
+      {
+        "condition": [
+          0,
+          0,
+          0,
+          3,
+          3,
+          0
+        ],
+        "action": 0
+      },
+      {
+        "condition": [
+          0,
+          0,
+          1,
+          3,
+          2,
+          1
+        ],
+        "action": 2
+      },
+      {
+        "condition": [
+          0,
+          3,
+          0,
+          1,
+          3,
+          0
+        ],
+        "action": 0
+      },
+      {
+        "condition": [
+          0,
+          3,
+          0,
+          1,
+          3,
+          1
+        ],
+        "action": 0
+      },
+      {
+        "condition": [
+          0,
+          3,
+          0,
+          2,
+          3,
+          0
+        ],
+        "action": 0
+      },
+      {
+        "condition": [
+          0,
+          3,
+          0,
+          3,
+          3,
+          0
+        ],
+        "action": 0
+      },
+      {
+        "condition": [
+          0,
+          3,
+          0,
+          3,
+          3,
+          1
+        ],
+        "action": 0
+      },
+      {
+        "condition": [
+          1,
+          0,
+          0,
+          0,
+          3,
+          0
+        ],
+        "action": 0
+      },
+      {
+        "condition": [
+          1,
+          0,
+          1,
+          3,
+          2,
+          2
+        ],
+        "action": 2
+      },
+      {
+        "condition": [
+          1,
+          0,
+          3,
+          2,
+          1,
+          2
+        ],
+        "action": 2
+      },
+      {
+        "condition": [
+          1,
+          3,
+          0,
+          0,
+          3,
+          0
+        ],
+        "action": 0
+      },
+      {
+        "condition": [
+          1,
+          3,
+          0,
+          3,
+          3,
+          0
+        ],
+        "action": 0
+      },
+      {
+        "condition": [
+          1,
+          3,
+          1,
+          3,
+          3,
+          0
+        ],
+        "action": 0
+      },
+      {
+        "condition": [
+          1,
+          3,
+          2,
+          2,
+          3,
+          0
+        ],
+        "action": 0
+      },
+      {
+        "condition": [
+          2,
+          1,
+          0,
+          3,
+          3,
+          0
+        ],
+        "action": 0
+      },
+      {
+        "condition": [
+          2,
+          2,
+          0,
+          3,
+          3,
+          0
+        ],
+        "action": 0
+      },
+      {
+        "condition": [
+          3,
+          1,
+          0,
+          3,
+          3,
+          0
+        ],
+        "action": 0
+      },
+      {
+        "condition": [
+          3,
+          2,
+          0,
+          3,
+          3,
+          0
+        ],
+        "action": 0
+      }
+    ],
+    "conflicting_conditions": [
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        2
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        3
+      ],
+      [
+        0,
+        0,
+        0,
+        2,
+        0,
+        2
+      ],
+      [
+        0,
+        0,
+        0,
+        3,
+        1,
+        0
+      ],
+      [
+        0,
+        0,
+        1,
+        0,
+        0,
+        3
+      ],
+      [
+        0,
+        0,
+        2,
+        1,
+        0,
+        3
+      ],
+      [
+        0,
+        0,
+        2,
+        2,
+        0,
+        3
+      ],
+      [
+        0,
+        0,
+        3,
+        1,
+        0,
+        3
+      ],
+      [
+        0,
+        0,
+        3,
+        2,
+        0,
+        3
+      ],
+      [
+        0,
+        3,
+        0,
+        0,
+        0,
+        3
+      ],
+      [
+        0,
+        3,
+        0,
+        0,
+        1,
+        0
+      ],
+      [
+        0,
+        3,
+        0,
+        3,
+        1,
+        0
+      ],
+      [
+        0,
+        3,
+        1,
+        0,
+        0,
+        3
+      ],
+      [
+        0,
+        3,
+        1,
+        0,
+        2,
+        1
+      ],
+      [
+        0,
+        3,
+        2,
+        1,
+        0,
+        3
+      ],
+      [
+        0,
+        3,
+        2,
+        2,
+        0,
+        3
+      ],
+      [
+        0,
+        3,
+        3,
+        1,
+        0,
+        3
+      ],
+      [
+        0,
+        3,
+        3,
+        2,
+        0,
+        3
+      ],
+      [
+        1,
+        0,
+        0,
+        0,
+        0,
+        3
+      ],
+      [
+        1,
+        0,
+        1,
+        0,
+        0,
+        3
+      ],
+      [
+        1,
+        0,
+        3,
+        1,
+        0,
+        3
+      ],
+      [
+        1,
+        3,
+        0,
+        0,
+        0,
+        3
+      ],
+      [
+        1,
+        3,
+        0,
+        3,
+        0,
+        3
+      ],
+      [
+        2,
+        1,
+        0,
+        0,
+        0,
+        3
+      ],
+      [
+        2,
+        1,
+        2,
+        2,
+        0,
+        3
+      ],
+      [
+        2,
+        1,
+        2,
+        2,
+        1,
+        2
+      ],
+      [
+        2,
+        1,
+        2,
+        2,
+        2,
+        2
+      ],
+      [
+        2,
+        1,
+        3,
+        1,
+        0,
+        3
+      ],
+      [
+        2,
+        1,
+        3,
+        1,
+        1,
+        2
+      ],
+      [
+        2,
+        1,
+        3,
+        2,
+        1,
+        1
+      ],
+      [
+        2,
+        1,
+        3,
+        2,
+        1,
+        2
+      ],
+      [
+        2,
+        1,
+        3,
+        2,
+        2,
+        1
+      ],
+      [
+        2,
+        1,
+        3,
+        2,
+        2,
+        2
+      ],
+      [
+        2,
+        2,
+        0,
+        0,
+        0,
+        3
+      ],
+      [
+        2,
+        2,
+        1,
+        0,
+        0,
+        3
+      ],
+      [
+        2,
+        2,
+        2,
+        1,
+        1,
+        1
+      ],
+      [
+        2,
+        2,
+        2,
+        1,
+        1,
+        2
+      ],
+      [
+        2,
+        2,
+        2,
+        1,
+        1,
+        3
+      ],
+      [
+        2,
+        2,
+        2,
+        1,
+        2,
+        2
+      ],
+      [
+        2,
+        2,
+        3,
+        1,
+        1,
+        1
+      ],
+      [
+        2,
+        2,
+        3,
+        1,
+        1,
+        2
+      ],
+      [
+        2,
+        2,
+        3,
+        1,
+        2,
+        1
+      ],
+      [
+        2,
+        2,
+        3,
+        1,
+        2,
+        2
+      ],
+      [
+        2,
+        2,
+        3,
+        2,
+        1,
+        1
+      ],
+      [
+        2,
+        2,
+        3,
+        2,
+        1,
+        2
+      ],
+      [
+        2,
+        2,
+        3,
+        2,
+        2,
+        2
+      ],
+      [
+        3,
+        1,
+        0,
+        0,
+        0,
+        3
+      ],
+      [
+        3,
+        1,
+        2,
+        2,
+        1,
+        1
+      ],
+      [
+        3,
+        1,
+        2,
+        2,
+        1,
+        2
+      ],
+      [
+        3,
+        1,
+        2,
+        2,
+        2,
+        1
+      ],
+      [
+        3,
+        1,
+        2,
+        2,
+        2,
+        2
+      ],
+      [
+        3,
+        1,
+        3,
+        1,
+        1,
+        1
+      ],
+      [
+        3,
+        1,
+        3,
+        1,
+        1,
+        2
+      ],
+      [
+        3,
+        1,
+        3,
+        1,
+        2,
+        1
+      ],
+      [
+        3,
+        1,
+        3,
+        1,
+        2,
+        2
+      ],
+      [
+        3,
+        1,
+        3,
+        2,
+        0,
+        3
+      ],
+      [
+        3,
+        1,
+        3,
+        2,
+        1,
+        1
+      ],
+      [
+        3,
+        1,
+        3,
+        2,
+        1,
+        2
+      ],
+      [
+        3,
+        1,
+        3,
+        2,
+        2,
+        1
+      ],
+      [
+        3,
+        1,
+        3,
+        2,
+        2,
+        2
+      ],
+      [
+        3,
+        2,
+        0,
+        0,
+        0,
+        3
+      ],
+      [
+        3,
+        2,
+        2,
+        1,
+        0,
+        3
+      ],
+      [
+        3,
+        2,
+        2,
+        1,
+        1,
+        1
+      ],
+      [
+        3,
+        2,
+        2,
+        1,
+        1,
+        2
+      ],
+      [
+        3,
+        2,
+        2,
+        1,
+        2,
+        1
+      ],
+      [
+        3,
+        2,
+        2,
+        1,
+        2,
+        2
+      ],
+      [
+        3,
+        2,
+        2,
+        2,
+        0,
+        3
+      ],
+      [
+        3,
+        2,
+        2,
+        2,
+        1,
+        2
+      ],
+      [
+        3,
+        2,
+        3,
+        1,
+        0,
+        3
+      ],
+      [
+        3,
+        2,
+        3,
+        1,
+        1,
+        1
+      ],
+      [
+        3,
+        2,
+        3,
+        1,
+        1,
+        2
+      ],
+      [
+        3,
+        2,
+        3,
+        1,
+        2,
+        1
+      ],
+      [
+        3,
+        2,
+        3,
+        1,
+        2,
+        2
+      ],
+      [
+        3,
+        2,
+        3,
+        2,
+        1,
+        1
+      ],
+      [
+        3,
+        2,
+        3,
+        2,
+        1,
+        2
+      ],
+      [
+        3,
+        2,
+        3,
+        2,
+        2,
+        1
+      ],
+      [
+        3,
+        2,
+        3,
+        2,
+        2,
+        2
+      ]
+    ],
+    "cross_application_on_training_state_occupancy": {
+      "seed_11_training_states": {
+        "states": 79162,
+        "left_rule_covered": 67978,
+        "right_rule_covered": 48482,
+        "both_rules_covered": 43666,
+        "same_rule_action": 2653,
+        "different_rule_action": 41013,
+        "left_rule_coverage": 0.8587200929739016,
+        "right_rule_coverage": 0.6124403122710391,
+        "joint_rule_coverage": 0.5516030418635204,
+        "action_agreement_when_both_rules_cover": 0.06075665277332478,
+        "state_source_role": "training trajectory state occupancy; not an independent held-out policy agreement test"
+      },
+      "seed_29_training_states": {
+        "states": 139965,
+        "left_rule_covered": 134720,
+        "right_rule_covered": 131526,
+        "both_rules_covered": 129665,
+        "same_rule_action": 783,
+        "different_rule_action": 128882,
+        "left_rule_coverage": 0.9625263458721823,
+        "right_rule_coverage": 0.9397063551602186,
+        "joint_rule_coverage": 0.9264101739720645,
+        "action_agreement_when_both_rules_cover": 0.006038638028766437,
+        "state_source_role": "training trajectory state occupancy; not an independent held-out policy agreement test"
+      }
+    }
+  },
+  "all_pairwise_seed_overlaps": [
+    {
+      "left_seed": 11,
+      "right_seed": 29,
+      "exact_state_action_intersection": 21,
+      "exact_state_action_union": 423,
+      "state_action_jaccard": 0.04964539007092199,
+      "condition_intersection": 98,
+      "condition_union": 346,
+      "condition_jaccard": 0.2832369942196532,
+      "shared_condition_action_conflict_count": 77,
+      "shared_conditions_same_action_count": 21
+    },
+    {
+      "left_seed": 11,
+      "right_seed": 43,
+      "exact_state_action_intersection": 74,
+      "exact_state_action_union": 530,
+      "state_action_jaccard": 0.13962264150943396,
+      "condition_intersection": 158,
+      "condition_union": 446,
+      "condition_jaccard": 0.3542600896860987,
+      "shared_condition_action_conflict_count": 84,
+      "shared_conditions_same_action_count": 74
+    },
+    {
+      "left_seed": 11,
+      "right_seed": 71,
+      "exact_state_action_intersection": 1,
+      "exact_state_action_union": 486,
+      "state_action_jaccard": 0.00205761316872428,
+      "condition_intersection": 105,
+      "condition_union": 382,
+      "condition_jaccard": 0.27486910994764396,
+      "shared_condition_action_conflict_count": 104,
+      "shared_conditions_same_action_count": 1
+    },
+    {
+      "left_seed": 11,
+      "right_seed": 101,
+      "exact_state_action_intersection": 15,
+      "exact_state_action_union": 363,
+      "state_action_jaccard": 0.04132231404958678,
+      "condition_intersection": 47,
+      "condition_union": 331,
+      "condition_jaccard": 0.1419939577039275,
+      "shared_condition_action_conflict_count": 32,
+      "shared_conditions_same_action_count": 15
+    },
+    {
+      "left_seed": 11,
+      "right_seed": 149,
+      "exact_state_action_intersection": 22,
+      "exact_state_action_union": 373,
+      "state_action_jaccard": 0.058981233243967826,
+      "condition_intersection": 79,
+      "condition_union": 316,
+      "condition_jaccard": 0.25,
+      "shared_condition_action_conflict_count": 57,
+      "shared_conditions_same_action_count": 22
+    },
+    {
+      "left_seed": 11,
+      "right_seed": 211,
+      "exact_state_action_intersection": 144,
+      "exact_state_action_union": 458,
+      "state_action_jaccard": 0.314410480349345,
+      "condition_intersection": 158,
+      "condition_union": 444,
+      "condition_jaccard": 0.35585585585585583,
+      "shared_condition_action_conflict_count": 14,
+      "shared_conditions_same_action_count": 144
+    },
+    {
+      "left_seed": 11,
+      "right_seed": 307,
+      "exact_state_action_intersection": 46,
+      "exact_state_action_union": 544,
+      "state_action_jaccard": 0.08455882352941177,
+      "condition_intersection": 157,
+      "condition_union": 433,
+      "condition_jaccard": 0.3625866050808314,
+      "shared_condition_action_conflict_count": 111,
+      "shared_conditions_same_action_count": 46
+    },
+    {
+      "left_seed": 29,
+      "right_seed": 43,
+      "exact_state_action_intersection": 50,
+      "exact_state_action_union": 396,
+      "state_action_jaccard": 0.12626262626262627,
+      "condition_intersection": 121,
+      "condition_union": 325,
+      "condition_jaccard": 0.3723076923076923,
+      "shared_condition_action_conflict_count": 71,
+      "shared_conditions_same_action_count": 50
+    },
+    {
+      "left_seed": 29,
+      "right_seed": 71,
+      "exact_state_action_intersection": 31,
+      "exact_state_action_union": 298,
+      "state_action_jaccard": 0.1040268456375839,
+      "condition_intersection": 33,
+      "condition_union": 296,
+      "condition_jaccard": 0.11148648648648649,
+      "shared_condition_action_conflict_count": 2,
+      "shared_conditions_same_action_count": 31
+    },
+    {
+      "left_seed": 29,
+      "right_seed": 101,
+      "exact_state_action_intersection": 29,
+      "exact_state_action_union": 191,
+      "state_action_jaccard": 0.1518324607329843,
+      "condition_intersection": 34,
+      "condition_union": 186,
+      "condition_jaccard": 0.1827956989247312,
+      "shared_condition_action_conflict_count": 5,
+      "shared_conditions_same_action_count": 29
+    },
+    {
+      "left_seed": 29,
+      "right_seed": 149,
+      "exact_state_action_intersection": 47,
+      "exact_state_action_union": 190,
+      "state_action_jaccard": 0.24736842105263157,
+      "condition_intersection": 60,
+      "condition_union": 177,
+      "condition_jaccard": 0.3389830508474576,
+      "shared_condition_action_conflict_count": 13,
+      "shared_conditions_same_action_count": 47
+    },
+    {
+      "left_seed": 29,
+      "right_seed": 211,
+      "exact_state_action_intersection": 57,
+      "exact_state_action_union": 387,
+      "state_action_jaccard": 0.14728682170542637,
+      "condition_intersection": 105,
+      "condition_union": 339,
+      "condition_jaccard": 0.30973451327433627,
+      "shared_condition_action_conflict_count": 48,
+      "shared_conditions_same_action_count": 57
+    },
+    {
+      "left_seed": 29,
+      "right_seed": 307,
+      "exact_state_action_intersection": 45,
+      "exact_state_action_union": 387,
+      "state_action_jaccard": 0.11627906976744186,
+      "condition_intersection": 95,
+      "condition_union": 337,
+      "condition_jaccard": 0.2818991097922849,
+      "shared_condition_action_conflict_count": 50,
+      "shared_conditions_same_action_count": 45
+    },
+    {
+      "left_seed": 43,
+      "right_seed": 71,
+      "exact_state_action_intersection": 0,
+      "exact_state_action_union": 489,
+      "state_action_jaccard": 0.0,
+      "condition_intersection": 56,
+      "condition_union": 433,
+      "condition_jaccard": 0.12933025404157045,
+      "shared_condition_action_conflict_count": 56,
+      "shared_conditions_same_action_count": 0
+    },
+    {
+      "left_seed": 43,
+      "right_seed": 101,
+      "exact_state_action_intersection": 8,
+      "exact_state_action_union": 372,
+      "state_action_jaccard": 0.021505376344086023,
+      "condition_intersection": 40,
+      "condition_union": 340,
+      "condition_jaccard": 0.11764705882352941,
+      "shared_condition_action_conflict_count": 32,
+      "shared_conditions_same_action_count": 8
+    },
+    {
+      "left_seed": 43,
+      "right_seed": 149,
+      "exact_state_action_intersection": 21,
+      "exact_state_action_union": 376,
+      "state_action_jaccard": 0.05585106382978723,
+      "condition_intersection": 77,
+      "condition_union": 320,
+      "condition_jaccard": 0.240625,
+      "shared_condition_action_conflict_count": 56,
+      "shared_conditions_same_action_count": 21
+    },
+    {
+      "left_seed": 43,
+      "right_seed": 211,
+      "exact_state_action_intersection": 103,
+      "exact_state_action_union": 501,
+      "state_action_jaccard": 0.2055888223552894,
+      "condition_intersection": 164,
+      "condition_union": 440,
+      "condition_jaccard": 0.37272727272727274,
+      "shared_condition_action_conflict_count": 61,
+      "shared_conditions_same_action_count": 103
+    },
+    {
+      "left_seed": 43,
+      "right_seed": 307,
+      "exact_state_action_intersection": 31,
+      "exact_state_action_union": 561,
+      "state_action_jaccard": 0.05525846702317291,
+      "condition_intersection": 190,
+      "condition_union": 402,
+      "condition_jaccard": 0.472636815920398,
+      "shared_condition_action_conflict_count": 159,
+      "shared_conditions_same_action_count": 31
+    },
+    {
+      "left_seed": 71,
+      "right_seed": 101,
+      "exact_state_action_intersection": 11,
+      "exact_state_action_union": 252,
+      "state_action_jaccard": 0.04365079365079365,
+      "condition_intersection": 24,
+      "condition_union": 239,
+      "condition_jaccard": 0.100418410041841,
+      "shared_condition_action_conflict_count": 13,
+      "shared_conditions_same_action_count": 11
+    },
+    {
+      "left_seed": 71,
+      "right_seed": 149,
+      "exact_state_action_intersection": 8,
+      "exact_state_action_union": 272,
+      "state_action_jaccard": 0.029411764705882353,
+      "condition_intersection": 19,
+      "condition_union": 261,
+      "condition_jaccard": 0.07279693486590039,
+      "shared_condition_action_conflict_count": 11,
+      "shared_conditions_same_action_count": 8
+    },
+    {
+      "left_seed": 71,
+      "right_seed": 211,
+      "exact_state_action_intersection": 2,
+      "exact_state_action_union": 485,
+      "state_action_jaccard": 0.004123711340206186,
+      "condition_intersection": 51,
+      "condition_union": 436,
+      "condition_jaccard": 0.11697247706422019,
+      "shared_condition_action_conflict_count": 49,
+      "shared_conditions_same_action_count": 2
+    },
+    {
+      "left_seed": 71,
+      "right_seed": 307,
+      "exact_state_action_intersection": 20,
+      "exact_state_action_union": 455,
+      "state_action_jaccard": 0.04395604395604396,
+      "condition_intersection": 51,
+      "condition_union": 424,
+      "condition_jaccard": 0.12028301886792453,
+      "shared_condition_action_conflict_count": 31,
+      "shared_conditions_same_action_count": 20
+    },
+    {
+      "left_seed": 101,
+      "right_seed": 149,
+      "exact_state_action_intersection": 27,
+      "exact_state_action_union": 144,
+      "state_action_jaccard": 0.1875,
+      "condition_intersection": 27,
+      "condition_union": 144,
+      "condition_jaccard": 0.1875,
+      "shared_condition_action_conflict_count": 0,
+      "shared_conditions_same_action_count": 27
+    },
+    {
+      "left_seed": 101,
+      "right_seed": 211,
+      "exact_state_action_intersection": 20,
+      "exact_state_action_union": 358,
+      "state_action_jaccard": 0.055865921787709494,
+      "condition_intersection": 39,
+      "condition_union": 339,
+      "condition_jaccard": 0.11504424778761062,
+      "shared_condition_action_conflict_count": 19,
+      "shared_conditions_same_action_count": 20
+    },
+    {
+      "left_seed": 101,
+      "right_seed": 307,
+      "exact_state_action_intersection": 33,
+      "exact_state_action_union": 333,
+      "state_action_jaccard": 0.0990990990990991,
+      "condition_intersection": 43,
+      "condition_union": 323,
+      "condition_jaccard": 0.13312693498452013,
+      "shared_condition_action_conflict_count": 10,
+      "shared_conditions_same_action_count": 33
+    },
+    {
+      "left_seed": 149,
+      "right_seed": 211,
+      "exact_state_action_intersection": 10,
+      "exact_state_action_union": 385,
+      "state_action_jaccard": 0.025974025974025976,
+      "condition_intersection": 53,
+      "condition_union": 342,
+      "condition_jaccard": 0.15497076023391812,
+      "shared_condition_action_conflict_count": 43,
+      "shared_conditions_same_action_count": 10
+    },
+    {
+      "left_seed": 149,
+      "right_seed": 307,
+      "exact_state_action_intersection": 73,
+      "exact_state_action_union": 310,
+      "state_action_jaccard": 0.23548387096774193,
+      "condition_intersection": 76,
+      "condition_union": 307,
+      "condition_jaccard": 0.247557003257329,
+      "shared_condition_action_conflict_count": 3,
+      "shared_conditions_same_action_count": 73
+    },
+    {
+      "left_seed": 211,
+      "right_seed": 307,
+      "exact_state_action_intersection": 17,
+      "exact_state_action_union": 573,
+      "state_action_jaccard": 0.029668411867364748,
+      "condition_intersection": 157,
+      "condition_union": 433,
+      "condition_jaccard": 0.3625866050808314,
+      "shared_condition_action_conflict_count": 140,
+      "shared_conditions_same_action_count": 17
+    }
+  ],
+  "all_pairwise_jaccard_mean": 0.09559257549933173,
+  "all_pairwise_jaccard_median": 0.058981233243967826,
+  "claim_boundary": "Shared bins remove seed-specific quantizer-edge mismatch. Rule-set overlap and rule predictions on logged training-state occupancy do not establish causal explanations or independent held-out actor action agreement."
+}

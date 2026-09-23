@@ -1,0 +1,1354 @@
+{
+  "purpose": "Recompute every numeric claim in Section 5.3 of merged_main.tex from run artifacts.",
+  "environment": "CartPole-v1",
+  "episodes_per_policy": 20,
+  "per_seed": [
+    {
+      "seed": 11,
+      "baseline_return": 500.0,
+      "hybrid_return": 182.3,
+      "network_only_return": 127.85,
+      "substitution_gain": 54.45000000000002,
+      "network_deficit_vs_unconstrained": 372.15,
+      "coverage_constrained": 0.7004936917169501,
+      "coverage_audit_only": 0.1827,
+      "agreement_constrained": 0.6550509005481597,
+      "agreement_audit_only": 0.9233716475095786,
+      "covered_fraction_constrained": 0.7004936917169501
+    },
+    {
+      "seed": 29,
+      "baseline_return": 131.0,
+      "hybrid_return": 293.5,
+      "network_only_return": 365.15,
+      "substitution_gain": -71.64999999999998,
+      "network_deficit_vs_unconstrained": -234.14999999999998,
+      "coverage_constrained": 0.6143100511073254,
+      "coverage_audit_only": 0.36717557251908395,
+      "agreement_constrained": 0.7864669994453688,
+      "agreement_audit_only": 0.8929313929313929,
+      "covered_fraction_constrained": 0.6143100511073254
+    },
+    {
+      "seed": 43,
+      "baseline_return": 153.75,
+      "hybrid_return": 500.0,
+      "network_only_return": 217.9,
+      "substitution_gain": 282.1,
+      "network_deficit_vs_unconstrained": -64.15,
+      "coverage_constrained": 0.6652,
+      "coverage_audit_only": 0.6289430894308943,
+      "agreement_constrained": 0.7393265183403488,
+      "agreement_audit_only": 0.8024819027921406,
+      "covered_fraction_constrained": 0.6652
+    },
+    {
+      "seed": 71,
+      "baseline_return": 130.15,
+      "hybrid_return": 387.15,
+      "network_only_return": 237.55,
+      "substitution_gain": 149.59999999999997,
+      "network_deficit_vs_unconstrained": -107.4,
+      "coverage_constrained": 0.7156141030608292,
+      "coverage_audit_only": 0.593545908567038,
+      "agreement_constrained": 0.7572640317632197,
+      "agreement_audit_only": 0.8601941747572815,
+      "covered_fraction_constrained": 0.7156141030608292
+    },
+    {
+      "seed": 101,
+      "baseline_return": 201.3,
+      "hybrid_return": 149.15,
+      "network_only_return": 79.95,
+      "substitution_gain": 69.2,
+      "network_deficit_vs_unconstrained": 121.35000000000001,
+      "coverage_constrained": 0.9279249078109286,
+      "coverage_audit_only": 0.8343268753104819,
+      "agreement_constrained": 0.6752167630057804,
+      "agreement_audit_only": 0.8922298303066388,
+      "covered_fraction_constrained": 0.9279249078109286
+    },
+    {
+      "seed": 149,
+      "baseline_return": 500.0,
+      "hybrid_return": 96.1,
+      "network_only_return": 486.35,
+      "substitution_gain": -390.25,
+      "network_deficit_vs_unconstrained": 13.649999999999977,
+      "coverage_constrained": 0.7554630593132154,
+      "coverage_audit_only": 0.2764,
+      "agreement_constrained": 0.6184573002754821,
+      "agreement_audit_only": 0.9178726483357453,
+      "covered_fraction_constrained": 0.7554630593132154
+    },
+    {
+      "seed": 211,
+      "baseline_return": 500.0,
+      "hybrid_return": 403.2,
+      "network_only_return": 120.85,
+      "substitution_gain": 282.35,
+      "network_deficit_vs_unconstrained": 379.15,
+      "coverage_constrained": 0.7589285714285714,
+      "coverage_audit_only": 0.3864,
+      "agreement_constrained": 0.6238562091503268,
+      "agreement_audit_only": 0.9358178053830227,
+      "covered_fraction_constrained": 0.7589285714285714
+    },
+    {
+      "seed": 307,
+      "baseline_return": 500.0,
+      "hybrid_return": 161.2,
+      "network_only_return": 165.45,
+      "substitution_gain": -4.25,
+      "network_deficit_vs_unconstrained": 334.55,
+      "coverage_constrained": 0.951302729528536,
+      "coverage_audit_only": 0.5473,
+      "agreement_constrained": 0.5542875774372351,
+      "agreement_audit_only": 0.8737438333637858,
+      "covered_fraction_constrained": 0.951302729528536
+    }
+  ],
+  "state_occupancy_held_out": [
+    {
+      "seed": 11,
+      "unconstrained": {
+        "distinct_state_symbols": 41,
+        "entropy_bits": 2.875101175862359,
+        "perplexity_2_pow_H": 7.336546837892919,
+        "top10_symbol_mass": 0.9512
+      },
+      "hybrid": {
+        "distinct_state_symbols": 56,
+        "entropy_bits": 4.0564859166880325,
+        "perplexity_2_pow_H": 16.638874188006028,
+        "top10_symbol_mass": 0.7907295666483818
+      },
+      "network_only": {
+        "distinct_state_symbols": 44,
+        "entropy_bits": 3.493736674358191,
+        "perplexity_2_pow_H": 11.264697556451662,
+        "top10_symbol_mass": 0.8068048494329292
+      }
+    },
+    {
+      "seed": 29,
+      "unconstrained": {
+        "distinct_state_symbols": 60,
+        "entropy_bits": 3.551289500123486,
+        "perplexity_2_pow_H": 11.72315920262186,
+        "top10_symbol_mass": 0.8446564885496183
+      },
+      "hybrid": {
+        "distinct_state_symbols": 74,
+        "entropy_bits": 3.834248498274971,
+        "perplexity_2_pow_H": 14.263424538868009,
+        "top10_symbol_mass": 0.8405451448040886
+      },
+      "network_only": {
+        "distinct_state_symbols": 48,
+        "entropy_bits": 3.42240266413277,
+        "perplexity_2_pow_H": 10.721260764804915,
+        "top10_symbol_mass": 0.8910036971107764
+      }
+    },
+    {
+      "seed": 43,
+      "unconstrained": {
+        "distinct_state_symbols": 75,
+        "entropy_bits": 4.37750059071037,
+        "perplexity_2_pow_H": 20.785428583756296,
+        "top10_symbol_mass": 0.7255284552845529
+      },
+      "hybrid": {
+        "distinct_state_symbols": 98,
+        "entropy_bits": 5.552880386297656,
+        "perplexity_2_pow_H": 46.944374698563884,
+        "top10_symbol_mass": 0.4424
+      },
+      "network_only": {
+        "distinct_state_symbols": 94,
+        "entropy_bits": 5.400379382846095,
+        "perplexity_2_pow_H": 42.23535823855144,
+        "top10_symbol_mass": 0.510325837540156
+      }
+    },
+    {
+      "seed": 71,
+      "unconstrained": {
+        "distinct_state_symbols": 40,
+        "entropy_bits": 3.1535510443644665,
+        "perplexity_2_pow_H": 8.89843141013869,
+        "top10_symbol_mass": 0.866692278140607
+      },
+      "hybrid": {
+        "distinct_state_symbols": 45,
+        "entropy_bits": 4.021176829078583,
+        "perplexity_2_pow_H": 16.236590719161477,
+        "top10_symbol_mass": 0.7903913211933359
+      },
+      "network_only": {
+        "distinct_state_symbols": 43,
+        "entropy_bits": 3.566571771584422,
+        "perplexity_2_pow_H": 11.848001075477766,
+        "top10_symbol_mass": 0.8482424752683646
+      }
+    },
+    {
+      "seed": 101,
+      "unconstrained": {
+        "distinct_state_symbols": 48,
+        "entropy_bits": 4.695141145997568,
+        "perplexity_2_pow_H": 25.904685189132493,
+        "top10_symbol_mass": 0.6122702434177844
+      },
+      "hybrid": {
+        "distinct_state_symbols": 45,
+        "entropy_bits": 3.821206280080704,
+        "perplexity_2_pow_H": 14.135061745070757,
+        "top10_symbol_mass": 0.7958431109621187
+      },
+      "network_only": {
+        "distinct_state_symbols": 45,
+        "entropy_bits": 4.2397076216616645,
+        "perplexity_2_pow_H": 18.89205350825432,
+        "top10_symbol_mass": 0.6779237023139462
+      }
+    },
+    {
+      "seed": 149,
+      "unconstrained": {
+        "distinct_state_symbols": 66,
+        "entropy_bits": 3.700429112104974,
+        "perplexity_2_pow_H": 12.999904430278873,
+        "top10_symbol_mass": 0.8464
+      },
+      "hybrid": {
+        "distinct_state_symbols": 54,
+        "entropy_bits": 3.5772342069770082,
+        "perplexity_2_pow_H": 11.935889727473322,
+        "top10_symbol_mass": 0.850156087408949
+      },
+      "network_only": {
+        "distinct_state_symbols": 32,
+        "entropy_bits": 3.838937016364255,
+        "perplexity_2_pow_H": 14.30985369061045,
+        "top10_symbol_mass": 0.8486686542613344
+      }
+    },
+    {
+      "seed": 211,
+      "unconstrained": {
+        "distinct_state_symbols": 67,
+        "entropy_bits": 4.616752581723661,
+        "perplexity_2_pow_H": 24.534714557121315,
+        "top10_symbol_mass": 0.6329
+      },
+      "hybrid": {
+        "distinct_state_symbols": 72,
+        "entropy_bits": 4.38929777487227,
+        "perplexity_2_pow_H": 20.956091698308285,
+        "top10_symbol_mass": 0.6882440476190477
+      },
+      "network_only": {
+        "distinct_state_symbols": 43,
+        "entropy_bits": 3.1525097129718778,
+        "perplexity_2_pow_H": 8.892010876099501,
+        "top10_symbol_mass": 0.8597434836574266
+      }
+    },
+    {
+      "seed": 307,
+      "unconstrained": {
+        "distinct_state_symbols": 86,
+        "entropy_bits": 4.609611232739228,
+        "perplexity_2_pow_H": 24.413567661259176,
+        "top10_symbol_mass": 0.6718
+      },
+      "hybrid": {
+        "distinct_state_symbols": 66,
+        "entropy_bits": 3.814333993501797,
+        "perplexity_2_pow_H": 14.06788940763804,
+        "top10_symbol_mass": 0.7676799007444168
+      },
+      "network_only": {
+        "distinct_state_symbols": 90,
+        "entropy_bits": 4.888156376421769,
+        "perplexity_2_pow_H": 29.61295132660315,
+        "top10_symbol_mass": 0.6228467815049864
+      }
+    }
+  ],
+  "state_occupancy_training_trace": [
+    {
+      "seed": 11,
+      "audit_only": {
+        "training_steps": 97646,
+        "distinct_state_symbols": 205,
+        "entropy_bits": 6.309777328685041,
+        "perplexity_2_pow_H": 79.3290478890518,
+        "top10_symbol_mass": 0.3124551952972984
+      },
+      "constrained": {
+        "training_steps": 74320,
+        "distinct_state_symbols": 199,
+        "entropy_bits": 5.868357186157884,
+        "perplexity_2_pow_H": 58.41865291718914,
+        "top10_symbol_mass": 0.4668998923573735
+      }
+    },
+    {
+      "seed": 29,
+      "audit_only": {
+        "training_steps": 37781,
+        "distinct_state_symbols": 211,
+        "entropy_bits": 6.395553898032089,
+        "perplexity_2_pow_H": 84.18865323938336,
+        "top10_symbol_mass": 0.33601545750509515
+      },
+      "constrained": {
+        "training_steps": 33310,
+        "distinct_state_symbols": 164,
+        "entropy_bits": 5.598863937356894,
+        "perplexity_2_pow_H": 48.464751112175044,
+        "top10_symbol_mass": 0.4948063644551186
+      }
+    },
+    {
+      "seed": 43,
+      "audit_only": {
+        "training_steps": 100670,
+        "distinct_state_symbols": 220,
+        "entropy_bits": 6.389137413998253,
+        "perplexity_2_pow_H": 83.81504992355701,
+        "top10_symbol_mass": 0.2849210291049965
+      },
+      "constrained": {
+        "training_steps": 115884,
+        "distinct_state_symbols": 199,
+        "entropy_bits": 5.989137471365928,
+        "perplexity_2_pow_H": 63.519932371837626,
+        "top10_symbol_mass": 0.4004521763142453
+      }
+    },
+    {
+      "seed": 71,
+      "audit_only": {
+        "training_steps": 53082,
+        "distinct_state_symbols": 193,
+        "entropy_bits": 5.50463562086064,
+        "perplexity_2_pow_H": 45.400479225048315,
+        "top10_symbol_mass": 0.5466824912399684
+      },
+      "constrained": {
+        "training_steps": 60084,
+        "distinct_state_symbols": 190,
+        "entropy_bits": 5.04930419707444,
+        "perplexity_2_pow_H": 33.1125037547411,
+        "top10_symbol_mass": 0.6428000798881566
+      }
+    },
+    {
+      "seed": 101,
+      "audit_only": {
+        "training_steps": 65398,
+        "distinct_state_symbols": 204,
+        "entropy_bits": 6.2704335642184486,
+        "perplexity_2_pow_H": 77.19489639145527,
+        "top10_symbol_mass": 0.33874124590966087
+      },
+      "constrained": {
+        "training_steps": 85706,
+        "distinct_state_symbols": 203,
+        "entropy_bits": 6.091703063014724,
+        "perplexity_2_pow_H": 68.20015263774665,
+        "top10_symbol_mass": 0.3977317807388048
+      }
+    },
+    {
+      "seed": 149,
+      "audit_only": {
+        "training_steps": 57930,
+        "distinct_state_symbols": 215,
+        "entropy_bits": 6.509881284662461,
+        "perplexity_2_pow_H": 91.13171323601884,
+        "top10_symbol_mass": 0.2761954082513378
+      },
+      "constrained": {
+        "training_steps": 11387,
+        "distinct_state_symbols": 143,
+        "entropy_bits": 5.506061803571311,
+        "perplexity_2_pow_H": 45.44538226511224,
+        "top10_symbol_mass": 0.5049617985421972
+      }
+    },
+    {
+      "seed": 211,
+      "audit_only": {
+        "training_steps": 99342,
+        "distinct_state_symbols": 193,
+        "entropy_bits": 5.730719024646282,
+        "perplexity_2_pow_H": 53.102910292523696,
+        "top10_symbol_mass": 0.44698113587405125
+      },
+      "constrained": {
+        "training_steps": 87441,
+        "distinct_state_symbols": 201,
+        "entropy_bits": 5.915729474911151,
+        "perplexity_2_pow_H": 60.368727032385095,
+        "top10_symbol_mass": 0.4046499925664162
+      }
+    },
+    {
+      "seed": 307,
+      "audit_only": {
+        "training_steps": 91403,
+        "distinct_state_symbols": 203,
+        "entropy_bits": 6.139698262555346,
+        "perplexity_2_pow_H": 70.50717940597163,
+        "top10_symbol_mass": 0.38153014671290875
+      },
+      "constrained": {
+        "training_steps": 51019,
+        "distinct_state_symbols": 173,
+        "entropy_bits": 5.229865637845649,
+        "perplexity_2_pow_H": 37.52722319922627,
+        "top10_symbol_mass": 0.544385425037731
+      }
+    }
+  ],
+  "pilot_tau_090": {
+    "baseline_seed_11": {
+      "episodes": 20,
+      "mean_return": 500.0,
+      "median_return": 500.0,
+      "mean_length": 500,
+      "grammar_state_coverage": 0.0,
+      "grammar_action_agreement_when_covered": 0.0,
+      "covered_steps": 0,
+      "total_steps": 10000,
+      "return_by_episode": [
+        500.0,
+        500.0,
+        500.0,
+        500.0,
+        500.0,
+        500.0,
+        500.0,
+        500.0,
+        500.0,
+        500.0,
+        500.0,
+        500.0,
+        500.0,
+        500.0,
+        500.0,
+        500.0,
+        500.0,
+        500.0,
+        500.0,
+        500.0
+      ]
+    },
+    "baseline_seed_29": {
+      "episodes": 20,
+      "mean_return": 131.0,
+      "median_return": 130.5,
+      "mean_length": 131,
+      "grammar_state_coverage": 0.0,
+      "grammar_action_agreement_when_covered": 0.0,
+      "covered_steps": 0,
+      "total_steps": 2620,
+      "return_by_episode": [
+        133.0,
+        123.0,
+        126.0,
+        122.0,
+        134.0,
+        130.0,
+        141.0,
+        132.0,
+        132.0,
+        128.0,
+        134.0,
+        125.0,
+        141.0,
+        136.0,
+        131.0,
+        141.0,
+        130.0,
+        123.0,
+        130.0,
+        128.0
+      ]
+    },
+    "grammar_constrained_seed_11": {
+      "episodes": 20,
+      "mean_return": 121.3,
+      "median_return": 120.0,
+      "mean_length": 121.3,
+      "grammar_state_coverage": 0.004122011541632316,
+      "grammar_action_agreement_when_covered": 1.0,
+      "covered_steps": 10,
+      "total_steps": 2426,
+      "return_by_episode": [
+        119.0,
+        117.0,
+        120.0,
+        120.0,
+        126.0,
+        122.0,
+        111.0,
+        118.0,
+        112.0,
+        120.0,
+        134.0,
+        119.0,
+        115.0,
+        121.0,
+        126.0,
+        113.0,
+        134.0,
+        132.0,
+        130.0,
+        117.0
+      ]
+    },
+    "grammar_constrained_seed_29": {
+      "episodes": 20,
+      "mean_return": 162.5,
+      "median_return": 172.5,
+      "mean_length": 162.5,
+      "grammar_state_coverage": 0.06984615384615385,
+      "grammar_action_agreement_when_covered": 0.8105726872246696,
+      "covered_steps": 227,
+      "total_steps": 3250,
+      "return_by_episode": [
+        186.0,
+        166.0,
+        168.0,
+        178.0,
+        124.0,
+        173.0,
+        121.0,
+        186.0,
+        183.0,
+        112.0,
+        216.0,
+        164.0,
+        114.0,
+        127.0,
+        178.0,
+        134.0,
+        194.0,
+        174.0,
+        172.0,
+        180.0
+      ]
+    }
+  },
+  "acrobot_returns": {
+    "baseline": [
+      -500.0,
+      -500.0,
+      -500.0,
+      -500.0,
+      -500.0,
+      -500.0,
+      -500.0,
+      -500.0
+    ],
+    "grammar_constrained": [
+      -500.0,
+      -500.0,
+      -500.0,
+      -500.0,
+      -500.0,
+      -500.0,
+      -500.0,
+      -500.0
+    ]
+  },
+  "claims": [
+    {
+      "claim": "seed 11: instrumented loop reproduces recorded constrained return",
+      "in_manuscript": 182.3,
+      "recomputed": 182.3,
+      "ok": true
+    },
+    {
+      "claim": "seed 11: baseline metadata equals audit-only evaluation",
+      "in_manuscript": 500.0,
+      "recomputed": 500.0,
+      "ok": true
+    },
+    {
+      "claim": "seed 29: instrumented loop reproduces recorded constrained return",
+      "in_manuscript": 293.5,
+      "recomputed": 293.5,
+      "ok": true
+    },
+    {
+      "claim": "seed 29: baseline metadata equals audit-only evaluation",
+      "in_manuscript": 131.0,
+      "recomputed": 131.0,
+      "ok": true
+    },
+    {
+      "claim": "seed 43: instrumented loop reproduces recorded constrained return",
+      "in_manuscript": 500.0,
+      "recomputed": 500.0,
+      "ok": true
+    },
+    {
+      "claim": "seed 43: baseline metadata equals audit-only evaluation",
+      "in_manuscript": 153.75,
+      "recomputed": 153.75,
+      "ok": true
+    },
+    {
+      "claim": "seed 71: instrumented loop reproduces recorded constrained return",
+      "in_manuscript": 387.15,
+      "recomputed": 387.15,
+      "ok": true
+    },
+    {
+      "claim": "seed 71: baseline metadata equals audit-only evaluation",
+      "in_manuscript": 130.15,
+      "recomputed": 130.15,
+      "ok": true
+    },
+    {
+      "claim": "seed 101: instrumented loop reproduces recorded constrained return",
+      "in_manuscript": 149.15,
+      "recomputed": 149.15,
+      "ok": true
+    },
+    {
+      "claim": "seed 101: baseline metadata equals audit-only evaluation",
+      "in_manuscript": 201.3,
+      "recomputed": 201.3,
+      "ok": true
+    },
+    {
+      "claim": "seed 149: instrumented loop reproduces recorded constrained return",
+      "in_manuscript": 96.1,
+      "recomputed": 96.1,
+      "ok": true
+    },
+    {
+      "claim": "seed 149: baseline metadata equals audit-only evaluation",
+      "in_manuscript": 500.0,
+      "recomputed": 500.0,
+      "ok": true
+    },
+    {
+      "claim": "seed 211: instrumented loop reproduces recorded constrained return",
+      "in_manuscript": 403.2,
+      "recomputed": 403.2,
+      "ok": true
+    },
+    {
+      "claim": "seed 211: baseline metadata equals audit-only evaluation",
+      "in_manuscript": 500.0,
+      "recomputed": 500.0,
+      "ok": true
+    },
+    {
+      "claim": "seed 307: instrumented loop reproduces recorded constrained return",
+      "in_manuscript": 161.2,
+      "recomputed": 161.2,
+      "ok": true
+    },
+    {
+      "claim": "seed 307: baseline metadata equals audit-only evaluation",
+      "in_manuscript": 500.0,
+      "recomputed": 500.0,
+      "ok": true
+    },
+    {
+      "claim": "tab:perseed seed 11 baseline",
+      "in_manuscript": 500.0,
+      "recomputed": 500.0,
+      "ok": true
+    },
+    {
+      "claim": "tab:perseed seed 11 constrained",
+      "in_manuscript": 182.3,
+      "recomputed": 182.3,
+      "ok": true
+    },
+    {
+      "claim": "tab:perseed seed 29 baseline",
+      "in_manuscript": 131.0,
+      "recomputed": 131.0,
+      "ok": true
+    },
+    {
+      "claim": "tab:perseed seed 29 constrained",
+      "in_manuscript": 293.5,
+      "recomputed": 293.5,
+      "ok": true
+    },
+    {
+      "claim": "tab:perseed seed 43 baseline",
+      "in_manuscript": 153.75,
+      "recomputed": 153.75,
+      "ok": true
+    },
+    {
+      "claim": "tab:perseed seed 43 constrained",
+      "in_manuscript": 500.0,
+      "recomputed": 500.0,
+      "ok": true
+    },
+    {
+      "claim": "tab:perseed seed 71 baseline",
+      "in_manuscript": 130.15,
+      "recomputed": 130.15,
+      "ok": true
+    },
+    {
+      "claim": "tab:perseed seed 71 constrained",
+      "in_manuscript": 387.15,
+      "recomputed": 387.15,
+      "ok": true
+    },
+    {
+      "claim": "tab:perseed seed 101 baseline",
+      "in_manuscript": 201.3,
+      "recomputed": 201.3,
+      "ok": true
+    },
+    {
+      "claim": "tab:perseed seed 101 constrained",
+      "in_manuscript": 149.15,
+      "recomputed": 149.15,
+      "ok": true
+    },
+    {
+      "claim": "tab:perseed seed 149 baseline",
+      "in_manuscript": 500.0,
+      "recomputed": 500.0,
+      "ok": true
+    },
+    {
+      "claim": "tab:perseed seed 149 constrained",
+      "in_manuscript": 96.1,
+      "recomputed": 96.1,
+      "ok": true
+    },
+    {
+      "claim": "tab:perseed seed 211 baseline",
+      "in_manuscript": 500.0,
+      "recomputed": 500.0,
+      "ok": true
+    },
+    {
+      "claim": "tab:perseed seed 211 constrained",
+      "in_manuscript": 403.2,
+      "recomputed": 403.2,
+      "ok": true
+    },
+    {
+      "claim": "tab:perseed seed 307 baseline",
+      "in_manuscript": 500.0,
+      "recomputed": 500.0,
+      "ok": true
+    },
+    {
+      "claim": "tab:perseed seed 307 constrained",
+      "in_manuscript": 161.2,
+      "recomputed": 161.2,
+      "ok": true
+    },
+    {
+      "claim": "narrative: seed 29 131.0 -> 293.5",
+      "in_manuscript": 162.5,
+      "recomputed": 162.5,
+      "ok": true
+    },
+    {
+      "claim": "narrative: seed 71 130.2 -> 387.2",
+      "in_manuscript": 257.0,
+      "recomputed": 257.0,
+      "ok": true
+    },
+    {
+      "claim": "narrative: seed 43 153.75 -> 500.0",
+      "in_manuscript": 346.25,
+      "recomputed": 346.25,
+      "ok": true
+    },
+    {
+      "claim": "narrative: seed 11 500.0 -> 182.3",
+      "in_manuscript": -317.7,
+      "recomputed": -317.7,
+      "ok": true
+    },
+    {
+      "claim": "narrative: seed 149 500.0 -> 96.1",
+      "in_manuscript": -403.9,
+      "recomputed": -403.9,
+      "ok": true
+    },
+    {
+      "claim": "narrative: seed 307 500.0 -> 161.2",
+      "in_manuscript": -338.8,
+      "recomputed": -338.8,
+      "ok": true
+    },
+    {
+      "claim": "coverage mean audit-only = 0.477",
+      "in_manuscript": 0.477,
+      "recomputed": 0.47709893072843723,
+      "ok": true
+    },
+    {
+      "claim": "coverage mean constrained = 0.761",
+      "in_manuscript": 0.761,
+      "recomputed": 0.7611546392457945,
+      "ok": true
+    },
+    {
+      "claim": "agreement mean audit-only = 0.887",
+      "in_manuscript": 0.887,
+      "recomputed": 0.8873304044224483,
+      "ok": true
+    },
+    {
+      "claim": "agreement mean constrained = 0.676",
+      "in_manuscript": 0.676,
+      "recomputed": 0.6762407874957402,
+      "ok": true
+    },
+    {
+      "claim": "coverage rises in 8/8 seeds",
+      "in_manuscript": 8,
+      "recomputed": 8,
+      "ok": true
+    },
+    {
+      "claim": "agreement falls in 8/8 seeds",
+      "in_manuscript": 8,
+      "recomputed": 8,
+      "ok": true
+    },
+    {
+      "claim": "train-trace occupancy seed 11 audit-only 2^H = 79.3",
+      "in_manuscript": 79.3,
+      "recomputed": 79.3290478890518,
+      "ok": true
+    },
+    {
+      "claim": "train-trace occupancy seed 11 constrained 2^H = 58.4",
+      "in_manuscript": 58.4,
+      "recomputed": 58.41865291718914,
+      "ok": true
+    },
+    {
+      "claim": "train-trace occupancy seed 149 audit-only 2^H = 91.1",
+      "in_manuscript": 91.1,
+      "recomputed": 91.13171323601884,
+      "ok": true
+    },
+    {
+      "claim": "train-trace occupancy seed 149 constrained 2^H = 45.4",
+      "in_manuscript": 45.4,
+      "recomputed": 45.44538226511224,
+      "ok": true
+    },
+    {
+      "claim": "train-trace occupancy seed 307 audit-only 2^H = 70.5",
+      "in_manuscript": 70.5,
+      "recomputed": 70.50717940597163,
+      "ok": true
+    },
+    {
+      "claim": "train-trace occupancy seed 307 constrained 2^H = 37.5",
+      "in_manuscript": 37.5,
+      "recomputed": 37.52722319922627,
+      "ok": true
+    },
+    {
+      "claim": "train-trace occupancy seed 43 audit-only 2^H = 83.8",
+      "in_manuscript": 83.8,
+      "recomputed": 83.81504992355701,
+      "ok": true
+    },
+    {
+      "claim": "train-trace occupancy seed 43 constrained 2^H = 63.5",
+      "in_manuscript": 63.5,
+      "recomputed": 63.519932371837626,
+      "ok": true
+    },
+    {
+      "claim": "train-trace occupancy seed 211 audit-only 2^H = 53.1",
+      "in_manuscript": 53.1,
+      "recomputed": 53.102910292523696,
+      "ok": true
+    },
+    {
+      "claim": "train-trace occupancy seed 211 constrained 2^H = 60.4",
+      "in_manuscript": 60.4,
+      "recomputed": 60.368727032385095,
+      "ok": true
+    },
+    {
+      "claim": "manuscript: training-trace occupancy falls in 7 of 8 seeds",
+      "in_manuscript": 7,
+      "recomputed": 7,
+      "ok": true
+    },
+    {
+      "claim": "manuscript: held-out occupancy contracts in only 4 of 8 seeds",
+      "in_manuscript": 4,
+      "recomputed": 4,
+      "ok": true
+    },
+    {
+      "claim": "substitution fires on 61%-95% of held-out steps (min)",
+      "in_manuscript": 0.61,
+      "recomputed": 0.6143100511073254,
+      "ok": true
+    },
+    {
+      "claim": "substitution fires on 61%-95% of held-out steps (max)",
+      "in_manuscript": 0.95,
+      "recomputed": 0.951302729528536,
+      "ok": true
+    },
+    {
+      "claim": "tab:attribution seed 11 hybrid",
+      "in_manuscript": 182.3,
+      "recomputed": 182.3,
+      "ok": true
+    },
+    {
+      "claim": "tab:attribution seed 11 network only",
+      "in_manuscript": 127.8,
+      "recomputed": 127.85,
+      "ok": true
+    },
+    {
+      "claim": "tab:attribution seed 11 unconstrained",
+      "in_manuscript": 500.0,
+      "recomputed": 500.0,
+      "ok": true
+    },
+    {
+      "claim": "tab:attribution seed 11 substitution gain",
+      "in_manuscript": 54.5,
+      "recomputed": 54.45000000000002,
+      "ok": true
+    },
+    {
+      "claim": "tab:attribution seed 29 hybrid",
+      "in_manuscript": 293.5,
+      "recomputed": 293.5,
+      "ok": true
+    },
+    {
+      "claim": "tab:attribution seed 29 network only",
+      "in_manuscript": 365.1,
+      "recomputed": 365.15,
+      "ok": true
+    },
+    {
+      "claim": "tab:attribution seed 29 unconstrained",
+      "in_manuscript": 131.0,
+      "recomputed": 131.0,
+      "ok": true
+    },
+    {
+      "claim": "tab:attribution seed 29 substitution gain",
+      "in_manuscript": -71.6,
+      "recomputed": -71.64999999999998,
+      "ok": true
+    },
+    {
+      "claim": "tab:attribution seed 43 hybrid",
+      "in_manuscript": 500.0,
+      "recomputed": 500.0,
+      "ok": true
+    },
+    {
+      "claim": "tab:attribution seed 43 network only",
+      "in_manuscript": 217.9,
+      "recomputed": 217.9,
+      "ok": true
+    },
+    {
+      "claim": "tab:attribution seed 43 unconstrained",
+      "in_manuscript": 153.8,
+      "recomputed": 153.75,
+      "ok": true
+    },
+    {
+      "claim": "tab:attribution seed 43 substitution gain",
+      "in_manuscript": 282.1,
+      "recomputed": 282.1,
+      "ok": true
+    },
+    {
+      "claim": "tab:attribution seed 71 hybrid",
+      "in_manuscript": 387.1,
+      "recomputed": 387.15,
+      "ok": true
+    },
+    {
+      "claim": "tab:attribution seed 71 network only",
+      "in_manuscript": 237.6,
+      "recomputed": 237.55,
+      "ok": true
+    },
+    {
+      "claim": "tab:attribution seed 71 unconstrained",
+      "in_manuscript": 130.2,
+      "recomputed": 130.15,
+      "ok": true
+    },
+    {
+      "claim": "tab:attribution seed 71 substitution gain",
+      "in_manuscript": 149.6,
+      "recomputed": 149.59999999999997,
+      "ok": true
+    },
+    {
+      "claim": "tab:attribution seed 101 hybrid",
+      "in_manuscript": 149.2,
+      "recomputed": 149.15,
+      "ok": true
+    },
+    {
+      "claim": "tab:attribution seed 101 network only",
+      "in_manuscript": 80.0,
+      "recomputed": 79.95,
+      "ok": true
+    },
+    {
+      "claim": "tab:attribution seed 101 unconstrained",
+      "in_manuscript": 201.3,
+      "recomputed": 201.3,
+      "ok": true
+    },
+    {
+      "claim": "tab:attribution seed 101 substitution gain",
+      "in_manuscript": 69.2,
+      "recomputed": 69.2,
+      "ok": true
+    },
+    {
+      "claim": "tab:attribution seed 149 hybrid",
+      "in_manuscript": 96.1,
+      "recomputed": 96.1,
+      "ok": true
+    },
+    {
+      "claim": "tab:attribution seed 149 network only",
+      "in_manuscript": 486.4,
+      "recomputed": 486.35,
+      "ok": true
+    },
+    {
+      "claim": "tab:attribution seed 149 unconstrained",
+      "in_manuscript": 500.0,
+      "recomputed": 500.0,
+      "ok": true
+    },
+    {
+      "claim": "tab:attribution seed 149 substitution gain",
+      "in_manuscript": -390.2,
+      "recomputed": -390.25,
+      "ok": true
+    },
+    {
+      "claim": "tab:attribution seed 211 hybrid",
+      "in_manuscript": 403.2,
+      "recomputed": 403.2,
+      "ok": true
+    },
+    {
+      "claim": "tab:attribution seed 211 network only",
+      "in_manuscript": 120.8,
+      "recomputed": 120.85,
+      "ok": true
+    },
+    {
+      "claim": "tab:attribution seed 211 unconstrained",
+      "in_manuscript": 500.0,
+      "recomputed": 500.0,
+      "ok": true
+    },
+    {
+      "claim": "tab:attribution seed 211 substitution gain",
+      "in_manuscript": 282.4,
+      "recomputed": 282.35,
+      "ok": true
+    },
+    {
+      "claim": "tab:attribution seed 307 hybrid",
+      "in_manuscript": 161.2,
+      "recomputed": 161.2,
+      "ok": true
+    },
+    {
+      "claim": "tab:attribution seed 307 network only",
+      "in_manuscript": 165.4,
+      "recomputed": 165.45,
+      "ok": true
+    },
+    {
+      "claim": "tab:attribution seed 307 unconstrained",
+      "in_manuscript": 500.0,
+      "recomputed": 500.0,
+      "ok": true
+    },
+    {
+      "claim": "tab:attribution seed 307 substitution gain",
+      "in_manuscript": -4.2,
+      "recomputed": -4.25,
+      "ok": true
+    },
+    {
+      "claim": "tab:attribution mean hybrid = 271.6",
+      "in_manuscript": 271.6,
+      "recomputed": 271.575,
+      "ok": true
+    },
+    {
+      "claim": "tab:attribution mean network only = 225.1",
+      "in_manuscript": 225.1,
+      "recomputed": 225.13125,
+      "ok": true
+    },
+    {
+      "claim": "tab:attribution mean unconstrained = 327.0",
+      "in_manuscript": 327.0,
+      "recomputed": 327.025,
+      "ok": true
+    },
+    {
+      "claim": "tab:attribution mean substitution gain = +46.4",
+      "in_manuscript": 46.4,
+      "recomputed": 46.44375000000001,
+      "ok": true
+    },
+    {
+      "claim": "prose: network mean 225.13 vs unconstrained 327.02",
+      "in_manuscript": 225.13,
+      "recomputed": 225.13125,
+      "ok": true
+    },
+    {
+      "claim": "prose: headline hybrid difference = -55.45",
+      "in_manuscript": -55.45,
+      "recomputed": -55.44999999999999,
+      "ok": true
+    },
+    {
+      "claim": "prose: four seeds lose more than 120 points to the unconstrained actor",
+      "in_manuscript": 4,
+      "recomputed": 4,
+      "ok": true
+    },
+    {
+      "claim": "prose: seed 149 network-only 486.4 vs hybrid 96.1",
+      "in_manuscript": 486.4,
+      "recomputed": 486.35,
+      "ok": true
+    },
+    {
+      "claim": "prose: seed 149 hybrid 96.1",
+      "in_manuscript": 96.1,
+      "recomputed": 96.1,
+      "ok": true
+    },
+    {
+      "claim": "prose: substitution gain positive on 5/8 seeds",
+      "in_manuscript": 5,
+      "recomputed": 5,
+      "ok": true
+    },
+    {
+      "claim": "prose: network-only exceeds unconstrained on 3/8 seeds",
+      "in_manuscript": 3,
+      "recomputed": 3,
+      "ok": true
+    },
+    {
+      "claim": "masked step rate min = 36.7%",
+      "in_manuscript": 0.367,
+      "recomputed": 0.366821814349697,
+      "ok": true
+    },
+    {
+      "claim": "masked step rate max = 74.4%",
+      "in_manuscript": 0.744,
+      "recomputed": 0.7436053235069288,
+      "ok": true
+    },
+    {
+      "claim": "observer self-support mean = 68%",
+      "in_manuscript": 0.68,
+      "recomputed": 0.6812939103070922,
+      "ok": true
+    },
+    {
+      "claim": "observer self-support range 45%-85% (min)",
+      "in_manuscript": 0.45,
+      "recomputed": 0.45103120613324693,
+      "ok": true
+    },
+    {
+      "claim": "observer self-support range 45%-85% (max)",
+      "in_manuscript": 0.85,
+      "recomputed": 0.8453326804186815,
+      "ok": true
+    },
+    {
+      "claim": "monotone bank: 0 retractions of an admitted rule",
+      "in_manuscript": 0,
+      "recomputed": 0,
+      "ok": true
+    },
+    {
+      "claim": "monotone bank: 0 changes to a rule's forced action",
+      "in_manuscript": 0,
+      "recomputed": 0,
+      "ok": true
+    },
+    {
+      "claim": "monotone bank: verdict holds",
+      "in_manuscript": true,
+      "recomputed": true,
+      "ok": true
+    },
+    {
+      "claim": "manuscript: six re-induction generations per run",
+      "in_manuscript": [
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6
+      ],
+      "recomputed": [
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6
+      ],
+      "ok": true
+    },
+    {
+      "claim": "manuscript: the bank is monotone in all 8 seeds",
+      "in_manuscript": 8,
+      "recomputed": 8,
+      "ok": true
+    },
+    {
+      "claim": "pilot seed 11 baseline return = 500",
+      "in_manuscript": 500.0,
+      "recomputed": 500.0,
+      "ok": true
+    },
+    {
+      "claim": "pilot seed 11 constrained return = 121.3",
+      "in_manuscript": 121.3,
+      "recomputed": 121.3,
+      "ok": true
+    },
+    {
+      "claim": "pilot seed 11 delta = -378.7",
+      "in_manuscript": -378.7,
+      "recomputed": -378.7,
+      "ok": true
+    },
+    {
+      "claim": "pilot seed 29 baseline return = 131.0",
+      "in_manuscript": 131.0,
+      "recomputed": 131.0,
+      "ok": true
+    },
+    {
+      "claim": "pilot seed 29 constrained return = 162.5",
+      "in_manuscript": 162.5,
+      "recomputed": 162.5,
+      "ok": true
+    },
+    {
+      "claim": "pilot seed 29 delta = +31.5",
+      "in_manuscript": 31.5,
+      "recomputed": 31.5,
+      "ok": true
+    },
+    {
+      "claim": "pilot seed 11 held-out coverage = 0.41%",
+      "in_manuscript": 0.0041,
+      "recomputed": 0.004122011541632316,
+      "ok": true
+    },
+    {
+      "claim": "pilot seed 29 held-out coverage = 6.98%",
+      "in_manuscript": 0.0698,
+      "recomputed": 0.06984615384615385,
+      "ok": true
+    },
+    {
+      "claim": "Acrobot: all 8 baseline seeds = -500",
+      "in_manuscript": [
+        -500.0,
+        -500.0,
+        -500.0,
+        -500.0,
+        -500.0,
+        -500.0,
+        -500.0,
+        -500.0
+      ],
+      "recomputed": [
+        -500.0,
+        -500.0,
+        -500.0,
+        -500.0,
+        -500.0,
+        -500.0,
+        -500.0,
+        -500.0
+      ],
+      "ok": true
+    },
+    {
+      "claim": "Acrobot: all 8 constrained seeds = -500",
+      "in_manuscript": [
+        -500.0,
+        -500.0,
+        -500.0,
+        -500.0,
+        -500.0,
+        -500.0,
+        -500.0,
+        -500.0
+      ],
+      "recomputed": [
+        -500.0,
+        -500.0,
+        -500.0,
+        -500.0,
+        -500.0,
+        -500.0,
+        -500.0,
+        -500.0
+      ],
+      "ok": true
+    }
+  ],
+  "all_claims_pass": true
+}

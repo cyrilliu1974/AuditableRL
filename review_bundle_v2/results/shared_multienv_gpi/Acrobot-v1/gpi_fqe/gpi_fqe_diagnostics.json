@@ -1,0 +1,116 @@
+{
+  "environment": "Acrobot-v1",
+  "seeds": [
+    11,
+    29
+  ],
+  "episodes_per_actor": 50,
+  "reset_seeds": "disjoint deterministic range, separate from train and primary eval",
+  "source_actor_checkpoint_sha256": [
+    "dc71c7f62a21ba0770d648722107de205b13553bf572502556789f25f2ee9276",
+    "4e879d32310e3d33ba7460e40a2d64713b28814d748613c5987352cd5898628c"
+  ],
+  "fqe_critic_file_sha256": [
+    "a5f9e44426c6b9c1dbad2a36cec260cdcaf41cf9b4fb2ac67a649f13eb2d0cb3",
+    "1e3fd2fa21153720dc0d5f38a18ce020360c62890e9c79b6869b8885e6fda5c7"
+  ],
+  "diagnostics": {
+    "heldout_state_count": 50000,
+    "episode_return_quartile_cutoffs": {
+      "q25": -500.0,
+      "q75": -500.0
+    },
+    "actor_logit_ensemble_vs_fqe_gpi_action_agreement": 0.0,
+    "actor_logit_ensemble_action_histogram": {
+      "1": 41197,
+      "2": 8803
+    },
+    "fqe_gpi_action_histogram": {
+      "0": 50000
+    },
+    "per_heldout_state_origin": {
+      "11": {
+        "states": 25000,
+        "actor_ensemble_gpi_action_agreement": 0.0,
+        "critic_q_distributions": {
+          "11": {
+            "count": 75000,
+            "mean": -11.436404660784403,
+            "std": 0.009340547665554902,
+            "p10": -11.447962856292724,
+            "median": -11.438042640686035,
+            "p90": -11.422912502288819
+          },
+          "29": {
+            "count": 75000,
+            "mean": -11.335259462687175,
+            "std": 0.0130184640129081,
+            "p10": -11.351165771484375,
+            "median": -11.33668565750122,
+            "p90": -11.316863059997559
+          }
+        }
+      },
+      "29": {
+        "states": 25000,
+        "actor_ensemble_gpi_action_agreement": 0.0,
+        "critic_q_distributions": {
+          "11": {
+            "count": 75000,
+            "mean": -11.44445955224355,
+            "std": 0.004013786321903956,
+            "p10": -11.449777603149414,
+            "median": -11.444412231445312,
+            "p90": -11.439406394958496
+          },
+          "29": {
+            "count": 75000,
+            "mean": -11.347527990239461,
+            "std": 0.006959335786386823,
+            "p10": -11.355393409729004,
+            "median": -11.349879264831543,
+            "p90": -11.337230682373047
+          }
+        }
+      }
+    },
+    "q_function_cross_seed_agreement": {
+      "11_vs_29": {
+        "pearson_flat_q": 0.6598654094824915,
+        "mean_absolute_q_difference": 0.09903839230537415,
+        "greedy_action_agreement": 0.06262,
+        "q_i_all_actions": {
+          "count": 150000,
+          "mean": -11.440432106513978,
+          "std": 0.008240038736723913,
+          "p10": -11.449371337890625,
+          "median": -11.441721439361572,
+          "p90": -11.427652359008789
+        },
+        "q_j_all_actions": {
+          "count": 150000,
+          "mean": -11.341393726463318,
+          "std": 0.012107233229730193,
+          "p10": -11.354121208190918,
+          "median": -11.343191146850586,
+          "p90": -11.324519157409668
+        }
+      }
+    },
+    "q_direction_by_heldout_episode_return": {
+      "discriminative": false,
+      "reason": "held-out episode returns have identical 25th and 75th percentile cutoffs",
+      "all_episode_returns": {
+        "count": 100,
+        "mean": -500.0,
+        "std": 0.0,
+        "p10": -500.0,
+        "median": -500.0,
+        "p90": -500.0
+      }
+    },
+    "cartpole_balanced_vs_perturbed_anchor_states": null,
+    "raw_state_array_sha256": "4e36c397ebe13013c2cd98b6bcc4583ee6eb0ac4103168d134eaf51cf6efe9fb"
+  },
+  "interpretation_limit": "These are held-out state-distribution diagnostics; action agreement and Q direction do not establish policy value accuracy or a classical GPI performance guarantee."
+}

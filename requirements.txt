@@ -1,0 +1,13 @@
+cycler
+kiwisolver
+matplotlib
+numpy<2
+pandas
+Pillow
+pyparsing
+python-dateutil
+pytz
+six
+torch==2.2.0+cpu  
+torchvision==0.17.0+cpu  
+gymnasium==1.3.0

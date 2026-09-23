@@ -1,0 +1,103 @@
+{
+  "package": "AIM auditability shared multi-environment results",
+  "generated_from": "runs/shared_multienv_gpi/",
+  "note": "Compact review copies. Full traces, checkpoints, and run-level audit files remain in local runs/, intentionally ignored by Git.",
+  "files": [
+    {
+      "path": "results/shared_multienv_gpi/Acrobot-v1/artifact_audit.json",
+      "source_path": "runs/shared_multienv_gpi/Acrobot-v1/artifact_audit.json",
+      "bytes": 20276,
+      "sha256": "fa29c4f76a461cf67df63487b700cbe1dea1cdfaa12cd4e0de3b792b285ac10e"
+    },
+    {
+      "path": "results/shared_multienv_gpi/Acrobot-v1/gpi_fqe/acrobot_q_action_agreement.json",
+      "source_path": "runs/shared_multienv_gpi/Acrobot-v1/gpi_fqe/acrobot_q_action_agreement.json",
+      "bytes": 215675,
+      "sha256": "86a4f7c3c18bc10bd3a004c1580e08fe5e84c040ab707e330cc260ccf00e0349"
+    },
+    {
+      "path": "results/shared_multienv_gpi/Acrobot-v1/gpi_fqe/gpi_fqe_comparison.json",
+      "source_path": "runs/shared_multienv_gpi/Acrobot-v1/gpi_fqe/gpi_fqe_comparison.json",
+      "bytes": 32908,
+      "sha256": "d5a1a8f35f0eba02f61adcd9cb5d2eaaf6bdd1131910267e743ee3b23ee46a92"
+    },
+    {
+      "path": "results/shared_multienv_gpi/Acrobot-v1/gpi_fqe/gpi_fqe_diagnostics.json",
+      "source_path": "runs/shared_multienv_gpi/Acrobot-v1/gpi_fqe/gpi_fqe_diagnostics.json",
+      "bytes": 3842,
+      "sha256": "0b0cb947d0f2a29ea317bc3a78793643e64c55cd07b0753e0feb4cb16ada1287"
+    },
+    {
+      "path": "results/shared_multienv_gpi/Acrobot-v1/grammar_fusion_diagnostics.json",
+      "source_path": "runs/shared_multienv_gpi/Acrobot-v1/grammar_fusion_diagnostics.json",
+      "bytes": 24425,
+      "sha256": "79e4a4a7d3478a43c53752c15628ed835daeaab81ac5c4910a5679b3b18c2970"
+    },
+    {
+      "path": "results/shared_multienv_gpi/Acrobot-v1/random_action_control.json",
+      "source_path": "runs/shared_multienv_gpi/Acrobot-v1/random_action_control.json",
+      "bytes": 2417,
+      "sha256": "ca984c03fc25345a5958c27af967d6bcd3e51d3ce442cf33ce6698cd6939cad0"
+    },
+    {
+      "path": "results/shared_multienv_gpi/Acrobot-v1/shared_calibration.json",
+      "source_path": "runs/shared_multienv_gpi/Acrobot-v1/shared_calibration.json",
+      "bytes": 1158,
+      "sha256": "2c3a00e2568479380662707a4131473a29e78986f8c87fcaba8f7e854ccc42a2"
+    },
+    {
+      "path": "results/shared_multienv_gpi/Acrobot-v1/shared_multiseed_gpi_summary.json",
+      "source_path": "runs/shared_multienv_gpi/Acrobot-v1/shared_multiseed_gpi_summary.json",
+      "bytes": 45888,
+      "sha256": "a7c2656710537bab8c3454d00e99be1c98c3a6f6df27f607341e5b5266bb0255"
+    },
+    {
+      "path": "results/shared_multienv_gpi/Acrobot-v1/shared_symbolizer_rule_overlap.json",
+      "source_path": "runs/shared_multienv_gpi/Acrobot-v1/shared_symbolizer_rule_overlap.json",
+      "bytes": 24641,
+      "sha256": "6194f2c7cee3ad633d233d49fccf68c13ed7d1954ab10df3775c9ebb2d450c90"
+    },
+    {
+      "path": "results/shared_multienv_gpi/CartPole-v1/artifact_audit.json",
+      "source_path": "runs/shared_multienv_gpi/CartPole-v1/artifact_audit.json",
+      "bytes": 20233,
+      "sha256": "6a11c62c30718e5dd4c4828a166d1aeb396669e2159a3984b26c245c678b1c05"
+    },
+    {
+      "path": "results/shared_multienv_gpi/CartPole-v1/behavioral_agreement_experiment_B.json",
+      "source_path": "runs/shared_multienv_gpi/CartPole-v1/behavioral_agreement_experiment_B.json",
+      "bytes": 4411,
+      "sha256": "6a9c83f2c211c57c0c02bc344d9fa538f14920b5beae24c505062965593cec99"
+    },
+    {
+      "path": "results/shared_multienv_gpi/CartPole-v1/gpi_fqe/gpi_fqe_comparison.json",
+      "source_path": "runs/shared_multienv_gpi/CartPole-v1/gpi_fqe/gpi_fqe_comparison.json",
+      "bytes": 31792,
+      "sha256": "ea2d04cc5f8ba9f646d343fbd0a75033811c1cb6ce409d78465df571c85429b3"
+    },
+    {
+      "path": "results/shared_multienv_gpi/CartPole-v1/gpi_fqe/gpi_fqe_diagnostics.json",
+      "source_path": "runs/shared_multienv_gpi/CartPole-v1/gpi_fqe/gpi_fqe_diagnostics.json",
+      "bytes": 6139,
+      "sha256": "7e90a0c91a19bf96d7b28086f121c43d408e8a1a2112dc5bb29bada5e1702621"
+    },
+    {
+      "path": "results/shared_multienv_gpi/CartPole-v1/shared_calibration.json",
+      "source_path": "runs/shared_multienv_gpi/CartPole-v1/shared_calibration.json",
+      "bytes": 952,
+      "sha256": "3f29a338949d9e5c0ae86ba02b51c119a39da1c8767ecd5705f9da1761bf1293"
+    },
+    {
+      "path": "results/shared_multienv_gpi/CartPole-v1/shared_multiseed_gpi_summary.json",
+      "source_path": "runs/shared_multienv_gpi/CartPole-v1/shared_multiseed_gpi_summary.json",
+      "bytes": 49453,
+      "sha256": "65be5d060e5a9723a17d82cd1ac193f13221c9fadabedaa916cdf81e63d54bf8"
+    },
+    {
+      "path": "results/shared_multienv_gpi/CartPole-v1/shared_symbolizer_rule_overlap.json",
+      "source_path": "runs/shared_multienv_gpi/CartPole-v1/shared_symbolizer_rule_overlap.json",
+      "bytes": 24370,
+      "sha256": "0cbece40d9269761843da07bb81eac08ded4055210cdabb24210b48bf267a60a"
+    }
+  ]
+}

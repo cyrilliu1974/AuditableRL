@@ -1,0 +1,631 @@
+\documentclass[11pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{graphicx}
+\usepackage[colorlinks=true,linkcolor=black,citecolor=blue,urlcolor=blue]{hyperref}
+\usepackage[margin=1in]{geometry}
+
+\newtheorem{definition}{Definition}
+\newtheorem{proposition}{Proposition}
+\newtheorem{remark}{Remark}
+
+\newcommand{\sest}{\sigma}
+\newcommand{\Mset}{\mathcal{M}}
+\newcommand{\Cand}{\mathcal{C}}
+\newcommand{\Rules}{\mathcal{R}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\zero}{\mathsf{null}}
+
+\title{\bf From Replayable Traces to Provenance-Aware Rule Fusion:\\
+A Bounded Empirical Study of What RL Auditability Can and Cannot Identify}
+\author{Working manuscript generated from repository evidence}
+\date{September 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+\noindent
+``Replayable traces,'' ``causally meaningful symbols,'' ``shared symbolic rules,'' and
+``composable policies'' are distinct properties of a reinforcement-learning (RL) system,
+yet they are frequently conflated under a single label of auditability. We treat them as
+separate, individually testable claims and report a bounded study that measures each one
+against executed artifacts. The work begins from a naive prototype whose grammar, replay,
+and instrumentation claims did not survive scrutiny, and rebuilds the pipeline so that every
+statement is anchored to a checkable quantity. On two discrete control tasks
+(CartPole-v1 and Acrobot-v1), eight seeded agents per task share one frozen quantile state
+symbolizer. Exact rule overlap between two CartPole agents is high (Jaccard $0.5833$, $77$ of
+$132$ shared productions), yet a fresh raw-state behavioral test yields only $51.36\%$ action
+agreement ($95\%$ episode-cluster interval $50.48\%$--$52.26\%$), a counterexample showing
+that symbolic overlap is not behavioral consensus. A provenance-aware merger composes source
+rule banks with explicit conflict arbitration, blind-spot detection, and fallback logging;
+its hash-linked decisions resolve back to source rules and replay exactly against the
+environment. CartPole fusion reaches $205.96$ mean return versus $163.65$ for the best single
+actor; Acrobot fusion reaches $-443.37$ versus $-500$. Ablations expose strong, unexplained
+sensitivity to arbitration, including an advantage for randomized rule selection, and a fitted
+value-model baseline fails its quality checks. The evidence supports the \emph{existence} of
+auditable trace and rule-composition mechanisms in these settings; generality, complete causal
+explanation, and universal auditability of arbitrary RL remain unproven. A separate
+designed-communication study reports a causal intervention on a learned symbol and is kept
+evidence-disjoint from the rule-fusion conclusion.
+\end{abstract}
+
+\section{Introduction}
+
+\paragraph{Scenario.}
+A trained neural policy is often opaque: given a state it emits an action, but the internal
+quantities that produced the choice are not directly legible. A growing body of work therefore
+proposes to record RL execution as symbolic structure---replayable trajectories, induced
+grammars, or state--action rule sets---so that a reviewer can inspect, reproduce, and reason
+about a policy after training. The implicit promise is that a symbolic layer makes RL
+``auditable.''
+
+\paragraph{Limitations of existing approaches.}
+That promise bundles several different questions, and the literature tends to answer one and
+claim another. First, a lossless sequence grammar that reconstructs a \emph{seen} trace says
+nothing about whether its productions generalize to unseen states or explain a decision.
+Second, an overlap measure over symbolic rules is a statistic about syntax, not about behavior.
+Third, a deterministic record can be internally consistent (a hash chain verifies) while the
+transitions it encodes never happened; integrity is not fidelity. These are not hypothetical
+worries: each one is instantiated as a failure we observed while building this system.
+
+\paragraph{Problem and objective.}
+Our objective is not to argue that an AI-native symbol system makes RL training fully
+auditable. It is the narrower, falsifiable question: \emph{which specific quantities can an
+induced symbolic layer plus an auditable execution record actually identify, and where does the
+tempting inference from each quantity to a stronger one break?} We answer it by measuring each
+quantity separately and reporting the counterevidence where an inference fails.
+
+\paragraph{Challenges.}
+Three challenges make this harder than it appears. (i) The naive intuition that ``compression
+equals understanding'' fails at first contact: an early, readable serialization of the induced
+grammar made the artifact $1.80\times$ \emph{larger} on disk than the raw trace it encoded, so
+symbolic reduction did not deliver a storage benefit and could not be sold as compression.
+(ii) Instrumentation is not free: an apparent difference between two training arms that should
+have been identical turned out to be a hashing-definition error, not a real effect, and had to
+be repaired before the equivalence claim was trustworthy. (iii) A large, precise-looking symbolic
+core can still fail to predict behavior, so an overlap statistic must be paired with an
+independent behavioral measurement.
+
+\paragraph{Method.}
+We address these by separating the pipeline into a \emph{generator} (a stochastic REINFORCE
+agent that produces trajectories), a \emph{deterministic kernel} (state symbolization, rule
+admission, conflict arbitration, and hash-chained logging), and a family of \emph{instruments}
+(independent environment replay, a fresh-state behavioral-agreement test, and a provenance
+resolver) that each target one estimand. Claims are then routed through an explicit budget:
+positive, negative, diagnostic, and non-claim material are kept distinct.
+
+\paragraph{Contributions.}
+\begin{enumerate}
+\item A provenance-aware rule-fusion mechanism whose decisions record source-rule attribution,
+conflict arbitration, blind-spot detection, and fallback, and whose decision trace resolves back
+to source rules and replays against the environment (Section~\ref{sec:fusion}).
+\item A shared-symbolizer, multi-seed measurement of exact rule overlap paired with an
+independent fresh-state behavioral-agreement test, yielding the counterexample that overlap does
+not identify consensus (Section~\ref{sec:behavior}).
+\item A failure-driven account of how a naive symbolic audit pipeline must be corrected to
+support bounded claims, including an explicit pass/fail auditability taxonomy
+(Sections~\ref{sec:pipeline} and~\ref{sec:instrument}).
+\item Arbitration and value-model diagnostics that bound the policy-composition conclusions and
+identify unresolved mechanisms (Section~\ref{sec:arbitration}).
+\item A separate causal-intervention result for learned communication symbols in a designed task,
+reported alongside---never merged into---the rule-fusion evidence (Section~\ref{sec:aim}).
+\end{enumerate}
+
+\section{From a Naive Prototype to a Validated Instrument}
+\label{sec:pipeline}
+
+This section is deliberately shallow-to-deep: it recounts the failures that shaped the final
+measurement design, because those failures \emph{are} the reason the claims are bounded the way
+they are.
+
+\paragraph{Grammar conflation.}
+The initial prototype treated two different objects as one. A SEQUITUR-style sequence
+compressor, applied to a tokenized trajectory, produces a context-free grammar that can
+\emph{reconstruct the string it was shown}; the source literature is explicit that this is a
+coding of one observed sequence, not a policy. A separate state--action rule set
+$\textit{state-symbol}\!\rightarrow\!\textit{action-symbol}$ is a candidate policy
+\emph{generalization}. Merging them---and inferring rule provenance by substring tests rather
+than by recorded occurrences---made the prototype unable to certify either replay or
+generalization. The fix was architectural: the codec and the rule bank are induced, evaluated,
+and reported separately throughout this paper.
+
+\paragraph{Compression that was not compression.}
+A natural first reading is that a smaller symbolic grammar means a smaller artifact. It did.
+The readable serialization expanded a $61{,}295{,}430$-byte trace into a
+$110{,}549{,}187$-byte grammar file ($1.80\times$), because pretty-printed string references cost
+more than the tokens they named. After re-encoding with integer symbol identifiers and
+general-purpose compression, the grammar archive was $78.2\%$ smaller than the raw trace but
+still $8.4\%$ \emph{larger} than simply compressing the trace directly. The correct conclusion
+is narrow: the grammar supplies exact reconstruction and explicit production structure, not a
+best-in-class storage win. This becomes a permanent non-claim (Section~\ref{sec:claims}).
+
+\paragraph{Integrity without fidelity.}
+A hash chain over logged records detects tampering but does not prove the recorded transitions
+occurred. We therefore added an \emph{independent} environment replay check: re-execute each
+logged reset seed and action in the simulator and compare state, next state, reward, and the
+terminated/truncated flags exactly. Replay is the identification-bearing test; the hash chain is
+a diagnostic.
+
+\paragraph{A hash bug that looked like a training difference.}
+Two arms designed to train identically first appeared to differ. Inspection showed the
+comparator had folded an arm label and a grammar-sidecar counter into the hash; the weights and
+transitions were in fact equal. After hashing only the network state dictionary and defining a
+chain-normalized core-update hash that excludes non-optimization sidecar fields, the arms matched
+byte-for-byte. We record this correction rather than hiding it, because it is why the equivalence
+claim is about \emph{optimizer-relevant} content only.
+
+\section{Formal Setup}
+\label{sec:setup}
+
+\paragraph{Objects.}
+An agent interacts with an episodic environment producing a state $s_t$, an action $a_t$, a
+reward $r_t$, a next state $s_{t+1}$, and terminal and truncated flags $\mathsf{term}_t$ and
+$\mathsf{trunc}_t$. The observation $s_t$ is a real vector;
+the action $a_t$ is drawn from a finite set $\mathcal{A}=\{0,\dots,|\mathcal{A}|-1\}$. A policy
+is a stochastic map $\pi_\theta(a\mid s)$ trained by REINFORCE with an entropy-free sampled
+objective and a normalized discounted return with $\gamma=0.99$.
+
+\begin{definition}[State symbolization]
+\label{def:symbolizer}
+A \emph{state symbolizer} $\sest$ maps a real state to a tuple of bin indices
+\begin{equation}
+\sest(s) \;=\; \big(\,\mathrm{bucketize}_{d}\!\big(s^{(d)};\,\theta_{d}\big)\,\big)_{d=1}^{D},
+\label{eq:symbolize}
+\end{equation}
+where each $\theta_{d}$ holds the interior empirical-quantile edges of dimension $d$ over $B$
+bins. The edges are fitted once from pooled random-policy calibration rollouts and then
+\emph{frozen}, so that all training seeds and arms within a task share the same symbol alphabet.
+\end{definition}
+
+\begin{definition}[Admitted state--action rule]
+\label{def:rule}
+Let $N(c,a)$ be the count of observed transitions whose symbol is $c=\sest(s)$ and action is $a$,
+and $N(c)=\sum_{a}N(c,a)$. The induced action for condition $c$ is
+$a^{\star}(c)=\arg\max_{a}N(c,a)$ (ties to the smallest index), with support
+$\kappa_{s}(c)=N(c,a^{\star})$ and confidence
+\begin{equation}
+\kappa(c) \;=\; \frac{N(c,a^{\star}(c))}{N(c)},
+\qquad
+\text{rule } c\!\rightarrow\!a^{\star}(c) \text{ is admitted iff }
+\kappa_{s}(c)\ge \kappa_{s}^{\min}\ \wedge\ \kappa(c)\ge \tau .
+\label{eq:rule}
+\end{equation}
+The admitted rules form a rule bank $\Rules$. Each rule stores the multiset of source step
+identifiers that produced it, and the digest of that multiset.
+\end{definition}
+
+Equation~\eqref{eq:rule} uses a single normalization for confidence; support and confidence are
+reported separately from coverage so that a precise-but-rare rule is never described as broadly
+applicable.
+
+\section{Mechanisms}
+\label{sec:mechanisms}
+
+\subsection{A grammar-constrained policy}
+Given an active bank $\Rules$ from Definition~\ref{def:rule}, a constrained policy masks the
+action set to the rule's action when the current symbol is covered and leaves it unconstrained
+otherwise:
+\begin{equation}
+\Mset(c)=\begin{cases}\{a^{\star}(c)\}, & c\in\Rules,\\[2pt]\mathcal{A}, & c\notin\Rules,\end{cases}
+\qquad
+\pi_{\mathrm{c}}(a\mid s)=\frac{\exp z_{a}(s)\,\mathbf{1}[a\in \Mset(\sest(s))]}
+{\sum_{a'\in\Mset(\sest(s))}\exp z_{a'}(s)} .
+\label{eq:constrained}
+\end{equation}
+The mask is a \emph{state-conditioned} restriction with an explicit unconstrained fallback, which
+corrects an earlier global action-pruning design that could permanently remove an action merely
+because it was absent from frequent rules.
+
+\subsection{Hash-chained records and replay validity}
+\label{sec:replaymech}
+Each logged event $e_t$ commits to its predecessor:
+\begin{equation}
+h_t=\mathrm{SHA256}\!\big(h_{t-1}\,\|\;\mathrm{canon}(e_t)\big),\qquad h_{-1}=\zero,
+\label{eq:chain}
+\end{equation}
+so modifying any $e_t$ breaks every later digest. Integrity of Equation~\eqref{eq:chain} is a
+diagnostic. The identification-bearing predicate is \emph{environment replay validity}: a trace
+is replay-valid iff, re-executing recorded reset seeds and actions in the simulator, every step's
+state, next state, reward, and both terminal flags match the record exactly (compared as
+32-bit floating-point quantities and Boolean flags). A hash chain can be internally consistent
+while replay fails; only the latter supports a transition-fidelity statement.
+
+\subsection{Provenance-aware rule fusion}
+\label{sec:fusion}
+At a state $s$ with symbol $c=\sest(s)$ and $K$ source rule banks $\Rules_1,\dots,\Rules_K$, the
+merger forms the candidate set
+\begin{equation}
+\Cand(c)=\{\,i : c\in\Rules_i\,\},\quad
+\text{covered}\iff|\Cand(c)|\ge1,\quad
+\text{conflict}\iff\big|\{a_i:i\in\Cand(c)\}\big|>1 .
+\label{eq:fusion}
+\end{equation}
+Covered non-conflicts and agreements emit the common action; conflicts are resolved by the
+declared priority order $(\text{confidence},\text{support},\text{mean reward},-\text{seed})$;
+uncovered states take an actor fallback. Each decision records both candidate rule identifiers,
+their full statistics and source-step digests, and the selected source or fallback, and enters a
+chain of the form of Equation~\eqref{eq:chain}. A validator resolves every selected reference
+back to its source bank, re-checks the recorded statistics and emitted action, verifies the chain,
+and replays the resulting actions in the environment. Blind-spot selection uses training-time
+returns only, so no evaluation return leaks into the fallback choice.
+
+\subsection{Behavioral agreement and symbolic overlap}
+\label{sec:behavior}
+For two frozen actors $\pi_1,\pi_2$ and a fresh held-out state distribution $\mathcal{D}$ sampled
+equally from each actor's own occupancy, define
+\begin{equation}
+A \;=\; \Pr_{s\sim\mathcal{D}}\!\big[\arg\max_a \pi_1(a\mid s)=\arg\max_a \pi_2(a\mid s)\big],
+\label{eq:agreement}
+\end{equation}
+estimated on $10{,}000$ fresh raw states and bracketed by an episode-cluster bootstrap. The
+symbolic-overlap statistic is exact-set Jaccard over $(\text{state-symbol},\text{action-symbol})$
+productions of the two banks,
+\begin{equation}
+J \;=\; \frac{|\Rules_1\cap \Rules_2|}{|\Rules_1\cup \Rules_2|}.
+\label{eq:jaccard}
+\end{equation}
+Equations~\eqref{eq:agreement} and~\eqref{eq:jaccard} are measured on the same agents precisely so
+that one cannot be substituted for the other.
+
+\subsection{Trajectory coding length}
+The lossless codec induces pair-substitution productions and reports a declared two-part
+description length
+\begin{equation}
+L_{\mathrm{mdl}} \;=\; \underbrace{L(\Rules_{\mathrm{cfg}})}_{\text{grammar}} \;+\;
+\underbrace{L(\tau\mid \Rules_{\mathrm{cfg}})}_{\text{start sequence}},
+\label{eq:mdl}
+\end{equation}
+with Elias-gamma-coded counts and literal terminal dictionary, and fixed-width symbol references;
+provenance bytes are reported separately. Equation~\eqref{eq:mdl} is a description-length score
+under a stated convention, not an optimization objective.
+
+\subsection{Causal symbol intervention (separate sub-study)}
+\label{sec:aim}
+In an independent two-agent private-target coordination game, a receiver maps a state and a
+discrete sender message to an action. The matched-support intervention contrasts the receiver's
+action distribution under the observed message $m$ against a counterfactual message $m'$ that
+keeps the information-bearing symbol's context fixed:
+\begin{equation}
+\Delta \;=\; \E_{s\sim\mathcal{S}}\!\left[\,\sum_{a}\pi_R(a\mid s,m) - \pi_R(a\mid s,m')\,\right],
+\label{eq:interv}
+\end{equation}
+evaluated only on the common support of the two conditioned state sets. Equation~\eqref{eq:interv}
+is computed for the AIM sub-study alone and is not merged into the rule-fusion estimands.
+
+\section{The Instrument and What It Identifies}
+\label{sec:instrument}
+
+We separate a set of quantities that a single ``auditability score'' would collapse
+(Table~\ref{tab:taxonomy}). Trace integrity (Equation~\eqref{eq:chain}) is tamper-\emph{evidence}:
+a counterfactual in which a modified record still passes is unreachable by construction and so is
+not identification-bearing. Environment replay is identification-bearing but only for the recorded
+executions under the pinned software and hardware configuration. Lossless coding
+(Equation~\eqref{eq:mdl}) is a reconstruction statement. Rule coverage and agreement measure how
+often a rule applies and how often it matches a source actor. Behavioral agreement
+(Equation~\eqref{eq:agreement}) is an independent action-level estimand. Composition quality
+(Equation~\eqref{eq:fusion}) is a measured return under declared rules. Value-model reliability is
+a separate gate the fitted critics in this study do not pass.
+
+\begin{table}[t]
+\centering\small
+\begin{tabular}{@{}p{0.26\linewidth}p{0.30\linewidth}p{0.34\linewidth}@{}}
+\toprule
+Quantity & Estimand / predicate & What it cannot establish \\
+\midrule
+Trace integrity & Chain~\eqref{eq:chain} verifies & transitions occurred; logger honesty \\
+Environment replay & exact transition match & cross-hardware equivalence \\
+Lossless coding & reconstruction~\eqref{eq:mdl} & policy explanation; storage win \\
+Rule coverage/agreement & support/confidence~\eqref{eq:rule} & generalization at low coverage \\
+Behavioral agreement & $A$ in~\eqref{eq:agreement} & optimality; causal rationale \\
+Symbolic overlap & $J$ in~\eqref{eq:jaccard} & behavioral consensus \\
+Composition quality & return of~\eqref{eq:fusion} & optimal arbitration \\
+\bottomrule
+\end{tabular}
+\caption{Auditability disaggregated into separately measured quantities. Each row's right column is
+a boundary enforced by a Phase-0 negative or diagnostic result.}
+\label{tab:taxonomy}
+\end{table}
+
+\paragraph{Transport versus generation.}
+For the AIM sub-study, the intervention changes the message content presented to the receiver, not
+its transport; it is therefore classified as a generation-relevant change. For the RL kernel, the
+merger neither samples nor learns; it is a deterministic decision procedure. A change of record
+serialization is never treated as a change of policy.
+
+\section{Experimental Design and Registered Predictions}
+\label{sec:design}
+
+Eight seeds $\{11,29,43,71,101,149,211,307\}$ train REINFORCE agents on CartPole-v1 and
+Acrobot-v1 for $300$ episodes per seed and arm, under one frozen shared quantile symbolizer per
+task ($B=4$ bins, calibration rollouts pooled across seeds). Rule admission uses support
+$\kappa_s^{\min}=8$ and confidence $\tau=0.70$. A baseline arm and an audit-only observer arm are
+checked for exact optimizer-level equivalence. Composition uses $100$ common reset seeds per
+policy; Acrobot arbiter ablations reuse those seeds, and randomized rule selection repeats over
+five independent selector streams. A separate five-stream uniform-random-action control isolates
+unconditioned action noise from state-conditioned rule availability. Stochastic return summaries
+use the across-episode standard deviation with a percentile bootstrap over episodes; state-level
+agreement treats sampled states as the measurement unit but clusters the bootstrap by episode.
+
+Four hypotheses were recorded before the corresponding measurements:
+\begin{itemize}
+\item[\textbf{H1}] A grammar induced from training symbols reconstructs those trajectories exactly,
+but held-out episodes are not ``replayed'' merely because their tokens are in the alphabet.
+\item[\textbf{H2}] A learned state--action rule bank predicts an independent holdout above an
+action-frequency baseline, with coverage, agreement, and confidence reported separately.
+\item[\textbf{H3}] Grammar constraints applied only in well-supported states do not harm return
+when paired over seeds, with an explicit low-coverage fallback.
+\item[\textbf{H4}] Reconstructing a sampled trace alone is insufficient for whole-training
+auditability; configuration, transitions, update boundaries, and checkpoints must be recorded and
+re-derived.
+\end{itemize}
+Each prediction is scored in Section~\ref{sec:results} as supported, partially supported, or
+contradicted. Because the measurements were exploratory in the final shared-symbolizer batch, the
+H-statuses are reconciliations against pre-specified statements rather than a formal
+preregistration.
+
+\section{Results}
+\label{sec:results}
+
+\subsection{Overlap versus behavior (H2)}
+\label{sec:behaviorres}
+\emph{Prediction.} H2 anticipated that a large shared rule core would coincide with faithful
+cross-seed behavior. \emph{Result.} It does not. Across eight agents, mean pairwise exact overlap
+is $J=0.5572$ on CartPole and $0.0956$ on Acrobot. For seeds 11 and 29, CartPole has $77$ shared
+productions out of a $132$ union ($J=0.5833$) with no action conflicts on shared conditions;
+Acrobot has $21$ of $423$ ($J=0.0496$) with $77$ of $98$ shared conditions in action conflict.
+On $10{,}000$ fresh CartPole raw states, the seed-11 and seed-29 actors agree on $51.38\%$ of
+argmax actions; the episode-cluster balanced estimate is $51.36\%$ ($95\%$ interval
+$50.48\%$--$52.26\%$), near chance for a two-action task. This is a central negative result and
+\textbf{contradicts} H2: a substantial exact intersection does not imply behavioral consensus,
+and $J$ alone is disqualified as evidence of a shared policy core.
+
+\subsection{Trace and provenance auditability (H1, H4)}
+For the recorded artifacts, chain, update-ledger, provenance-resolution, and environment-replay
+checks pass under the audited setup. The eight-seed records span $1{,}725{,}655$ CartPole and
+$2{,}544{,}513$ Acrobot trace rows across three arms; replay covers $1{,}122{,}403$ and
+$1{,}742{,}570$ transitions respectively. Every logged prefix round-trips exactly
+(Equation~\eqref{eq:mdl}), and a tamper probe that edits a single reward is rejected at the first
+line. These support \textbf{H1} and a bounded \textbf{H4}: exact replay is evidence about recorded
+executions and specified software/hardware conditions; it does not establish that the logger
+captured every training cause, prove logger honesty, or guarantee cross-hardware equivalence.
+
+\subsection{Composition returns and arbitration sensitivity (H3)}
+\label{sec:arbitration}
+\emph{Prediction.} H3 anticipated that well-supported constraints with a fallback would not harm
+return. \emph{Result.} The online majority constraint is unstable: in the two-seed CartPole pilot,
+the constrained-arm return changed by $-378.7$ for seed 11 but $+31.5$ for seed 29 (mean
+$-173.6$, disagreeing signs); lowering the threshold to $0.70$ gave $-330.4$ and $+17.0$. This
+\textbf{contradicts} H3 as a performance claim and motivates reporting composition returns as
+descriptive only.
+
+Table~\ref{tab:returns} gives the shared-symbolizer composition returns. CartPole fusion reaches
+$205.96$ versus $163.65$ for the best single actor (paired difference $+42.31$, $95\%$ bootstrap
+$[23.98,61.93]$), but some policies hit a $500$-step ceiling that masks differences. Acrobot
+fusion reaches $-443.37$ versus $-500$ (paired $+56.63$, $95\%$ $[39.32,75.15]$) at $95.70\%$
+rule coverage, $89.24\%$ conflict, and $4.30\%$ blind spots; $39$ of $100$ episodes terminate
+early, though the median remains $-500$.
+
+\begin{table}[t]
+\centering\small
+\begin{tabular}{@{}llrrr@{}}
+\toprule
+Task & Policy & Mean return & Paired $\Delta$ vs best & $95\%$ CI \\
+\midrule
+CartPole & best single actor   & $163.65$ & --- & --- \\
+CartPole & actor-logit ensemble & $500.00$ & --- & --- \\
+CartPole & grammar fusion       & $205.96$ & $+42.31$ & $[23.98,61.93]$ \\
+Acrobot  & best single actor    & $-500.00$ & --- & --- \\
+Acrobot  & actor-logit ensemble & $-500.00$ & --- & --- \\
+Acrobot  & grammar fusion       & $-443.37$ & $+56.63$ & $[39.32,75.15]$ \\
+\bottomrule
+\end{tabular}
+\caption{Composition returns over $100$ matched reset seeds. CartPole is ceiling-saturated, so the
+ensemble comparison is not a controlled superiority test.}
+\label{tab:returns}
+\end{table}
+
+Arbiter ablations (Table~\ref{tab:arb}) show strong, unexplained sensitivity. The declared
+order on confidence, support, and mean reward scores $-443.37$; confidence-only $-444.49$ (paired $-1.12$,
+$95\%$ $[-3.16,+0.06]$); mean-reward-only, support-first, and conflict deferral to the ensemble
+each score $-500$. Randomly choosing among available source rules scores $-187.02$ on one stream
+and $-194.10$ to $-206.17$ across five (mean $-198.82$), while a five-stream uniform-random-action
+control averages $-498.71$. The mean-reward key is near-inert here ($1575$ of $1694$ Acrobot rules
+have mean reward exactly $-1.0$). The random-action control separates state-conditioned rule
+availability from unconditioned noise, but the mechanism of the randomized-selection advantage is
+\emph{not} identified, and the tested confidence-ranked arbiter is not shown to be a strong
+conflict resolver.
+
+\begin{table}[t]
+\centering\small
+\begin{tabular}{@{}lrr@{}}
+\toprule
+Acrobot arbiter variant & Mean return & Paired $\Delta$ vs declared \\
+\midrule
+confidence/support/reward (declared) & $-443.37$ & --- \\
+confidence-only                      & $-444.49$ & $-1.12$ \\
+mean-reward-only                     & $-500.00$ & $-56.63$ \\
+support-first                        & $-500.00$ & $-56.63$ \\
+defer conflicts to ensemble          & $-500.00$ & $-56.63$ \\
+random rule selection (5 streams)    & $-198.82$ & $+244.55$ \\
+uniform random action (5 streams)    & $-498.71$ & $-55.34$ \\
+\bottomrule
+\end{tabular}
+\caption{Matched-seed arbitration ablations. Random rule selection beats the declared arbiter;
+random action does not, so the effect tracks state-conditioned availability, not action noise.}
+\label{tab:arb}
+\end{table}
+
+\subsection{Value-model diagnostics (kept separate)}
+The fitted value baseline fails its quality gates and is reported apart from the fusion result. On
+CartPole it achieves mean return $9.34$ (versus $163.65$ for the best actor) and matches the
+actor-logit ensemble on $35.27\%$ of $31{,}563$ held-out states. On Acrobot it scores $-499.57$
+and selects action $0$ on all $50{,}000$ diagnostic states. On $200$ Acrobot states the seed-11 and
+seed-29 critics correlate at $0.652$ in scalar value while their greedy actions diverge; fusion
+matches the seed-11 argmax on $64.5\%$, the seed-29 argmax and multi-critic improvement on $0\%$,
+and the best first action under a fixed ensemble continuation on $22.5\%$ ($95\%$ interval
+$16.5\%$--$28.5\%$). A scalar-value correlation is not action agreement; these critics are an
+unvalidated comparator, not evidence against the grammar-fusion return.
+
+\subsection{Causal symbol intervention (separate sub-study)}
+\label{sec:aimres}
+\emph{Prediction.} None registered for the rule-fusion estimator. \emph{Result.} Across six seeds
+and $600{,}000$ logged decisions in the designed coordination game, sender-sampled receiver
+accuracy averages $0.998923$, versus $0.503292$ for shuffled messages and $0.500$ for a no-message
+control. The matched-support intervention~\eqref{eq:interv} on the information-bearing symbol
+changes receiver action probability by $0.998366$ on average (per-seed $0.996986$--$0.999685$;
+mean common-support overlap $0.94308$), and the active token position varies across seeds. This
+supports a causal role for a learned symbol \emph{in the tested game}; it does not provide a
+general semantic decoding of the language, and its executed artifacts live outside the compact
+review package, so it is kept evidence-disjoint from Sections~\ref{sec:behaviorres}
+and~\ref{sec:arbitration}.
+
+\subsection{Pass/fail summary}
+\begin{table}[t]
+\centering\small
+\begin{tabular}{@{}lllll@{}}
+\toprule
+Criterion & Estimate & Threshold & Verdict & Layer \\
+\midrule
+Replay match (CartPole) & $1{,}122{,}403$ transitions & exact & pass & identification \\
+Replay match (Acrobot)  & $1{,}742{,}570$ transitions & exact & pass & identification \\
+Baseline/observer equivalence & byte-identical core & exact & pass & health \\
+Lossless reconstruction & ratio $0.513$--$0.575$ & round-trip & pass & diagnostic \\
+Storage vs.\ generic compression & $+8.4\%$ & smaller & fail & diagnostic \\
+Behavioral agreement $A$ & $51.36\%$ & $\gg$ chance & fail & identification \\
+Symbolic overlap $J$ (CartPole) & $0.5833$ & descriptive & reported & descriptive \\
+Value-model gate & action $0$ everywhere & informed & fail & diagnostic \\
+\bottomrule
+\end{tabular}
+\caption{Consolidated verdicts. The single identification-bearing failure (behavioral agreement)
+and the identification-bearing passes (replay) are separated from health and diagnostic rows.}
+\label{tab:passfail}
+\end{table}
+
+Identification-bearing outcomes (replay fidelity; the overlap-versus-behavior counterexample) are
+reported apart from operational-health rows (arm equivalence), calibration/diagnostic rows (hash
+chain, lossless coding), and the failed value gate.
+
+\section{Related Work}
+\label{sec:related}
+
+\paragraph{Direction: interpretable and programmatic policies.}
+Programmatically interpretable RL represents policies in a domain-specific language and reasons
+about them symbolically. Our setting differs: rules are induced from logged traces, so provenance
+and predictive generalization must each be earned, not assumed. That requirement is exactly where
+our negative result bites---syntax overlap does not grant behavioral faithfulness.
+
+\paragraph{Methodology: sequence structure and policy composition.}
+Linear-time grammar induction identifies hierarchical structure in sequences but, by the original
+authors' own caveat, codes a single observed string rather than a generalized policy. We keep that
+distinction operational (Definition~\ref{def:rule} versus Equation~\eqref{eq:mdl}). Generalized
+policy improvement bounds a composed policy by the maximum per-state advantage of its sources;
+successor-feature composition likewise presumes reasonably fitted value functions. Our fitted
+critics violate that premise (Section~\ref{sec:arbitration} diagnostics), so we invoke the
+composition \emph{idea} only as a diagnostic baseline, not as a bound we establish.
+
+\paragraph{Measurement of emergent communication and reproducibility.}
+Pitfalls in measuring emergent communication motivate treating a designed-game causal test and a
+state--action rule test as separate estimands. Deterministic-implementation analysis for deep RL
+separates deterministic code paths from same-condition replicability, which is why our replay
+claim is bounded to the recorded host and versions rather than generalized. Where these lines of
+work and ours could conflict---for instance on whether symbolic overlap should predict behavior---
+our evidence is a single-task counterexample, so we mark it as a bounded observation, not a
+refutation of a broad claim.
+
+\bibliographystyle{plain}
+% The references are embedded below to keep the manuscript self-contained.
+\begin{thebibliography}{9}
+\bibitem{verma2018pirl}
+Verma, Murali, Singh, Kohli, and Chaudhuri. Programmatically interpretable reinforcement learning.
+\emph{ICML}, PMLR 80, 2018.
+\bibitem{nevill1997sequitur}
+Nevill-Manning and Witten. Identifying hierarchical structure in sequences: a linear-time algorithm.
+\emph{Journal of Artificial Intelligence Research}, 7:67--82, 1997.
+\bibitem{thakoor2022gpi}
+Thakoor, Rowland, Mavrin, Borsa, Dabney, Munos, and Barreto. Generalised policy improvement with
+geometric policy composition. \emph{ICML}, PMLR 162, 2022.
+\bibitem{barreto2017sf}
+Barreto, Dabney, Munos, Hunt, Schaul, van Hasselt, and Silver. Successor features for transfer in
+reinforcement learning. \emph{NeurIPS} 30, 2017.
+\bibitem{lowe2019pitfalls}
+Lowe, Foerster, Boureau, Pineau, and Dauphin. On the pitfalls of measuring emergent communication.
+\emph{AAMAS}, 2019. arXiv:1903.05168.
+\bibitem{nagarajan2018det}
+Nagarajan, Warnell, and Stone. Deterministic implementations for reproducibility in deep
+reinforcement learning. arXiv:1809.05676, 2018.
+\end{thebibliography}
+
+\section{Discussion}
+\label{sec:discussion}
+
+\paragraph{Why the mechanism can be trusted as far as it is.}
+The audit capability rests on two equations that are independently checkable: the chain
+commitment~\eqref{eq:chain} makes tampering detectable, and the replay predicate makes transition
+fidelity verifiable in the environment. The merger's decisions are auditable because each carries
+its source references, which resolve back to the inducing statistics. None of this depends on the
+grammar being an explanation; it depends on the record being reconstructible and re-executable.
+
+\paragraph{Expected versus unexpected outcomes.}
+Expected: replay fidelity, high rule coverage, and the value-model fragility. Unexpected: (i) a
+large exact overlap coexisting with near-chance behavior ($51.36\%$ at $J=0.5833$), and (ii)
+randomized rule selection beating the confidence-ranked arbiter by well over two hundred return
+points. For (i) the alternative explanation is that many distinct rule sets induce the same, and
+different, argmax behaviors once states are quantized differently; our data cannot separate this
+from genuine divergence. For (ii) a plausible alternative is that the advantage comes from the
+stochastic mixture escaping the $-500$ truncation trap, since candidate availability is
+state-conditioned---but the uniform-action control ($-498.71$) shows it is not unconditioned noise
+alone. We leave the mechanism unidentified.
+
+\paragraph{Implications.}
+Theoretically, the results caution against treating a syntax statistic as a semantic or behavioral
+one. Practically, they suggest that provenance-carrying composition is inspectable without being
+optimal. Neither implication claims downstream deployment quality we did not measure.
+
+\paragraph{Steelman.}
+The strongest objection is that the headline fusion gain is an artifact of a saturated comparison:
+both best-single and ensemble sit at the Acrobot $-500$ cap, so almost anything that varies actions
+with the state will appear better, and the randomized-selection result makes the ``intelligent''
+arbiter look incidental. We take this seriously: we do not claim the arbiter is a good conflict
+resolver, we report that random beats it, we disclose the ceiling on CartPole, and we keep the
+improvement language descriptive of these policies and reset seeds. What survives the objection is
+smaller but real: the composition trace is auditable and replayable, and its failure mode
+(overlap $\neq$ behavior) is measured directly rather than inferred.
+
+\paragraph{Replication (bounded to the repository).}
+Independent replication requires the full multi-gigabyte trace and checkpoint tree; the compact
+review package supplies the summaries, overlap tables, arbitration ablations, the random-action
+control, Experiment B, and the value diagnostics with recorded digests. Minimum conditions are:
+the pinned interpreter, tensor, and environment-library versions; deterministic single-thread CPU
+settings; the shared calibration quantiles; and re-derivation of every reported digest. Replaying
+a recorded output is distinguishable from generating a fresh one; only the latter tests transfer.
+
+\section{Limitations and Future Work}
+\label{sec:claims}
+\textbf{Non-claims.} We do not claim: general or complete auditability of arbitrary RL training;
+that symbolic overlap entails behavioral consensus; that induced grammars are human-readable
+explanations of a neural policy; a storage-compression advantage over generic compression; optimal
+or mechanism-explained arbitration; validated value-model composition; or a natural-language
+semantics for the communication symbols. \textbf{Boundaries.} Evidence covers two benchmark tasks,
+eight seeds per task, one shared quantizer per task, and one software/hardware configuration;
+CartPole saturates and many Acrobot episodes remain at $-500$; fresh-state behavior is measured for
+the seed-11/29 CartPole pair, not every pair or task. \textbf{Future work} follows directly from
+the unresolved mechanisms: decompose the random-arbitration advantage by source rule, action
+frequency, and state occupancy; test return-weighted rule-bank induction under a pre-specified
+normalization and held-out evaluation; use the native sequence symbols as the control
+representation; and evaluate behavior on non-saturated tasks and across hardware.
+
+\section{Conclusion}
+In the evaluated prototype, executed evidence supports replayable trace inspection,
+provenance-aware rule composition, explicit conflict and blind-spot reporting, and a causal symbol
+effect in a designed communication game. The same evidence shows that grammar overlap did not
+predict actor agreement, that arbitration behavior remains unexplained, and that a fitted value
+baseline failed its checks. We therefore claim bounded existence, not universality: these
+mechanisms make specified RL artifacts more auditable under tested conditions, while general
+auditability and complete causal explanation remain open.
+
+\end{document}

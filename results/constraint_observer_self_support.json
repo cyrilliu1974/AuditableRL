@@ -1,0 +1,103 @@
+{
+  "purpose": "Quantify the share of each final rule's evidential base that the action mask itself produced, in the rule-constrained arm where the bank is re-induced from the constrained trajectory every 50 episodes.",
+  "environment": "CartPole-v1",
+  "reinduction_interval_episodes": 50,
+  "interpretation_limit": "Direct measurement, not a controlled experiment. It shows the observer's input is self-generated; it does not show that removing the loop would change the bank.",
+  "seeds": [
+    11,
+    29,
+    43,
+    71,
+    101,
+    149,
+    211,
+    307
+  ],
+  "per_seed": [
+    {
+      "seed": 11,
+      "run_dir": "C:\\AI\\RL\\runs\\shared_multienv_gpi\\CartPole-v1\\grammar_constrained\\seed-11_20260922T033701Z",
+      "rules_in_final_bank": 107,
+      "training_steps": 74320,
+      "covered_condition_observations": 50137,
+      "mask_generated_observations": 28398,
+      "self_generated_support_fraction": 0.5664080419650158,
+      "masked_step_fraction_all_states": 0.3821044133476857
+    },
+    {
+      "seed": 29,
+      "run_dir": "C:\\AI\\RL\\runs\\shared_multienv_gpi\\CartPole-v1\\grammar_constrained\\seed-29_20260922T033811Z",
+      "rules_in_final_bank": 88,
+      "training_steps": 33310,
+      "covered_condition_observations": 25175,
+      "mask_generated_observations": 18104,
+      "self_generated_support_fraction": 0.7191261171797418,
+      "masked_step_fraction_all_states": 0.5435004503152207
+    },
+    {
+      "seed": 43,
+      "run_dir": "C:\\AI\\RL\\runs\\shared_multienv_gpi\\CartPole-v1\\grammar_constrained\\seed-43_20260922T033956Z",
+      "rules_in_final_bank": 129,
+      "training_steps": 115884,
+      "covered_condition_observations": 81685,
+      "mask_generated_observations": 69051,
+      "self_generated_support_fraction": 0.8453326804186815,
+      "masked_step_fraction_all_states": 0.5958631044837941
+    },
+    {
+      "seed": 71,
+      "run_dir": "C:\\AI\\RL\\runs\\shared_multienv_gpi\\CartPole-v1\\grammar_constrained\\seed-71_20260922T034154Z",
+      "rules_in_final_bank": 90,
+      "training_steps": 60084,
+      "covered_condition_observations": 50975,
+      "mask_generated_observations": 39883,
+      "self_generated_support_fraction": 0.7824031387935262,
+      "masked_step_fraction_all_states": 0.6637873643565675
+    },
+    {
+      "seed": 101,
+      "run_dir": "C:\\AI\\RL\\runs\\shared_multienv_gpi\\CartPole-v1\\grammar_constrained\\seed-101_20260922T034330Z",
+      "rules_in_final_bank": 131,
+      "training_steps": 85706,
+      "covered_condition_observations": 70600,
+      "mask_generated_observations": 38437,
+      "self_generated_support_fraction": 0.5444334277620396,
+      "masked_step_fraction_all_states": 0.448475019251861
+    },
+    {
+      "seed": 149,
+      "run_dir": "C:\\AI\\RL\\runs\\shared_multienv_gpi\\CartPole-v1\\grammar_constrained\\seed-149_20260922T034502Z",
+      "rules_in_final_bank": 77,
+      "training_steps": 11387,
+      "covered_condition_observations": 9261,
+      "mask_generated_observations": 4177,
+      "self_generated_support_fraction": 0.45103120613324693,
+      "masked_step_fraction_all_states": 0.366821814349697
+    },
+    {
+      "seed": 211,
+      "run_dir": "C:\\AI\\RL\\runs\\shared_multienv_gpi\\CartPole-v1\\grammar_constrained\\seed-211_20260922T034627Z",
+      "rules_in_final_bank": 126,
+      "training_steps": 87441,
+      "covered_condition_observations": 72906,
+      "mask_generated_observations": 54064,
+      "self_generated_support_fraction": 0.7415576221435821,
+      "masked_step_fraction_all_states": 0.6182911906313971
+    },
+    {
+      "seed": 307,
+      "run_dir": "C:\\AI\\RL\\runs\\shared_multienv_gpi\\CartPole-v1\\grammar_constrained\\seed-307_20260922T034828Z",
+      "rules_in_final_bank": 107,
+      "training_steps": 51019,
+      "covered_condition_observations": 47419,
+      "mask_generated_observations": 37938,
+      "self_generated_support_fraction": 0.8000590480609039,
+      "masked_step_fraction_all_states": 0.7436053235069288
+    }
+  ],
+  "aggregate": {
+    "mean_self_generated_support_fraction": 0.6812939103070922,
+    "min_self_generated_support_fraction": 0.45103120613324693,
+    "max_self_generated_support_fraction": 0.8453326804186815
+  }
+}

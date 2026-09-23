@@ -1,0 +1,537 @@
+{
+  "environment": "Acrobot-v1",
+  "seeds": [
+    11,
+    29,
+    43,
+    71,
+    101,
+    149,
+    211,
+    307
+  ],
+  "all_hash_chains_valid": true,
+  "all_update_ledgers_valid": true,
+  "all_baseline_audit_only_pairs_exactly_equivalent": true,
+  "all_baseline_traces_environment_replayed": true,
+  "all_constraint_traces_environment_replayed": true,
+  "all_constraint_rule_references_resolve_and_verify": true,
+  "trace_records_across_all_arms": 2544513,
+  "optimizer_update_records_across_all_arms": 7200,
+  "environment_replay_records": 1742570,
+  "constraint_rule_decision_references": 697817,
+  "per_seed": [
+    {
+      "seed": 11,
+      "baseline_audit_only_exact_equivalence": true,
+      "runs": {
+        "baseline": {
+          "trace_chain": {
+            "valid": true,
+            "records": 79162,
+            "final_hash": "6df7e0e0e4aa255a19d31239aaaaf232de6a70938bdb80cc269013ac18849da4"
+          },
+          "update_chain": {
+            "valid": true,
+            "records": 300,
+            "final_hash": "33a78affdbd87b366ecd66b69a57dea4dccdc4cfab1012409a6207c9cc7e9b33"
+          },
+          "environment_replay": {
+            "valid": true,
+            "transition_count": 79162,
+            "episode_count": 300,
+            "reconstructed_reward_sum": -78909.0,
+            "replay_method": "Gymnasium reset seed + recorded action, exact float32 state/reward/terminated/truncated comparison"
+          }
+        },
+        "grammar_audit_only": {
+          "trace_chain": {
+            "valid": true,
+            "records": 79162,
+            "final_hash": "6df7e0e0e4aa255a19d31239aaaaf232de6a70938bdb80cc269013ac18849da4"
+          },
+          "update_chain": {
+            "valid": true,
+            "records": 300,
+            "final_hash": "33a78affdbd87b366ecd66b69a57dea4dccdc4cfab1012409a6207c9cc7e9b33"
+          }
+        },
+        "grammar_constrained": {
+          "trace_chain": {
+            "valid": true,
+            "records": 101334,
+            "final_hash": "3587799e7b58e7eaae5693b8bb847f1c09c94cef1d28ad6ef3a32f634ce5d40a"
+          },
+          "update_chain": {
+            "valid": true,
+            "records": 300,
+            "final_hash": "fdc42dc090145bfdfbfbf053eb07a63e1314a9b56929389aea364ccf8dd5d303"
+          },
+          "environment_replay": {
+            "valid": true,
+            "transition_count": 101334,
+            "episode_count": 300,
+            "reconstructed_reward_sum": -101179.0,
+            "replay_method": "Gymnasium reset seed + recorded action, exact float32 state/reward/terminated/truncated comparison"
+          },
+          "rule_snapshot_audit": {
+            "valid": true,
+            "registry_sha256": "d8b2378b34d4e80bad528f9332cb073a0580dc3fb29e36da4c74d3dccb3c0e7f",
+            "snapshot_count": 595,
+            "referenced_snapshot_count": 595,
+            "decision_references": 82548,
+            "all_reference_hashes_and_rule_state_actions_verified": true
+          }
+        }
+      }
+    },
+    {
+      "seed": 29,
+      "baseline_audit_only_exact_equivalence": true,
+      "runs": {
+        "baseline": {
+          "trace_chain": {
+            "valid": true,
+            "records": 139965,
+            "final_hash": "0d82593c549aabde7de081d754dcdf5c9988703e77d820357bd81ddf65692a6d"
+          },
+          "update_chain": {
+            "valid": true,
+            "records": 300,
+            "final_hash": "c6463fd248d93b59eb6001cd8e0f8abb252ad655b5d6e6e3fadf958968ea48d0"
+          },
+          "environment_replay": {
+            "valid": true,
+            "transition_count": 139965,
+            "episode_count": 300,
+            "reconstructed_reward_sum": -139927.0,
+            "replay_method": "Gymnasium reset seed + recorded action, exact float32 state/reward/terminated/truncated comparison"
+          }
+        },
+        "grammar_audit_only": {
+          "trace_chain": {
+            "valid": true,
+            "records": 139965,
+            "final_hash": "0d82593c549aabde7de081d754dcdf5c9988703e77d820357bd81ddf65692a6d"
+          },
+          "update_chain": {
+            "valid": true,
+            "records": 300,
+            "final_hash": "c6463fd248d93b59eb6001cd8e0f8abb252ad655b5d6e6e3fadf958968ea48d0"
+          }
+        },
+        "grammar_constrained": {
+          "trace_chain": {
+            "valid": true,
+            "records": 139820,
+            "final_hash": "8a709b56ded29602440750d91bf0122dcaa9831c56e5640d20a9decca475a4bb"
+          },
+          "update_chain": {
+            "valid": true,
+            "records": 300,
+            "final_hash": "8b8ecf78bba8e5ea2291db555ac13f43c46a50ded5670349e6afc7ab0b6bf380"
+          },
+          "environment_replay": {
+            "valid": true,
+            "transition_count": 139820,
+            "episode_count": 300,
+            "reconstructed_reward_sum": -139781.0,
+            "replay_method": "Gymnasium reset seed + recorded action, exact float32 state/reward/terminated/truncated comparison"
+          },
+          "rule_snapshot_audit": {
+            "valid": true,
+            "registry_sha256": "21699ff02703457e9bdad7d294827c0d712738f3aea63290d1c897ee35babbde",
+            "snapshot_count": 114,
+            "referenced_snapshot_count": 114,
+            "decision_references": 100046,
+            "all_reference_hashes_and_rule_state_actions_verified": true
+          }
+        }
+      }
+    },
+    {
+      "seed": 43,
+      "baseline_audit_only_exact_equivalence": true,
+      "runs": {
+        "baseline": {
+          "trace_chain": {
+            "valid": true,
+            "records": 75651,
+            "final_hash": "95c720e520ade9e70865214e154d14ed2f83f28512891b34944c3527d8d8b787"
+          },
+          "update_chain": {
+            "valid": true,
+            "records": 300,
+            "final_hash": "115cb17ced1946caf9b6bf1ed2ab45aff389f1e649b72bc6eacfba92d8fe3fec"
+          },
+          "environment_replay": {
+            "valid": true,
+            "transition_count": 75651,
+            "episode_count": 300,
+            "reconstructed_reward_sum": -75389.0,
+            "replay_method": "Gymnasium reset seed + recorded action, exact float32 state/reward/terminated/truncated comparison"
+          }
+        },
+        "grammar_audit_only": {
+          "trace_chain": {
+            "valid": true,
+            "records": 75651,
+            "final_hash": "95c720e520ade9e70865214e154d14ed2f83f28512891b34944c3527d8d8b787"
+          },
+          "update_chain": {
+            "valid": true,
+            "records": 300,
+            "final_hash": "115cb17ced1946caf9b6bf1ed2ab45aff389f1e649b72bc6eacfba92d8fe3fec"
+          }
+        },
+        "grammar_constrained": {
+          "trace_chain": {
+            "valid": true,
+            "records": 128197,
+            "final_hash": "051095c91b8ffc84d2ace8ef54d05d4a8f63eaa0782e81ed6886e3c0abe62de1"
+          },
+          "update_chain": {
+            "valid": true,
+            "records": 300,
+            "final_hash": "ddde4bc71ab7f95e30e886670e6c5a8ad1c6f3e1d2bec79b98f8f28507b03185"
+          },
+          "environment_replay": {
+            "valid": true,
+            "transition_count": 128197,
+            "episode_count": 300,
+            "reconstructed_reward_sum": -128129.0,
+            "replay_method": "Gymnasium reset seed + recorded action, exact float32 state/reward/terminated/truncated comparison"
+          },
+          "rule_snapshot_audit": {
+            "valid": true,
+            "registry_sha256": "30477059ef5143f88d4f37ee04471a8e4d131ec4c03cb7c5986bdc3c755190d7",
+            "snapshot_count": 231,
+            "referenced_snapshot_count": 231,
+            "decision_references": 100075,
+            "all_reference_hashes_and_rule_state_actions_verified": true
+          }
+        }
+      }
+    },
+    {
+      "seed": 71,
+      "baseline_audit_only_exact_equivalence": true,
+      "runs": {
+        "baseline": {
+          "trace_chain": {
+            "valid": true,
+            "records": 146613,
+            "final_hash": "e49ec3d15490ad09043b562d2ad6a33a8e353254dfbad7f315aeb16e27df07ec"
+          },
+          "update_chain": {
+            "valid": true,
+            "records": 300,
+            "final_hash": "bd3f10b1249b819af2cbc018a893674400dee53f65bfe3f1a2dca1dde07e4f73"
+          },
+          "environment_replay": {
+            "valid": true,
+            "transition_count": 146613,
+            "episode_count": 300,
+            "reconstructed_reward_sum": -146591.0,
+            "replay_method": "Gymnasium reset seed + recorded action, exact float32 state/reward/terminated/truncated comparison"
+          }
+        },
+        "grammar_audit_only": {
+          "trace_chain": {
+            "valid": true,
+            "records": 146613,
+            "final_hash": "e49ec3d15490ad09043b562d2ad6a33a8e353254dfbad7f315aeb16e27df07ec"
+          },
+          "update_chain": {
+            "valid": true,
+            "records": 300,
+            "final_hash": "bd3f10b1249b819af2cbc018a893674400dee53f65bfe3f1a2dca1dde07e4f73"
+          }
+        },
+        "grammar_constrained": {
+          "trace_chain": {
+            "valid": true,
+            "records": 146753,
+            "final_hash": "2178b5fbb52169d54e8018218e8279ff0c6a4d8372aa49d36ad0107967ff1d5b"
+          },
+          "update_chain": {
+            "valid": true,
+            "records": 300,
+            "final_hash": "bcc086a32b4b2bba1fb2a8f4091a46757c7ebaa1f339ce86c5eb0c655cc56101"
+          },
+          "environment_replay": {
+            "valid": true,
+            "transition_count": 146753,
+            "episode_count": 300,
+            "reconstructed_reward_sum": -146733.0,
+            "replay_method": "Gymnasium reset seed + recorded action, exact float32 state/reward/terminated/truncated comparison"
+          },
+          "rule_snapshot_audit": {
+            "valid": true,
+            "registry_sha256": "92ac4ec478bbd5519496b2690352d67b40b7dfe889b836efc6574b592e0ee1f7",
+            "snapshot_count": 216,
+            "referenced_snapshot_count": 216,
+            "decision_references": 114004,
+            "all_reference_hashes_and_rule_state_actions_verified": true
+          }
+        }
+      }
+    },
+    {
+      "seed": 101,
+      "baseline_audit_only_exact_equivalence": true,
+      "runs": {
+        "baseline": {
+          "trace_chain": {
+            "valid": true,
+            "records": 89411,
+            "final_hash": "bc3c970b333662e4ca6261112be2c9bf3c2b8e29f3709d72468b055773ac851f"
+          },
+          "update_chain": {
+            "valid": true,
+            "records": 300,
+            "final_hash": "26ce4d520469f9ffc31b83623e4f1a0aaf9c30d715c9e5264e21489dceb20015"
+          },
+          "environment_replay": {
+            "valid": true,
+            "transition_count": 89411,
+            "episode_count": 300,
+            "reconstructed_reward_sum": -89211.0,
+            "replay_method": "Gymnasium reset seed + recorded action, exact float32 state/reward/terminated/truncated comparison"
+          }
+        },
+        "grammar_audit_only": {
+          "trace_chain": {
+            "valid": true,
+            "records": 89411,
+            "final_hash": "bc3c970b333662e4ca6261112be2c9bf3c2b8e29f3709d72468b055773ac851f"
+          },
+          "update_chain": {
+            "valid": true,
+            "records": 300,
+            "final_hash": "26ce4d520469f9ffc31b83623e4f1a0aaf9c30d715c9e5264e21489dceb20015"
+          }
+        },
+        "grammar_constrained": {
+          "trace_chain": {
+            "valid": true,
+            "records": 91169,
+            "final_hash": "898c09a6dd297c16b27908421f9c0bd69a1cbd87eb8b52bfeffd93501ef4b73b"
+          },
+          "update_chain": {
+            "valid": true,
+            "records": 300,
+            "final_hash": "6ce643e6243ac24ec193b0dacd1c2369da7a7a641a5e6581aff7943222e55ed1"
+          },
+          "environment_replay": {
+            "valid": true,
+            "transition_count": 91169,
+            "episode_count": 300,
+            "reconstructed_reward_sum": -90963.0,
+            "replay_method": "Gymnasium reset seed + recorded action, exact float32 state/reward/terminated/truncated comparison"
+          },
+          "rule_snapshot_audit": {
+            "valid": true,
+            "registry_sha256": "3d6a35db5cf7928d380183daee2a98e396bc1f54ed8285ba2fef37f96dcf0860",
+            "snapshot_count": 517,
+            "referenced_snapshot_count": 517,
+            "decision_references": 57239,
+            "all_reference_hashes_and_rule_state_actions_verified": true
+          }
+        }
+      }
+    },
+    {
+      "seed": 149,
+      "baseline_audit_only_exact_equivalence": true,
+      "runs": {
+        "baseline": {
+          "trace_chain": {
+            "valid": true,
+            "records": 124592,
+            "final_hash": "797dd8c8f3512b5c623a50ef3e0075608f27f8de80eb8d7b5a941e159ec2e580"
+          },
+          "update_chain": {
+            "valid": true,
+            "records": 300,
+            "final_hash": "b950e7ad0a284387a9ae635058ce416e8bd4e309d0ba14f340e29b749aa174e2"
+          },
+          "environment_replay": {
+            "valid": true,
+            "transition_count": 124592,
+            "episode_count": 300,
+            "reconstructed_reward_sum": -124511.0,
+            "replay_method": "Gymnasium reset seed + recorded action, exact float32 state/reward/terminated/truncated comparison"
+          }
+        },
+        "grammar_audit_only": {
+          "trace_chain": {
+            "valid": true,
+            "records": 124592,
+            "final_hash": "797dd8c8f3512b5c623a50ef3e0075608f27f8de80eb8d7b5a941e159ec2e580"
+          },
+          "update_chain": {
+            "valid": true,
+            "records": 300,
+            "final_hash": "b950e7ad0a284387a9ae635058ce416e8bd4e309d0ba14f340e29b749aa174e2"
+          }
+        },
+        "grammar_constrained": {
+          "trace_chain": {
+            "valid": true,
+            "records": 117303,
+            "final_hash": "c9ac537dc8ea244c125b61f5f7e1c8f222c82bce9be11cf52a18e7027ab46694"
+          },
+          "update_chain": {
+            "valid": true,
+            "records": 300,
+            "final_hash": "80b7102c30824092cba4016259e2185c9b4e1fa59fb90ca06adb5c64108beed1"
+          },
+          "environment_replay": {
+            "valid": true,
+            "transition_count": 117303,
+            "episode_count": 300,
+            "reconstructed_reward_sum": -117207.0,
+            "replay_method": "Gymnasium reset seed + recorded action, exact float32 state/reward/terminated/truncated comparison"
+          },
+          "rule_snapshot_audit": {
+            "valid": true,
+            "registry_sha256": "f436002be125688dc39445b21011804d0ed7bf12afb7d148ce0b3e5a010f85ee",
+            "snapshot_count": 184,
+            "referenced_snapshot_count": 184,
+            "decision_references": 75298,
+            "all_reference_hashes_and_rule_state_actions_verified": true
+          }
+        }
+      }
+    },
+    {
+      "seed": 211,
+      "baseline_audit_only_exact_equivalence": true,
+      "runs": {
+        "baseline": {
+          "trace_chain": {
+            "valid": true,
+            "records": 57965,
+            "final_hash": "979d39996c3a8db34bf4f1435af15496f85ce299cd4e724a34b83bbd47f94196"
+          },
+          "update_chain": {
+            "valid": true,
+            "records": 300,
+            "final_hash": "2e96cc04f87d92a3b783e4148ac14901bd5fddb96599e7de09905498313ef374"
+          },
+          "environment_replay": {
+            "valid": true,
+            "transition_count": 57965,
+            "episode_count": 300,
+            "reconstructed_reward_sum": -57684.0,
+            "replay_method": "Gymnasium reset seed + recorded action, exact float32 state/reward/terminated/truncated comparison"
+          }
+        },
+        "grammar_audit_only": {
+          "trace_chain": {
+            "valid": true,
+            "records": 57965,
+            "final_hash": "979d39996c3a8db34bf4f1435af15496f85ce299cd4e724a34b83bbd47f94196"
+          },
+          "update_chain": {
+            "valid": true,
+            "records": 300,
+            "final_hash": "2e96cc04f87d92a3b783e4148ac14901bd5fddb96599e7de09905498313ef374"
+          }
+        },
+        "grammar_constrained": {
+          "trace_chain": {
+            "valid": true,
+            "records": 75979,
+            "final_hash": "831c4df6b2e5d29ba8d93f9e81d8ca9d6ed49f8250bf4fc9b0ac864d00b76220"
+          },
+          "update_chain": {
+            "valid": true,
+            "records": 300,
+            "final_hash": "994382a860d10aa5fc95c0e829cffb94b0d66fe89a25f4723085ddadd98dbedc"
+          },
+          "environment_replay": {
+            "valid": true,
+            "transition_count": 75979,
+            "episode_count": 300,
+            "reconstructed_reward_sum": -75778.0,
+            "replay_method": "Gymnasium reset seed + recorded action, exact float32 state/reward/terminated/truncated comparison"
+          },
+          "rule_snapshot_audit": {
+            "valid": true,
+            "registry_sha256": "618bb36cbe985d8dea615b6d0ed4a8d588155357790a360b6d320eb9046aa54c",
+            "snapshot_count": 634,
+            "referenced_snapshot_count": 634,
+            "decision_references": 60941,
+            "all_reference_hashes_and_rule_state_actions_verified": true
+          }
+        }
+      }
+    },
+    {
+      "seed": 307,
+      "baseline_audit_only_exact_equivalence": true,
+      "runs": {
+        "baseline": {
+          "trace_chain": {
+            "valid": true,
+            "records": 88584,
+            "final_hash": "555f49d3cdb06ead8c6e7f65aa4c8fef70b11321b3415a7e706783cb654a8d00"
+          },
+          "update_chain": {
+            "valid": true,
+            "records": 300,
+            "final_hash": "cb177d93e17d82d1e8ce9a45adf28a921874aba57e3ab86f9547b6d51071f0aa"
+          },
+          "environment_replay": {
+            "valid": true,
+            "transition_count": 88584,
+            "episode_count": 300,
+            "reconstructed_reward_sum": -88337.0,
+            "replay_method": "Gymnasium reset seed + recorded action, exact float32 state/reward/terminated/truncated comparison"
+          }
+        },
+        "grammar_audit_only": {
+          "trace_chain": {
+            "valid": true,
+            "records": 88584,
+            "final_hash": "555f49d3cdb06ead8c6e7f65aa4c8fef70b11321b3415a7e706783cb654a8d00"
+          },
+          "update_chain": {
+            "valid": true,
+            "records": 300,
+            "final_hash": "cb177d93e17d82d1e8ce9a45adf28a921874aba57e3ab86f9547b6d51071f0aa"
+          }
+        },
+        "grammar_constrained": {
+          "trace_chain": {
+            "valid": true,
+            "records": 140072,
+            "final_hash": "a3336ca668bdc04e25c43dafbee781559a6c22bb53dc3a56862f88b4ad268893"
+          },
+          "update_chain": {
+            "valid": true,
+            "records": 300,
+            "final_hash": "1ae56d3ff3d3ad366d3e33341ac274a9b9bed0bae951745f855d64f99b8df731"
+          },
+          "environment_replay": {
+            "valid": true,
+            "transition_count": 140072,
+            "episode_count": 300,
+            "reconstructed_reward_sum": -140028.0,
+            "replay_method": "Gymnasium reset seed + recorded action, exact float32 state/reward/terminated/truncated comparison"
+          },
+          "rule_snapshot_audit": {
+            "valid": true,
+            "registry_sha256": "44c166303026adc227b30ff80237a4d607fe46b266c132243065a1943d4788a9",
+            "snapshot_count": 166,
+            "referenced_snapshot_count": 166,
+            "decision_references": 107666,
+            "all_reference_hashes_and_rule_state_actions_verified": true
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+# Local Python environments and caches
+.venv/
+**/.venv/
+__pycache__/
+**/__pycache__/
+.cache/
+**/.cache/
+.tmp/
+**/.tmp/
+/aim_auditability/
+
+# ---------------------------------------------------------------------------
+# Dual-track release (see PUBLICATION_MANIFEST.md)
+#
+#   Track 1 - this Git repository: source code, compact result JSON, paper
+#             sources, and reviewer bundles. Small enough for GitHub.
+#   Track 2 - archived dataset: the full runs/ trace and checkpoint tree
+#             (~4.7 GB, with individual files above GitHub's 100 MB limit).
+#             Published separately as a Zenodo/figshare archive; the DOI is
+#             recorded in README.md under "Dataset availability".
+#
+# runs/ is therefore excluded here. It is preserved locally and is fully
+# documented by results/RESULTS_MANIFEST.json, which records the source path,
+# byte count, and SHA-256 of every compact review copy.
+# ---------------------------------------------------------------------------
+/runs/
+
+# Research-only upstream clones are not vendored into this repository.
+/references/

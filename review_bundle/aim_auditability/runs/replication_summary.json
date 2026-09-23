@@ -1,0 +1,220 @@
+{
+  "claim_scope": "controlled private-parity AIM communication game only",
+  "seed_count": 6,
+  "runs": [
+    {
+      "seed": 0,
+      "run_dir": "C:\\AI\\RL\\aim_auditability\\runs\\private_target_extended\\seed-0_20260922T020620Z",
+      "episodes": 100000,
+      "optimizer_updates": 12500,
+      "training_sampled_accuracy": 0.94334,
+      "sampled_sender_eval_accuracy": 0.9978805780410767,
+      "shuffled_message_accuracy": 0.5218409299850464,
+      "no_message_accuracy": 0.5,
+      "whole_message_delta_P_B_C": 0.9957610964775085,
+      "whole_message_bootstrap_95pct_ci": [
+        0.9910429120063782,
+        0.9989126920700073
+      ],
+      "active_token_position": 1,
+      "active_token_MI_bits": 0.984739257808901,
+      "matched_other_token_overlap_mass": 0.9194835424423218,
+      "matched_token_delta_P_B_C": 0.9974054617341608,
+      "matched_even_P_B_C": 0.9983912706375122,
+      "matched_odd_P_B_C": 0.0009858089033514261,
+      "symbol_trace_audit": {
+        "valid": true,
+        "record_count": 100000,
+        "correct_count": 94334,
+        "accuracy": 0.94334,
+        "mean_reward": 0.88668,
+        "final_record_hash": "952dd78f765f85227dd50140723a0cfd84b70414cca0e3e4bb6d872f88fbcdc5",
+        "validator": "standalone-python-stdlib"
+      }
+    },
+    {
+      "seed": 1,
+      "run_dir": "C:\\AI\\RL\\aim_auditability\\runs\\private_target_replicates\\seed-1_20260922T021314Z",
+      "episodes": 100000,
+      "optimizer_updates": 12500,
+      "training_sampled_accuracy": 0.95869,
+      "sampled_sender_eval_accuracy": 0.9988697171211243,
+      "shuffled_message_accuracy": 0.5025358200073242,
+      "no_message_accuracy": 0.5,
+      "whole_message_delta_P_B_C": 0.9977393746376038,
+      "whole_message_bootstrap_95pct_ci": [
+        0.9965627789497375,
+        0.9987210035324097
+      ],
+      "active_token_position": 1,
+      "active_token_MI_bits": 0.9915892580822646,
+      "matched_other_token_overlap_mass": 0.955092191696167,
+      "matched_token_delta_P_B_C": 0.998246630653739,
+      "matched_even_P_B_C": 0.9995487928390503,
+      "matched_odd_P_B_C": 0.0013021621853113174,
+      "symbol_trace_audit": {
+        "valid": true,
+        "record_count": 100000,
+        "correct_count": 95869,
+        "accuracy": 0.95869,
+        "mean_reward": 0.91738,
+        "final_record_hash": "c81c89be4f9fa9d1bf46c73770a153f5a9daebbe2240697fc847ce1702d38993",
+        "validator": "standalone-python-stdlib"
+      }
+    },
+    {
+      "seed": 2,
+      "run_dir": "C:\\AI\\RL\\aim_auditability\\runs\\private_target_replicates\\seed-2_20260922T021445Z",
+      "episodes": 100000,
+      "optimizer_updates": 12500,
+      "training_sampled_accuracy": 0.97076,
+      "sampled_sender_eval_accuracy": 0.9992281198501587,
+      "shuffled_message_accuracy": 0.5067352652549744,
+      "no_message_accuracy": 0.5,
+      "whole_message_delta_P_B_C": 0.9984564185142517,
+      "whole_message_bootstrap_95pct_ci": [
+        0.9976820349693298,
+        0.9990444183349609
+      ],
+      "active_token_position": 0,
+      "active_token_MI_bits": 0.9964316162449931,
+      "matched_other_token_overlap_mass": 0.9470970630645752,
+      "matched_token_delta_P_B_C": 0.9986395747837378,
+      "matched_even_P_B_C": 0.9987945556640625,
+      "matched_odd_P_B_C": 0.0001549808803247288,
+      "symbol_trace_audit": {
+        "valid": true,
+        "record_count": 100000,
+        "correct_count": 97076,
+        "accuracy": 0.97076,
+        "mean_reward": 0.94152,
+        "final_record_hash": "aa59ff6c91556e90670abf7d5e8316112e0a65c64daa46432aa0ed374f96025b",
+        "validator": "standalone-python-stdlib"
+      }
+    },
+    {
+      "seed": 3,
+      "run_dir": "C:\\AI\\RL\\aim_auditability\\runs\\private_target_replicates\\seed-3_20260922T021713Z",
+      "episodes": 100000,
+      "optimizer_updates": 12500,
+      "training_sampled_accuracy": 0.9688,
+      "sampled_sender_eval_accuracy": 0.9980298280715942,
+      "shuffled_message_accuracy": 0.4958038330078125,
+      "no_message_accuracy": 0.5,
+      "whole_message_delta_P_B_C": 0.9960594773292542,
+      "whole_message_bootstrap_95pct_ci": [
+        0.9943012595176697,
+        0.9976192116737366
+      ],
+      "active_token_position": 1,
+      "active_token_MI_bits": 0.9940861104744735,
+      "matched_other_token_overlap_mass": 0.9085249304771423,
+      "matched_token_delta_P_B_C": 0.9969864823506214,
+      "matched_even_P_B_C": 0.9972702264785767,
+      "matched_odd_P_B_C": 0.0002837441279552877,
+      "symbol_trace_audit": {
+        "valid": true,
+        "record_count": 100000,
+        "correct_count": 96880,
+        "accuracy": 0.9688,
+        "mean_reward": 0.9376,
+        "final_record_hash": "8997f5e2b30a9233d6b3279cebfeb13264756d9c11f0262a1a2a7543e20dac11",
+        "validator": "standalone-python-stdlib"
+      }
+    },
+    {
+      "seed": 4,
+      "run_dir": "C:\\AI\\RL\\aim_auditability\\runs\\private_target_replicates\\seed-4_20260922T021831Z",
+      "episodes": 100000,
+      "optimizer_updates": 12500,
+      "training_sampled_accuracy": 0.96743,
+      "sampled_sender_eval_accuracy": 0.9998270273208618,
+      "shuffled_message_accuracy": 0.5020453333854675,
+      "no_message_accuracy": 0.5,
+      "whole_message_delta_P_B_C": 0.9996538758277893,
+      "whole_message_bootstrap_95pct_ci": [
+        0.9992577433586121,
+        0.9998569488525391
+      ],
+      "active_token_position": 0,
+      "active_token_MI_bits": 0.9986557847641805,
+      "matched_other_token_overlap_mass": 0.9728307723999023,
+      "matched_token_delta_P_B_C": 0.9996852360491175,
+      "matched_even_P_B_C": 0.9998740553855896,
+      "matched_odd_P_B_C": 0.00018881933647207916,
+      "symbol_trace_audit": {
+        "valid": true,
+        "record_count": 100000,
+        "correct_count": 96743,
+        "accuracy": 0.96743,
+        "mean_reward": 0.93486,
+        "final_record_hash": "8d52e4352e37fd4addde5bbea907b21fb8cec99777fe4f4a409ddf345a00fec8",
+        "validator": "standalone-python-stdlib"
+      }
+    },
+    {
+      "seed": 5,
+      "run_dir": "C:\\AI\\RL\\aim_auditability\\runs\\private_target_replicates\\seed-5_20260922T022011Z",
+      "episodes": 100000,
+      "optimizer_updates": 12500,
+      "training_sampled_accuracy": 0.96698,
+      "sampled_sender_eval_accuracy": 0.9997001886367798,
+      "shuffled_message_accuracy": 0.49078911542892456,
+      "no_message_accuracy": 0.5,
+      "whole_message_delta_P_B_C": 0.9994000792503357,
+      "whole_message_bootstrap_95pct_ci": [
+        0.9992274641990662,
+        0.9995425939559937
+      ],
+      "active_token_position": 1,
+      "active_token_MI_bits": 1.0,
+      "matched_other_token_overlap_mass": 0.9554271697998047,
+      "matched_token_delta_P_B_C": 0.9992327253803523,
+      "matched_even_P_B_C": 0.9992380142211914,
+      "matched_odd_P_B_C": 5.2888408390572295e-06,
+      "symbol_trace_audit": {
+        "valid": true,
+        "record_count": 100000,
+        "correct_count": 96698,
+        "accuracy": 0.96698,
+        "mean_reward": 0.93396,
+        "final_record_hash": "f50e2a0439461ab44b804d9b8ab3483e266b07f5a8867f3438a880d14bf788e9",
+        "validator": "standalone-python-stdlib"
+      }
+    }
+  ],
+  "aggregate_metrics": {
+    "sampled_sender_eval_accuracy": {
+      "mean_across_seeds": 0.9989225765069326,
+      "minimum": 0.9978805780410767,
+      "maximum": 0.9998270273208618
+    },
+    "shuffled_message_accuracy": {
+      "mean_across_seeds": 0.5032917161782583,
+      "minimum": 0.49078911542892456,
+      "maximum": 0.5218409299850464
+    },
+    "no_message_accuracy": {
+      "mean_across_seeds": 0.5,
+      "minimum": 0.5,
+      "maximum": 0.5
+    },
+    "whole_message_delta_P_B_C": {
+      "mean_across_seeds": 0.9978450536727905,
+      "minimum": 0.9957610964775085,
+      "maximum": 0.9996538758277893
+    },
+    "matched_other_token_overlap_mass": {
+      "mean_across_seeds": 0.9430759449799856,
+      "minimum": 0.9085249304771423,
+      "maximum": 0.9728307723999023
+    },
+    "matched_token_delta_P_B_C": {
+      "mean_across_seeds": 0.9983660184919548,
+      "minimum": 0.9969864823506214,
+      "maximum": 0.9996852360491175
+    }
+  },
+  "all_seeds_pass_descriptive_gate": true,
+  "interpretation_limit": "The symbol trace reconstructs recorded decisions and rewards; it does not reconstruct weights, gradients, optimizer updates, or the full training computation. Causal symbol evidence is for this designed task and does not establish unrestricted RL auditability or human-readable semantics."
+}

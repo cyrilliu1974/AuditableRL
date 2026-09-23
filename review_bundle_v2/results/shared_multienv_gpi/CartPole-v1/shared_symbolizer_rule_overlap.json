@@ -1,0 +1,1086 @@
+{
+  "environment": "CartPole-v1",
+  "confidence_threshold": 0.7,
+  "support_threshold": 8,
+  "shared_symbolizer_sha256": "1e97ef1ffb8bebf0bdad2785c900d749e708d705f339c5f7eaec975415fba8cc",
+  "shared_symbolizer_verified_across_seeds": true,
+  "seed_11_vs_29": {
+    "seed_11_run": "runs\\shared_multienv_gpi\\CartPole-v1\\grammar_audit_only\\seed-11_20260922T033619Z",
+    "seed_29_run": "runs\\shared_multienv_gpi\\CartPole-v1\\grammar_audit_only\\seed-29_20260922T033755Z",
+    "left_rule_count": 109,
+    "right_rule_count": 100,
+    "exact_state_action_intersection": 77,
+    "exact_state_action_union": 132,
+    "state_action_jaccard": 0.5833333333333334,
+    "condition_intersection": 77,
+    "condition_union": 132,
+    "condition_jaccard": 0.5833333333333334,
+    "shared_condition_action_conflict_count": 0,
+    "shared_conditions_same_action_count": 77,
+    "shared_exact_rules": [
+      {
+        "condition": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "action": 0
+      },
+      {
+        "condition": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "action": 0
+      },
+      {
+        "condition": [
+          0,
+          0,
+          0,
+          3
+        ],
+        "action": 1
+      },
+      {
+        "condition": [
+          0,
+          0,
+          1,
+          0
+        ],
+        "action": 0
+      },
+      {
+        "condition": [
+          0,
+          0,
+          1,
+          1
+        ],
+        "action": 0
+      },
+      {
+        "condition": [
+          0,
+          0,
+          1,
+          3
+        ],
+        "action": 1
+      },
+      {
+        "condition": [
+          0,
+          0,
+          2,
+          1
+        ],
+        "action": 0
+      },
+      {
+        "condition": [
+          0,
+          0,
+          2,
+          3
+        ],
+        "action": 1
+      },
+      {
+        "condition": [
+          0,
+          0,
+          3,
+          3
+        ],
+        "action": 1
+      },
+      {
+        "condition": [
+          0,
+          1,
+          0,
+          0
+        ],
+        "action": 0
+      },
+      {
+        "condition": [
+          0,
+          1,
+          0,
+          1
+        ],
+        "action": 0
+      },
+      {
+        "condition": [
+          0,
+          1,
+          1,
+          0
+        ],
+        "action": 0
+      },
+      {
+        "condition": [
+          0,
+          1,
+          1,
+          1
+        ],
+        "action": 0
+      },
+      {
+        "condition": [
+          0,
+          1,
+          2,
+          1
+        ],
+        "action": 0
+      },
+      {
+        "condition": [
+          0,
+          1,
+          2,
+          2
+        ],
+        "action": 1
+      },
+      {
+        "condition": [
+          0,
+          1,
+          3,
+          2
+        ],
+        "action": 1
+      },
+      {
+        "condition": [
+          0,
+          1,
+          3,
+          3
+        ],
+        "action": 1
+      },
+      {
+        "condition": [
+          0,
+          2,
+          0,
+          0
+        ],
+        "action": 0
+      },
+      {
+        "condition": [
+          0,
+          2,
+          0,
+          1
+        ],
+        "action": 0
+      },
+      {
+        "condition": [
+          0,
+          2,
+          1,
+          0
+        ],
+        "action": 0
+      },
+      {
+        "condition": [
+          0,
+          2,
+          1,
+          2
+        ],
+        "action": 1
+      },
+      {
+        "condition": [
+          0,
+          2,
+          2,
+          0
+        ],
+        "action": 0
+      },
+      {
+        "condition": [
+          0,
+          2,
+          3,
+          0
+        ],
+        "action": 0
+      },
+      {
+        "condition": [
+          0,
+          2,
+          3,
+          2
+        ],
+        "action": 1
+      },
+      {
+        "condition": [
+          0,
+          3,
+          0,
+          0
+        ],
+        "action": 0
+      },
+      {
+        "condition": [
+          0,
+          3,
+          0,
+          1
+        ],
+        "action": 0
+      },
+      {
+        "condition": [
+          0,
+          3,
+          1,
+          0
+        ],
+        "action": 0
+      },
+      {
+        "condition": [
+          0,
+          3,
+          1,
+          2
+        ],
+        "action": 1
+      },
+      {
+        "condition": [
+          0,
+          3,
+          2,
+          0
+        ],
+        "action": 0
+      },
+      {
+        "condition": [
+          0,
+          3,
+          2,
+          2
+        ],
+        "action": 1
+      },
+      {
+        "condition": [
+          0,
+          3,
+          3,
+          0
+        ],
+        "action": 0
+      },
+      {
+        "condition": [
+          0,
+          3,
+          3,
+          2
+        ],
+        "action": 1
+      },
+      {
+        "condition": [
+          1,
+          0,
+          0,
+          3
+        ],
+        "action": 1
+      },
+      {
+        "condition": [
+          1,
+          0,
+          1,
+          2
+        ],
+        "action": 1
+      },
+      {
+        "condition": [
+          1,
+          0,
+          1,
+          3
+        ],
+        "action": 1
+      },
+      {
+        "condition": [
+          1,
+          0,
+          2,
+          3
+        ],
+        "action": 1
+      },
+      {
+        "condition": [
+          1,
+          0,
+          3,
+          3
+        ],
+        "action": 1
+      },
+      {
+        "condition": [
+          1,
+          1,
+          0,
+          1
+        ],
+        "action": 0
+      },
+      {
+        "condition": [
+          1,
+          1,
+          3,
+          3
+        ],
+        "action": 1
+      },
+      {
+        "condition": [
+          1,
+          2,
+          0,
+          0
+        ],
+        "action": 0
+      },
+      {
+        "condition": [
+          1,
+          2,
+          0,
+          1
+        ],
+        "action": 0
+      },
+      {
+        "condition": [
+          1,
+          2,
+          1,
+          0
+        ],
+        "action": 0
+      },
+      {
+        "condition": [
+          2,
+          0,
+          0,
+          1
+        ],
+        "action": 0
+      },
+      {
+        "condition": [
+          2,
+          0,
+          0,
+          3
+        ],
+        "action": 1
+      },
+      {
+        "condition": [
+          2,
+          0,
+          1,
+          3
+        ],
+        "action": 1
+      },
+      {
+        "condition": [
+          2,
+          0,
+          2,
+          3
+        ],
+        "action": 1
+      },
+      {
+        "condition": [
+          2,
+          1,
+          2,
+          2
+        ],
+        "action": 1
+      },
+      {
+        "condition": [
+          2,
+          1,
+          3,
+          2
+        ],
+        "action": 1
+      },
+      {
+        "condition": [
+          2,
+          1,
+          3,
+          3
+        ],
+        "action": 1
+      },
+      {
+        "condition": [
+          2,
+          2,
+          0,
+          0
+        ],
+        "action": 0
+      },
+      {
+        "condition": [
+          2,
+          2,
+          0,
+          1
+        ],
+        "action": 0
+      },
+      {
+        "condition": [
+          2,
+          2,
+          2,
+          2
+        ],
+        "action": 1
+      },
+      {
+        "condition": [
+          2,
+          2,
+          3,
+          2
+        ],
+        "action": 1
+      },
+      {
+        "condition": [
+          2,
+          3,
+          2,
+          0
+        ],
+        "action": 0
+      },
+      {
+        "condition": [
+          2,
+          3,
+          3,
+          2
+        ],
+        "action": 1
+      },
+      {
+        "condition": [
+          3,
+          0,
+          0,
+          1
+        ],
+        "action": 0
+      },
+      {
+        "condition": [
+          3,
+          0,
+          0,
+          3
+        ],
+        "action": 1
+      },
+      {
+        "condition": [
+          3,
+          0,
+          1,
+          1
+        ],
+        "action": 0
+      },
+      {
+        "condition": [
+          3,
+          0,
+          1,
+          3
+        ],
+        "action": 1
+      },
+      {
+        "condition": [
+          3,
+          0,
+          2,
+          3
+        ],
+        "action": 1
+      },
+      {
+        "condition": [
+          3,
+          0,
+          3,
+          3
+        ],
+        "action": 1
+      },
+      {
+        "condition": [
+          3,
+          1,
+          0,
+          3
+        ],
+        "action": 1
+      },
+      {
+        "condition": [
+          3,
+          1,
+          1,
+          3
+        ],
+        "action": 1
+      },
+      {
+        "condition": [
+          3,
+          1,
+          2,
+          3
+        ],
+        "action": 1
+      },
+      {
+        "condition": [
+          3,
+          1,
+          3,
+          2
+        ],
+        "action": 1
+      },
+      {
+        "condition": [
+          3,
+          1,
+          3,
+          3
+        ],
+        "action": 1
+      },
+      {
+        "condition": [
+          3,
+          2,
+          0,
+          1
+        ],
+        "action": 0
+      },
+      {
+        "condition": [
+          3,
+          2,
+          1,
+          3
+        ],
+        "action": 1
+      },
+      {
+        "condition": [
+          3,
+          2,
+          2,
+          3
+        ],
+        "action": 1
+      },
+      {
+        "condition": [
+          3,
+          2,
+          3,
+          2
+        ],
+        "action": 1
+      },
+      {
+        "condition": [
+          3,
+          2,
+          3,
+          3
+        ],
+        "action": 1
+      },
+      {
+        "condition": [
+          3,
+          3,
+          0,
+          1
+        ],
+        "action": 0
+      },
+      {
+        "condition": [
+          3,
+          3,
+          1,
+          0
+        ],
+        "action": 0
+      },
+      {
+        "condition": [
+          3,
+          3,
+          2,
+          0
+        ],
+        "action": 0
+      },
+      {
+        "condition": [
+          3,
+          3,
+          2,
+          2
+        ],
+        "action": 1
+      },
+      {
+        "condition": [
+          3,
+          3,
+          3,
+          0
+        ],
+        "action": 0
+      },
+      {
+        "condition": [
+          3,
+          3,
+          3,
+          3
+        ],
+        "action": 1
+      }
+    ],
+    "conflicting_conditions": [],
+    "cross_application_on_training_state_occupancy": {
+      "seed_11_training_states": {
+        "states": 97646,
+        "left_rule_covered": 43562,
+        "right_rule_covered": 43734,
+        "both_rules_covered": 28816,
+        "same_rule_action": 28816,
+        "different_rule_action": 0,
+        "left_rule_coverage": 0.4461217049341499,
+        "right_rule_coverage": 0.44788316981750403,
+        "joint_rule_coverage": 0.2951068144112406,
+        "action_agreement_when_both_rules_cover": 1.0,
+        "state_source_role": "training trajectory state occupancy; not an independent held-out policy agreement test"
+      },
+      "seed_29_training_states": {
+        "states": 37781,
+        "left_rule_covered": 18787,
+        "right_rule_covered": 15961,
+        "both_rules_covered": 13173,
+        "same_rule_action": 13173,
+        "different_rule_action": 0,
+        "left_rule_coverage": 0.497260527778513,
+        "right_rule_coverage": 0.4224610253831291,
+        "joint_rule_coverage": 0.34866731955215585,
+        "action_agreement_when_both_rules_cover": 1.0,
+        "state_source_role": "training trajectory state occupancy; not an independent held-out policy agreement test"
+      }
+    }
+  },
+  "all_pairwise_seed_overlaps": [
+    {
+      "left_seed": 11,
+      "right_seed": 29,
+      "exact_state_action_intersection": 77,
+      "exact_state_action_union": 132,
+      "state_action_jaccard": 0.5833333333333334,
+      "condition_intersection": 77,
+      "condition_union": 132,
+      "condition_jaccard": 0.5833333333333334,
+      "shared_condition_action_conflict_count": 0,
+      "shared_conditions_same_action_count": 77
+    },
+    {
+      "left_seed": 11,
+      "right_seed": 43,
+      "exact_state_action_intersection": 99,
+      "exact_state_action_union": 155,
+      "state_action_jaccard": 0.6387096774193548,
+      "condition_intersection": 99,
+      "condition_union": 155,
+      "condition_jaccard": 0.6387096774193548,
+      "shared_condition_action_conflict_count": 0,
+      "shared_conditions_same_action_count": 99
+    },
+    {
+      "left_seed": 11,
+      "right_seed": 71,
+      "exact_state_action_intersection": 69,
+      "exact_state_action_union": 141,
+      "state_action_jaccard": 0.48936170212765956,
+      "condition_intersection": 69,
+      "condition_union": 141,
+      "condition_jaccard": 0.48936170212765956,
+      "shared_condition_action_conflict_count": 0,
+      "shared_conditions_same_action_count": 69
+    },
+    {
+      "left_seed": 11,
+      "right_seed": 101,
+      "exact_state_action_intersection": 90,
+      "exact_state_action_union": 150,
+      "state_action_jaccard": 0.6,
+      "condition_intersection": 90,
+      "condition_union": 150,
+      "condition_jaccard": 0.6,
+      "shared_condition_action_conflict_count": 0,
+      "shared_conditions_same_action_count": 90
+    },
+    {
+      "left_seed": 11,
+      "right_seed": 149,
+      "exact_state_action_intersection": 79,
+      "exact_state_action_union": 130,
+      "state_action_jaccard": 0.6076923076923076,
+      "condition_intersection": 79,
+      "condition_union": 130,
+      "condition_jaccard": 0.6076923076923076,
+      "shared_condition_action_conflict_count": 0,
+      "shared_conditions_same_action_count": 79
+    },
+    {
+      "left_seed": 11,
+      "right_seed": 211,
+      "exact_state_action_intersection": 79,
+      "exact_state_action_union": 138,
+      "state_action_jaccard": 0.572463768115942,
+      "condition_intersection": 79,
+      "condition_union": 138,
+      "condition_jaccard": 0.572463768115942,
+      "shared_condition_action_conflict_count": 0,
+      "shared_conditions_same_action_count": 79
+    },
+    {
+      "left_seed": 11,
+      "right_seed": 307,
+      "exact_state_action_intersection": 90,
+      "exact_state_action_union": 146,
+      "state_action_jaccard": 0.6164383561643836,
+      "condition_intersection": 90,
+      "condition_union": 146,
+      "condition_jaccard": 0.6164383561643836,
+      "shared_condition_action_conflict_count": 0,
+      "shared_conditions_same_action_count": 90
+    },
+    {
+      "left_seed": 29,
+      "right_seed": 43,
+      "exact_state_action_intersection": 89,
+      "exact_state_action_union": 156,
+      "state_action_jaccard": 0.5705128205128205,
+      "condition_intersection": 89,
+      "condition_union": 156,
+      "condition_jaccard": 0.5705128205128205,
+      "shared_condition_action_conflict_count": 0,
+      "shared_conditions_same_action_count": 89
+    },
+    {
+      "left_seed": 29,
+      "right_seed": 71,
+      "exact_state_action_intersection": 62,
+      "exact_state_action_union": 139,
+      "state_action_jaccard": 0.4460431654676259,
+      "condition_intersection": 62,
+      "condition_union": 139,
+      "condition_jaccard": 0.4460431654676259,
+      "shared_condition_action_conflict_count": 0,
+      "shared_conditions_same_action_count": 62
+    },
+    {
+      "left_seed": 29,
+      "right_seed": 101,
+      "exact_state_action_intersection": 82,
+      "exact_state_action_union": 149,
+      "state_action_jaccard": 0.5503355704697986,
+      "condition_intersection": 82,
+      "condition_union": 149,
+      "condition_jaccard": 0.5503355704697986,
+      "shared_condition_action_conflict_count": 0,
+      "shared_conditions_same_action_count": 82
+    },
+    {
+      "left_seed": 29,
+      "right_seed": 149,
+      "exact_state_action_intersection": 74,
+      "exact_state_action_union": 126,
+      "state_action_jaccard": 0.5873015873015873,
+      "condition_intersection": 74,
+      "condition_union": 126,
+      "condition_jaccard": 0.5873015873015873,
+      "shared_condition_action_conflict_count": 0,
+      "shared_conditions_same_action_count": 74
+    },
+    {
+      "left_seed": 29,
+      "right_seed": 211,
+      "exact_state_action_intersection": 61,
+      "exact_state_action_union": 147,
+      "state_action_jaccard": 0.41496598639455784,
+      "condition_intersection": 61,
+      "condition_union": 147,
+      "condition_jaccard": 0.41496598639455784,
+      "shared_condition_action_conflict_count": 0,
+      "shared_conditions_same_action_count": 61
+    },
+    {
+      "left_seed": 29,
+      "right_seed": 307,
+      "exact_state_action_intersection": 83,
+      "exact_state_action_union": 144,
+      "state_action_jaccard": 0.5763888888888888,
+      "condition_intersection": 83,
+      "condition_union": 144,
+      "condition_jaccard": 0.5763888888888888,
+      "shared_condition_action_conflict_count": 0,
+      "shared_conditions_same_action_count": 83
+    },
+    {
+      "left_seed": 43,
+      "right_seed": 71,
+      "exact_state_action_intersection": 83,
+      "exact_state_action_union": 163,
+      "state_action_jaccard": 0.50920245398773,
+      "condition_intersection": 83,
+      "condition_union": 163,
+      "condition_jaccard": 0.50920245398773,
+      "shared_condition_action_conflict_count": 0,
+      "shared_conditions_same_action_count": 83
+    },
+    {
+      "left_seed": 43,
+      "right_seed": 101,
+      "exact_state_action_intersection": 107,
+      "exact_state_action_union": 169,
+      "state_action_jaccard": 0.6331360946745562,
+      "condition_intersection": 107,
+      "condition_union": 169,
+      "condition_jaccard": 0.6331360946745562,
+      "shared_condition_action_conflict_count": 0,
+      "shared_conditions_same_action_count": 107
+    },
+    {
+      "left_seed": 43,
+      "right_seed": 149,
+      "exact_state_action_intersection": 90,
+      "exact_state_action_union": 155,
+      "state_action_jaccard": 0.5806451612903226,
+      "condition_intersection": 90,
+      "condition_union": 155,
+      "condition_jaccard": 0.5806451612903226,
+      "shared_condition_action_conflict_count": 0,
+      "shared_conditions_same_action_count": 90
+    },
+    {
+      "left_seed": 43,
+      "right_seed": 211,
+      "exact_state_action_intersection": 96,
+      "exact_state_action_union": 157,
+      "state_action_jaccard": 0.6114649681528662,
+      "condition_intersection": 96,
+      "condition_union": 157,
+      "condition_jaccard": 0.6114649681528662,
+      "shared_condition_action_conflict_count": 0,
+      "shared_conditions_same_action_count": 96
+    },
+    {
+      "left_seed": 43,
+      "right_seed": 307,
+      "exact_state_action_intersection": 107,
+      "exact_state_action_union": 165,
+      "state_action_jaccard": 0.6484848484848484,
+      "condition_intersection": 107,
+      "condition_union": 165,
+      "condition_jaccard": 0.6484848484848484,
+      "shared_condition_action_conflict_count": 0,
+      "shared_conditions_same_action_count": 107
+    },
+    {
+      "left_seed": 71,
+      "right_seed": 101,
+      "exact_state_action_intersection": 71,
+      "exact_state_action_union": 161,
+      "state_action_jaccard": 0.4409937888198758,
+      "condition_intersection": 72,
+      "condition_union": 160,
+      "condition_jaccard": 0.45,
+      "shared_condition_action_conflict_count": 1,
+      "shared_conditions_same_action_count": 71
+    },
+    {
+      "left_seed": 71,
+      "right_seed": 149,
+      "exact_state_action_intersection": 63,
+      "exact_state_action_union": 138,
+      "state_action_jaccard": 0.45652173913043476,
+      "condition_intersection": 63,
+      "condition_union": 138,
+      "condition_jaccard": 0.45652173913043476,
+      "shared_condition_action_conflict_count": 0,
+      "shared_conditions_same_action_count": 63
+    },
+    {
+      "left_seed": 71,
+      "right_seed": 211,
+      "exact_state_action_intersection": 82,
+      "exact_state_action_union": 127,
+      "state_action_jaccard": 0.6456692913385826,
+      "condition_intersection": 82,
+      "condition_union": 127,
+      "condition_jaccard": 0.6456692913385826,
+      "shared_condition_action_conflict_count": 0,
+      "shared_conditions_same_action_count": 82
+    },
+    {
+      "left_seed": 71,
+      "right_seed": 307,
+      "exact_state_action_intersection": 72,
+      "exact_state_action_union": 156,
+      "state_action_jaccard": 0.46153846153846156,
+      "condition_intersection": 73,
+      "condition_union": 155,
+      "condition_jaccard": 0.47096774193548385,
+      "shared_condition_action_conflict_count": 1,
+      "shared_conditions_same_action_count": 72
+    },
+    {
+      "left_seed": 101,
+      "right_seed": 149,
+      "exact_state_action_intersection": 82,
+      "exact_state_action_union": 149,
+      "state_action_jaccard": 0.5503355704697986,
+      "condition_intersection": 82,
+      "condition_union": 149,
+      "condition_jaccard": 0.5503355704697986,
+      "shared_condition_action_conflict_count": 0,
+      "shared_conditions_same_action_count": 82
+    },
+    {
+      "left_seed": 101,
+      "right_seed": 211,
+      "exact_state_action_intersection": 81,
+      "exact_state_action_union": 158,
+      "state_action_jaccard": 0.5126582278481012,
+      "condition_intersection": 81,
+      "condition_union": 158,
+      "condition_jaccard": 0.5126582278481012,
+      "shared_condition_action_conflict_count": 0,
+      "shared_conditions_same_action_count": 81
+    },
+    {
+      "left_seed": 101,
+      "right_seed": 307,
+      "exact_state_action_intersection": 109,
+      "exact_state_action_union": 149,
+      "state_action_jaccard": 0.7315436241610739,
+      "condition_intersection": 109,
+      "condition_union": 149,
+      "condition_jaccard": 0.7315436241610739,
+      "shared_condition_action_conflict_count": 0,
+      "shared_conditions_same_action_count": 109
+    },
+    {
+      "left_seed": 149,
+      "right_seed": 211,
+      "exact_state_action_intersection": 68,
+      "exact_state_action_union": 140,
+      "state_action_jaccard": 0.4857142857142857,
+      "condition_intersection": 68,
+      "condition_union": 140,
+      "condition_jaccard": 0.4857142857142857,
+      "shared_condition_action_conflict_count": 0,
+      "shared_conditions_same_action_count": 68
+    },
+    {
+      "left_seed": 149,
+      "right_seed": 307,
+      "exact_state_action_intersection": 78,
+      "exact_state_action_union": 149,
+      "state_action_jaccard": 0.5234899328859061,
+      "condition_intersection": 78,
+      "condition_union": 149,
+      "condition_jaccard": 0.5234899328859061,
+      "shared_condition_action_conflict_count": 0,
+      "shared_conditions_same_action_count": 78
+    },
+    {
+      "left_seed": 211,
+      "right_seed": 307,
+      "exact_state_action_intersection": 84,
+      "exact_state_action_union": 151,
+      "state_action_jaccard": 0.5562913907284768,
+      "condition_intersection": 84,
+      "condition_union": 151,
+      "condition_jaccard": 0.5562913907284768,
+      "shared_condition_action_conflict_count": 0,
+      "shared_conditions_same_action_count": 84
+    }
+  ],
+  "all_pairwise_jaccard_mean": 0.557187035825485,
+  "all_pairwise_jaccard_median": 0.572463768115942,
+  "claim_boundary": "Shared bins remove seed-specific quantizer-edge mismatch. Rule-set overlap and rule predictions on logged training-state occupancy do not establish causal explanations or independent held-out actor action agreement."
+}

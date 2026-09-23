@@ -1,0 +1,91 @@
+{
+  "environment": "Acrobot-v1",
+  "episodes": 100,
+  "replicates": 5,
+  "reset_seed_formula": "20000000 + episode_index; paired with primary grammar-fusion evaluation",
+  "control": "Independent uniformly sampled discrete action at every time step, without consulting source rules or actor logits.",
+  "results": [
+    {
+      "replicate": 0,
+      "mean_return": -499.98,
+      "median_return": -500.0,
+      "episodes_terminating_before_500": 1,
+      "paired_delta_vs_grammar_fusion": -56.61,
+      "paired_delta_bootstrap_ci95": [
+        -74.91,
+        -39.52
+      ],
+      "action_counts": {
+        "0": 16634,
+        "1": 16686,
+        "2": 16679
+      }
+    },
+    {
+      "replicate": 1,
+      "mean_return": -496.39,
+      "median_return": -500.0,
+      "episodes_terminating_before_500": 3,
+      "paired_delta_vs_grammar_fusion": -53.02,
+      "paired_delta_bootstrap_ci95": [
+        -72.1,
+        -35.04
+      ],
+      "action_counts": {
+        "0": 16466,
+        "1": 16631,
+        "2": 16545
+      }
+    },
+    {
+      "replicate": 2,
+      "mean_return": -497.76,
+      "median_return": -500.0,
+      "episodes_terminating_before_500": 2,
+      "paired_delta_vs_grammar_fusion": -54.39,
+      "paired_delta_bootstrap_ci95": [
+        -72.99,
+        -37.66
+      ],
+      "action_counts": {
+        "0": 16509,
+        "1": 16705,
+        "2": 16564
+      }
+    },
+    {
+      "replicate": 3,
+      "mean_return": -499.85,
+      "median_return": -500.0,
+      "episodes_terminating_before_500": 1,
+      "paired_delta_vs_grammar_fusion": -56.48,
+      "paired_delta_bootstrap_ci95": [
+        -74.45,
+        -39.63
+      ],
+      "action_counts": {
+        "0": 16581,
+        "1": 16639,
+        "2": 16766
+      }
+    },
+    {
+      "replicate": 4,
+      "mean_return": -499.55,
+      "median_return": -500.0,
+      "episodes_terminating_before_500": 1,
+      "paired_delta_vs_grammar_fusion": -56.18,
+      "paired_delta_bootstrap_ci95": [
+        -74.4,
+        -39.08
+      ],
+      "action_counts": {
+        "0": 16732,
+        "1": 16697,
+        "2": 16527
+      }
+    }
+  ],
+  "mean_across_random_replicates": -498.706,
+  "interpretation_limit": "This is a matched environment control for this Acrobot setup, not a universal lower bound or a comparison with a tuned stochastic policy."
+}

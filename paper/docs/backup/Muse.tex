@@ -1,0 +1,270 @@
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage[margin=1in]{geometry}
+\usepackage{hyperref}
+\usepackage{microtype}
+
+% TODO: add author names and affiliations before submission.
+\title{Toward Auditable Reinforcement Learning:\\Provenance-Aware Rule Composition with Replay Checks and Causal Symbol Tests}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Reinforcement learning policies are difficult to inspect: a trained network offers no account of \textit{why} it acts, \textit{whether} its logged history can be trusted, or \textit{what} its internal symbols cause. We report on an experimental program that set out to build auditable RL artifacts---symbolic rule banks extracted from trained policies, composed across training runs with full provenance, validated by replay, and probed for causal symbol influence---and that failed, instructively, at nearly every step before producing bounded positive results. Grammar overlap between independently trained agents does not imply behavioral consensus (rule-set Jaccard $0.5833$ against $51.36\%$ fresh-state action agreement). Constraining training with induced symbolic structure harms returns. A communication game designed to test symbol causality first collapsed to a degenerate equilibrium, then failed for lack of optimization exposure, before succeeding under a redesigned private-target objective. Fitted Q-evaluation-based policy composition failed its own quality checks and was excluded from all comparisons. What survived is deliberately modest: a provenance-aware fusion procedure whose every decision carries machine-checkable provenance and explicit conflict/blind-spot accounting; hash-chained logging with replay validation that detects record tampering; and a matched-intervention test showing learned discrete symbols causally influence a receiver's decisions in a designed task (mean causal delta $0.998$ over six seeds). We claim bounded existence, not universality: these mechanisms make specified RL artifacts more auditable under tested conditions, while general auditability remains unproven.
+\end{abstract}
+
+\section{Introduction}
+
+Consider a reinforcement learning agent deployed to make consequential decisions. An auditor asks four questions. First, \textit{can the logged history be trusted}---is the record complete and unaltered? Second, \textit{can the behavior be replayed}---do the logged actions reproduce the logged outcomes? Third, \textit{do the agent's internal symbols mean anything}---does a discrete message or an induced rule actually cause the behavior it appears to explain? Fourth, \textit{do two agents trained the same way agree}---is the learned knowledge stable across runs, or an accident of initialization?
+
+These questions sound like one question---``is the agent auditable?''---but they are not. Record integrity is not replayability; replayability is not causal attribution; causal attribution is not cross-run consensus. Much of the difficulty in making RL auditable comes from conflating them: a method that guarantees one is presented as though it guarantees all four.
+
+This paper reports on an experimental program that began with exactly that conflation and was corrected by failure. The original ambition was a unified pipeline: train policies with policy-gradient methods, induce symbolic grammars from their trajectories, constrain and compose those grammars across training seeds, and certify the result with cryptographic logging and replay. What follows is not the success story of that pipeline. The grammar constraints harmed performance. The overlap between induced rule sets proved nearly unrelated to behavioral agreement. The communication game designed to demonstrate meaningful symbols collapsed to a degenerate equilibrium. The value-based composition baseline failed its own diagnostics. Each failure had a specific, diagnosable cause, and each cause forced a narrower, more honest question.
+
+The contributions of this paper are therefore of two kinds. The \textit{negative} contributions are the failures themselves, reported with their causes: (i)~high rule-set overlap coexists with chance-level behavioral agreement; (ii)~naive symbolic constraints on training degrade returns; (iii)~emergent-communication objectives admit degenerate joint optima that no amount of training will fix; (iv)~optimization exposure, not architecture, explained an early causal-test failure; (v)~value-based composition can fail silently and must be diagnosed before it is used as a baseline. The \textit{positive} contributions are bounded and precisely scoped: (i)~a provenance-aware rule-fusion procedure in which every decision is logged with machine-checkable provenance and explicit conflict and blind-spot accounting; (ii)~hash-chained trace logging with replay validation and tamper detection; (iii)~a matched-intervention protocol demonstrating that learned discrete symbols causally influence receiver behavior in a designed coordination task.
+
+We emphasize what is \textit{not} claimed. We do not claim that rule overlap measures knowledge similarity, that our arbitration scheme is optimal, that value-based composition is generally inferior, that logged traces prove honest logging, or that the demonstrated symbol causality generalizes beyond the designed task. The paper's central thesis is that auditability in RL is a bundle of separable, individually testable properties---and that testing them honestly requires reporting the failures with the same precision as the successes.
+
+\section{Background}
+
+\textbf{Policy-gradient reinforcement learning.} We train control policies with REINFORCE-style policy gradients \cite{williams1992}, the simplest family of direct policy search: parameters are adjusted along sampled returns, with no value-function bootstrapping. Modern policy-gradient variants \cite{schulman2017} share the same auditability questions, which concern the trained artifact rather than the optimizer. Policies are small feedforward networks. Evaluation uses the standard benchmarks CartPole-v1 and Acrobot-v1 \cite{brockman2016}: CartPole rewards sustained balancing up to a 500-step ceiling; Acrobot penalizes each step down to a $-500$ floor, rewarding fast swing-up.
+
+\textbf{Symbolic extraction from policies.} Programmatically interpretable RL \cite{verma2018} showed that neural policies can be projected into programmatic forms. Our approach is humbler: discretize the state space with quantile-based binning and count state--action co-occurrences into if--then rules with support and confidence statistics, in the tradition of association-rule induction rather than program synthesis. Related compositional ideas appear in successor-feature transfer \cite{barreto2017} and geometric policy composition \cite{thakoor2022}, where independently learned components are combined at decision time.
+
+\textbf{Emergent communication.} Discrete communication between agents can emerge under cooperative objectives \cite{foerster2016,havrylov2017}, but measurement is fraught: Lowe et al.\ \cite{lowe2019} catalog pitfalls in which apparent communication is an artifact of the objective or the analysis. Our communication experiments use an autoencoder-style discrete bottleneck between a sender observing a target and a receiver acting on the message.
+
+\textbf{Reproducibility and determinism.} Deep RL is notoriously sensitive to seeds and implementation details \cite{henderson2018}; deterministic implementations \cite{nagarajan2018} mitigate but do not eliminate the problem. Our program treats seed sensitivity as an object of study rather than a nuisance: rule banks are induced separately per seed, and cross-seed agreement is measured, not assumed.
+
+\textbf{Sequence structure.} Grammar-induction methods such as Sequitur \cite{nevill-manning1997} compress sequences by discovering hierarchical repetition. We apply two-part minimum description length (MDL) coding as a \textit{diagnostic} of our trajectory codec---asking whether the symbolic representation compresses at all---not as an optimality claim.
+
+\section{From Ambition to Evidence: A Chronology of Failures}
+
+The original research plan was straightforward: induce symbolic grammars from trained policies, use them to constrain and compose learning, and certify everything with logging and replay. Each component failed first. This section reports the failures in the order they occurred, with their diagnosed causes, because the final methods (Section~\ref{sec:methods}) are incomprehensible without them---every design choice is a scar left by one of these episodes.
+
+\subsection{A communication game that taught nothing}
+
+The first experiment asked whether discrete symbols learned by a sender--receiver pair carry meaning. The sender observed a handwritten digit; the receiver, given only the sender's discrete message, chose an action; both were rewarded when the \textit{parity} of the two digits matched. The result: the pair converged to the constant action---both policies settled on C/C, the unique joint-reward optimum under both parity payoffs---achieving maximal reward while the communication channel carried nothing.
+
+The cause was not insufficient training but a degenerate joint optimum. Under a parity-matching reward, both agents emitting a constant action is a Nash equilibrium of the game as designed: if the receiver always plays the constant, the sender's message is irrelevant, and vice versa. No optimizer can escape an objective whose global optimum ignores the channel. The failure was in the \textit{task design}, not the learning algorithm---a concrete instance of the measurement pitfalls cataloged by Lowe et al.\ \cite{lowe2019}.
+
+The fix was to redesign the game so that communication is \textit{necessary}: a private-target variant in which the receiver must identify a target known only to the sender, with reward only for correct identification. Under this objective, ignoring the message cannot be optimal. All causal claims about symbols in this paper (Section~\ref{sec:symbols}) rest on the redesigned game; the original parity game is reported only as a negative result.
+
+\subsection{Optimization exposure, not architecture}
+
+The redesigned private-target game initially appeared to fail as well. After training, the receiver's accuracy was $0.500$---chance---and the estimated causal influence of the message on the receiver's decision, $\Delta P(C) = 0.00088$ with 95\% CI $[-0.00136,0.00320]$, was indistinguishable from zero. The architecture was suspected.
+
+The actual cause was optimization exposure. The run had performed only 79 optimizer updates---an order of magnitude too few for the discrete bottleneck to organize. Reducing the batch size from 128 to 8 raised the update count to 1,250 for the same data budget; a subsequent run with 12,500 updates succeeded decisively. The lesson generalizes beyond this experiment: when a discrete-latent method ``fails,'' the first suspect should be the number of optimizer steps, not the architecture. Every positive result on the communication game in this paper uses the high-exposure regime.
+
+\subsection{Symbolic analyses that lied}
+
+Two analysis methods produced impressive numbers that meant nothing. First, a ``symbol lookup'' analysis appeared to show that the first message token determined the receiver's action---until we realized the action decoder read the first token directly, making the finding tautological. Second, a whole-sequence mutual information estimate between messages and outcomes saturated at 1 bit---until we recognized that sparse, high-cardinality messages make plug-in MI estimates vacuous.
+
+Both were replaced: the lookup analysis was discarded, and MI was computed \textit{per message position} against a permutation null. The corrected analyses are the only ones reported. We retain the episode here because symbolic methods are especially prone to analyses that confirm the representation by construction, and the defense is adversarial self-checking, not optimism.
+
+\subsection{Constraining training with grammar harms returns}
+
+The original plan used induced grammars as \textit{training constraints}: restrict the policy to actions licensed by the current rule bank. Across configurations, this substantially harmed returns rather than helping. The mechanism is unsurprising in retrospect---early, incomplete rule banks forbid precisely the exploratory actions the policy needs---but it killed the ``grammar-constrained RL improves performance'' hypothesis outright.
+
+The surviving role for induced rules is \textit{post-hoc}: rules are extracted from fully trained policies and used as a composition and inspection substrate, never as a training constraint. No performance-gain claim for grammar constraints appears in this paper.
+
+\subsection{Coverage collapse and the shared symbolizer}
+
+Rule induction with a confidence threshold of $0.90$ produced a striking pathology: 100\% of evaluation states fell into \textit{blind spots}---no admitted rule applied. The rules were precise and useless. A matched post-hoc exploration lowered the threshold to $0.70$, trading precision for coverage.
+
+A subtler artifact compounded the problem: each seed's symbolizer computed its own quantile bin edges, so identically-shaped rules from different seeds could disagree purely because of bin-edge placement. The fix was a \textit{shared} symbolizer---one pooled set of bin edges used across all seeds---which removed the seed-specific quantization artifact. All cross-seed comparisons in this paper use the shared symbolizer; the two-seed pilot that predates it is retained only as historical evidence.
+
+Two further corrections belong to this chronology. An actor-identity hash was once contaminated by a label wrapper, and an optimizer ledger was polluted by a grammar-generation sidecar; both were found, fixed by hashing the underlying state rather than the wrapper, and all affected artifacts were regenerated. A probability analyzer contained an axis-reduction bug and a position analysis referenced an obsolete key; both were corrected and re-run, with the corrupted fields discarded rather than repaired. We list these not as confessions but as method: in an auditability program, the auditing instruments must themselves be audited.
+
+\section{Methods}
+\label{sec:methods}
+
+\subsection{Policy training}
+
+We train actor networks with REINFORCE on CartPole-v1 and Acrobot-v1, using 300 episodes per seed per environment and 8 independent seeds (11, 29, 43, 71, 101, 149, 211, 307). A separate calibration set of 24 random-policy episodes per seed provides off-policy state coverage for rule induction. This protocol is intentionally minimal: the paper's claims concern the \textit{artifacts} derived from trained policies, and a simple, well-understood optimizer \cite{williams1992,sutton2018} keeps the causal attribution of downstream failures clean.
+
+\subsection{Rule induction and the shared symbolizer}
+
+Each state dimension is discretized into 4 quantile bins; the bin edges are computed once from pooled calibration data and shared across all seeds (Section~3.5). A \textit{rule} is a conjunction of per-dimension bin conditions predicting one action, admitted when its support (count of matching calibration transitions) is at least 8 and its empirical confidence reaches $0.70$. Each rule carries provenance: the seed that produced it and its support/confidence statistics.
+
+For a state $s$, a rule \textit{applies} when all its conditions hold. Given a collection of rule banks (one per seed), a state falls into one of three categories. Let $\mathcal{A}(s)$ be the set of rules applying at $s$:
+\begin{equation}
+\mathrm{fusion}(s) = \begin{cases}
+\text{the agreed action} & \text{if all } r \in \mathcal{A}(s) \text{ predict the same action (agreement)},\\
+\text{arbitration over } \mathcal{A}(s) & \text{if rules predict different actions (conflict)},\\
+\text{fallback} & \text{if } \mathcal{A}(s) = \emptyset \text{ (blind spot)}.
+\end{cases}
+\end{equation}
+The primary arbitration orders applicable rules by confidence, then support, then mean reward; alternatives are evaluated in Section~\ref{sec:arbitration}.
+
+\subsection{Measuring overlap vs.\ agreement}
+
+For two rule banks $R_1, R_2$, the \textit{rule overlap} is the Jaccard similarity over matched conditions:
+\begin{equation}
+J(R_1, R_2) = \frac{|R_1 \cap R_2|}{|R_1 \cup R_2|},
+\end{equation}
+where matching is by symbolic condition identity under the shared symbolizer. The \textit{behavioral agreement} is the fraction of held-out states at which the two banks' fused decisions coincide, measured on states drawn from occupancy distributions neither bank was induced on. Overlap is a property of the symbolic representation; agreement is a property of decisions. The paper's central negative finding (Section~\ref{sec:overlap}) is that these dissociate.
+
+\subsection{Provenance-aware fusion}
+\label{sec:fusion-method}
+
+Fusion composes the per-seed rule banks at decision time. Every decision is logged with machine-checkable provenance: which rules applied, which seed each came from, whether the decision was by agreement, arbitration, or blind-spot fallback, and the conflict/blind-spot tallies. The fusion procedure is deterministic given the banks. Composition comparisons use 100 matched reset seeds so that all variants face identical initial conditions.
+
+\subsection{Replay checks and tamper detection}
+
+Training traces are logged as JSONL records under a hash chain: each record embeds the SHA-256 of its predecessor. A replay validator re-executes logged actions through the environment and checks outcome equality; a tamper probe flips one record field and confirms the chain detects it. These instruments check \textit{record integrity}, not \textit{recording honesty}: they detect modification of the log, not omission of events from it.
+
+\subsection{Diagnostic-only value-based composition}
+
+Fitted Q-evaluation (FQE) \cite{le2019} with greedy policy improvement was built as a candidate composition baseline. Before any comparison, it must pass quality gates: predicted return must track continuation returns, and the greedy policy must agree with the actor on held-out states. Because it failed these gates (Section~\ref{sec:fqe}), FQE appears in this paper \textit{only as a diagnostic case study}, never as a baseline in fusion comparisons. All ``fusion vs.\ best single policy'' numbers are descriptive, not a claim that fusion beats value-based composition.
+
+\subsection{Matched causal tests for symbols}
+\label{sec:symbols}
+
+For the redesigned private-target communication game, we estimate symbol causality with a \textit{matched-support intervention}: take states where the sender emits a particular message, replace the message with a shuffled one, and measure the change in the receiver's action probability. The intervention is matched so that only the message content changes. As a control, the same procedure is applied with messages shuffled across states (permutation null). The estimand is the causal effect of the message on the receiver's decision, identified by the intervention, not by correlation.
+
+\subsection{MDL as a codec diagnostic}
+
+We encode trajectories with a two-part MDL scheme (grammar plus data-given-grammar) using a Sequitur-style \cite{nevill-manning1997} compressor, and report the bit ratio against the uncompressed baseline. The question is only whether the symbolic trajectory representation compresses \textit{at all}; no optimality is claimed, and we compare against ordinary gzip as a sanity check.
+
+\subsection{Statistical reporting}
+
+All uncertainty is reported as 95\% bootstrap confidence intervals. Seed-level results use 8 seeds; composition comparisons use 100 matched reset seeds; the communication game uses 6 independent runs. We mark analyses that were not pre-registered as exploratory.
+
+\section{Results}
+
+\subsection{Overlap does not imply agreement}
+\label{sec:overlap}
+
+Across 8 seeds, the mean pairwise rule overlap is $J = 0.5572$ on CartPole but only $0.0956$ on Acrobot---the same induction procedure, the same thresholds, yet one environment yields largely shared rule sets and the other nearly disjoint ones. The more consequential comparison uses two seeds (11, 29) measured on fresh states: on CartPole, rule overlap is $J = 0.5833$ while the two banks agree on only $51.36\%$ of 10,000 held-out states (5,000 drawn from each seed's occupancy), 95\% CI $[50.48\%, 52.26\%]$---barely above the $50\%$ chance level for this binary-action environment. On Acrobot, overlap is $J = 0.0496$, and among the 98 conditions the two seeds share, 77 predict conflicting actions.
+
+\begin{table}[t]
+\centering
+\caption{Rule overlap vs.\ behavioral agreement. Overlap is a property of the symbolic representation; agreement is a property of decisions on held-out states. The two dissociate.}
+\label{tab:overlap}
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}lccc@{}}
+\toprule
+Environment & 8-seed mean $J$ & $J$ (seeds 11/29) & Fresh-state agreement (11/29) \\
+\midrule
+CartPole-v1 & 0.5572 & 0.5833 & 51.36\% [50.48, 52.26] \\
+Acrobot-v1 & 0.0956 & 0.0496 & not measured (77/98 shared conditions conflict) \\
+\bottomrule
+\end{tabular*}
+\end{table}
+
+The implication is direct: symbolic overlap is not a measure of knowledge similarity. Two banks can share most of their rules and still disagree on nearly half of new states, because agreement depends on which rules \textit{apply} at each state and what they predict there---information the Jaccard coefficient discards. Any audit that certifies ``agents learned the same thing'' from representation overlap alone is measuring the wrong quantity.
+
+\subsection{Provenance-aware fusion: bounded gains, explicit costs}
+\label{sec:fusion-results}
+
+On CartPole, fusing two seeds' rule banks yields mean return $205.96$ against the best single seed's $163.65$ (paired delta $+42.31$, 95\% CI $[23.98, 61.93]$). We report this descriptively: the comparison is matched on reset seeds, but fusion versus one hand-picked baseline is not a full ablation of the fusion components, and we do not claim optimality of the arbitration scheme.
+
+On Acrobot the picture is more instructive. Best single policy and a naive actor ensemble both sit at $-500$; fusion reaches $-443.37$ (delta $+56.63$, CI $[39.32, 75.15]$), with median still at $-500$ and only 39 of 100 episodes above the floor. The provenance log explains why the gain is modest: coverage is $95.70\%$, but $89.24\%$ of covered states are \textit{conflicts} and $4.30\%$ are blind spots. Fusion spends most of its time arbitrating disagreement, not exploiting consensus.
+
+\subsection{The arbitration ladder}
+\label{sec:arbitration}
+
+Because conflicts dominate, the arbitration rule matters. We compared, on 100 matched reset seeds: the primary ordering (confidence, then support, then mean reward; $-443.37$), confidence-only ($-444.49$), mean-reward-only ($-500$), support-first ($-500$), falling back to an actor ensemble on conflict ($-500$), and---as a diagnostic---selecting uniformly at random among applicable rules. The random-rule variant achieved $-194.10$ to $-206.17$ across five streams (mean $-198.82$), far above the primary ordering. A separate stream with a single random selector ($-187.02$) confirms the effect is not a stream artifact. Uniform random \textit{actions} (no rule bank) score $-498.71$, so the rule bank's state-conditioned candidate sets---not randomness per se---carry the effect; and a confounder is documented: 1,575 of 1,694 Acrobot rules have mean reward exactly $-1.0$, so reward-based orderings have almost nothing to discriminate on.
+
+\begin{table}[t]
+\centering
+\caption{Acrobot arbitration variants, 100 matched reset seeds. Higher is better ($-500$ is the floor). The random-rule result is reported as an unexplained diagnostic, not a recommendation.}
+\label{tab:arbitration}
+\begin{tabular}{lc}
+\toprule
+Variant & Mean return \\
+\midrule
+Primary (confidence $\to$ support $\to$ mean reward) & $-443.37$ \\
+Confidence only & $-444.49$ \\
+Mean reward only & $-500.00$ \\
+Support first & $-500.00$ \\
+Actor ensemble on conflict & $-500.00$ \\
+Random rule among applicable (5 streams) & $-198.82$ [$-206.17$, $-194.10$] \\
+Uniform random actions (no rule bank) & $-498.71$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+We do not explain the random-rule result and do not recommend random arbitration. Its inclusion is the point of the failure-chronology method: a procedure that reports only the arbitration that ``worked best'' while suppressing a random baseline that beats it is not an audit. The honest statement is that on this task, with these banks, the arbitration ordering is load-bearing in ways we do not fully understand.
+
+\subsection{Symbols that cause: the matched intervention}
+
+On the redesigned private-target game, six independent runs of 100,000 decisions each (600,000 total) give: receiver accuracy $0.998923$ with the true message, $0.503292$ with a shuffled message, $0.500$ with no message. The matched-support intervention---replacing the message while holding the state fixed---changes the receiver's action probability by $\bar{\Delta} = 0.998366$ (range $0.996986$--$0.999685$ across runs), with common-support overlap $0.94308$ and active message positions $(1,1,0,1,0,1)$. This is a causal estimand, identified by intervention, not a correlation. Its scope is deliberately narrow: it shows that \textit{in this designed task}, the learned discrete symbols causally influence the receiver's decisions. It does not show that the symbols are human-interpretable, compositional, or ``meaningful'' in any richer sense---no such claim is made.
+
+\subsection{FQE fails its own quality gates}
+\label{sec:fqe}
+
+Fitted Q-evaluation with greedy policy improvement, intended as a composition baseline, failed before any comparison could be run. On CartPole it predicted return $9.34$ against actual returns in the hundreds, and its greedy policy agreed with the actor on only $35.27\%$ of 31,563 held-out states. On Acrobot it predicted $-499.57$ while prescribing action 0 on all 50,000 evaluation states, and agreed with a 200-state continuation Monte Carlo on only $22.5\%$ (CI $[16.5, 28.5]$). A value function that cannot track returns and a greedy policy that disagrees with both the actor and Monte Carlo cannot serve as a baseline. FQE is therefore excluded from all comparisons and reported here as a diagnostic: the failure mode is silent---without the agreement and calibration checks, the numbers would have looked like a legitimate baseline. This is why the checks exist.
+
+\subsection{Replay and tamper detection work as specified}
+
+The hash-chained logs replay exactly: 1,122,403 CartPole transitions and 1,742,570 Acrobot transitions reproduce their logged outcomes under the replay validator, and the tamper probe is detected on every trial. A same-host cold rerun reproduced 135,427 distinct transitions across two seeds. These results certify \textit{record integrity}---the log was not altered after writing. They say nothing about whether the logger recorded honestly in the first place, a limitation we return to in Section~\ref{sec:discussion}.
+
+\subsection{The trajectory codec compresses, modestly}
+
+Two-part MDL coding of trajectories achieves bit ratios of $0.513$--$0.575$ across six seeds (final: 281,958,036 vs.\ 490,363,440 bits)---the symbolic representation compresses, but ordinary gzip is still $8.4\%$ smaller. The diagnostic answer is ``yes, there is exploitable structure, and no, this codec is not the way to exploit it.'' Nothing about optimality is claimed.
+
+\section{Discussion}
+\label{sec:discussion}
+
+\textbf{The bundle thesis.} The four audit questions of the Introduction---integrity, replayability, causality, consensus---turned out to be empirically separable in both directions. We built instruments for each: hash chains for integrity, replay validators for replayability, matched interventions for causality, Jaccard-plus-agreement for consensus. Each instrument can succeed while the others fail. The program's main positive thesis is therefore methodological: auditability in RL should be pursued as a bundle of individually testable properties, with each test reported on its own terms, rather than as a single ``interpretable and trustworthy'' system claim.
+
+\textbf{Overlap is not consensus.} The most consequential negative result is the dissociation of Section~\ref{sec:overlap}: substantial rule overlap with near-chance behavioral agreement. This cautions against a natural but invalid inference in the symbolic-RL literature---that shared symbolic structure across runs evidences shared knowledge. It does not; or at least, not without a decision-level agreement measure, which we provide and which future work should report alongside any overlap statistic.
+
+\textbf{Integrity is not honesty.} Hash chains, replay validators, and tamper probes are worth building: they convert ``trust us'' into a checkable artifact. But they check the record, not the recording. An auditability program that confuses the two has built a more expensive form of trust-me.
+
+\textbf{Auditability is a tradeoff, not a free upgrade.} The obvious objection to this entire program is that a plain ensemble of the source actors outperforms rule fusion in CartPole ($500.00$ vs $205.96$) while being simpler. That objection is correct about performance and misses the point about auditability. The ensemble cannot say \textit{which} knowledge produced a decision, cannot report that two sources disagreed, and cannot declare a blind spot. The rule representation is lossy---deliberately so: its conditions are countable, its conflicts enumerable, its provenance linkable. What fusion buys over the ensemble is not return but \textit{inspectability per decision}, and what the hash chain buys over a log file is not accuracy but \textit{checkability}. Whether that tradeoff is worth it depends on the deployment; the paper's claim is only that the tradeoff exists and can be measured honestly.
+
+\textbf{What the failures buy.} Each negative result in Section~3 constrained the final methods: the degenerate game forced the private-target redesign; the exposure failure forced update-count reporting; the tautological analyses forced permutation-null controls; the grammar-constraint failure restricted rules to post-hoc use; the coverage collapse forced the confidence/coverage tradeoff and the shared symbolizer. A methods section written without the failure chronology would present these as free choices. They were not.
+
+\section{Limitations}
+
+\textit{Scope of environments and seeds.} All control results use two classic benchmarks and eight seeds; the communication results use a designed game and six runs. Generalization beyond these settings is untested.
+
+\textit{No pre-registration.} The failure chronology was reconstructed from experiment records, not pre-registered; several analyses are exploratory. We label them as such, but the usual post-hoc caveats apply.
+
+\textit{Recording honesty.} Our integrity instruments detect tampering with the log, not dishonest logging. A logger that omits events passes every check we built.
+
+\textit{Arbitration unexplained.} The random-rule diagnostic (Section~\ref{sec:arbitration}) is reported without a mechanism. The fusion-vs-best-single comparison is descriptive, not a full component ablation; we do not claim the arbitration scheme is optimal or that fusion outperforms value-based composition in general.
+
+\textit{Symbol scope.} The causal symbol result holds for a designed task where communication is necessary by construction. It does not establish human-interpretable, compositional, or general symbol semantics.
+
+\textit{Compression.} The MDL result is a diagnostic against a weak baseline; gzip's superiority shows the codec is not competitive as compression.
+
+\section{Related Work}
+
+Symbolic extraction from neural policies follows the programmatic-RL tradition \cite{verma2018}; our rule banks are less expressive but carry provenance and conflict accounting that program synthesis typically lacks. Composition of independently learned components connects to successor features \cite{barreto2017} and geometric policy composition \cite{thakoor2022}, which compose \textit{policies} where we compose \textit{symbolic summaries}---gaining inspectability at the cost of the performance gap documented in Section~\ref{sec:fusion-results}. Emergent-communication measurement pitfalls \cite{lowe2019} motivated our matched-intervention design; our contribution is a positive demonstration that the causal question \textit{can} be answered by intervention in a designed task, complementing their catalog of ways correlation misleads. Reproducibility concerns \cite{henderson2018,nagarajan2018} underlie our seed-separated induction and shared symbolizer. FQE-based evaluation \cite{le2019} appears here only as a failed baseline---a use case the literature rarely reports, which is precisely why we report it.
+
+\section{Conclusion}
+
+We set out to build auditable reinforcement learning and failed at nearly every step before producing bounded positive results. The failures---degenerate communication equilibria, optimization-exposure confounds, tautological symbolic analyses, harmful grammar constraints, coverage collapse, silent value-baseline failure---are reported with their causes because they are the paper's load-bearing structure: every surviving method is a response to one of them. What survived is deliberately modest: provenance-aware rule fusion with explicit conflict and blind-spot accounting, hash-chained logging with replay validation, and a matched-intervention protocol demonstrating causal symbol influence in a designed task. The central claim is that auditability in RL is a bundle of separable, individually testable properties---integrity, replayability, causality, consensus---and that testing them honestly requires reporting the failures with the same precision as the successes. General auditability remains unproven; what we offer is a set of instruments, each checked against its own failure modes, and a record of the failures that shaped them.
+
+\section*{Reproducibility Statement}
+
+All experiments use fixed seeds (control: 11, 29, 43, 71, 101, 149, 211, 307; composition comparisons: 100 matched reset seeds; communication: 6 independent runs). Rule induction uses 4 quantile bins per state dimension under a shared symbolizer, minimum support 8, minimum confidence $0.70$. Composition comparisons are matched on reset seeds. The hash-chained trace logs, replay validator, and tamper-probe results are archived with the experiment records. Analyses not pre-registered are labeled exploratory. No human subjects, annotators, or sensitive data were involved.
+
+\section*{References}
+
+\begin{thebibliography}{99}
+\bibitem{williams1992} R.~J. Williams. Simple statistical gradient-following algorithms for connectionist reinforcement learning. \textit{Machine Learning}, 8(3--4):229--256, 1992.
+\bibitem{sutton2018} R.~S. Sutton and A.~G. Barto. \textit{Reinforcement Learning: An Introduction}. 2nd edition. MIT Press, 2018.
+\bibitem{schulman2017} J.~Schulman, F.~Wolski, P.~Dhariwal, A.~Radford, and O.~Klimov. Proximal policy optimization algorithms. \textit{arXiv:1707.06347}, 2017.
+\bibitem{brockman2016} G.~Brockman, V.~Cheung, L.~Pettersson, J.~Schneider, J.~Schulman, J.~Tang, and W.~Zaremba. OpenAI Gym. \textit{arXiv:1606.01540}, 2016.
+\bibitem{verma2018} A.~Verma, V.~Murali, R.~Singh, P.~Kohli, and S.~Chaudhuri. Programmatically interpretable reinforcement learning. In \textit{ICML}, PMLR 80:5045--5054, 2018.
+\bibitem{barreto2017} A.~Barreto, W.~Dabney, R.~Munos, J.~Hunt, T.~Schaul, D.~Silver, and H.~van Hasselt. Successor features for transfer in reinforcement learning. In \textit{NeurIPS}, 2017.
+\bibitem{thakoor2022} S.~Thakoor, M.~Rowland, D.~Borsa, W.~Dabney, R.~Munos, and A.~Barreto. Generalised policy improvement with geometric policy composition. In \textit{ICML}, PMLR 162:21272--21307, 2022.
+\bibitem{foerster2016} J.~Foerster, Y.~Assael, N.~de Freitas, and S.~Whiteson. Learning to communicate with deep multi-agent reinforcement learning. In \textit{NeurIPS}, 2016.
+\bibitem{havrylov2017} S.~Havrylov and I.~Titov. Emergence of language with multi-agent games: Learning to communicate with sequences of symbols. In \textit{NeurIPS}, pages 2149--2159, 2017.
+\bibitem{lowe2019} R.~Lowe, J.~Foerster, Y.-L. Boureau, J.~Pineau, and Y.~Dauphin. On the pitfalls of measuring emergent communication. In \textit{AAMAS}, pages 693--701, 2019.
+\bibitem{henderson2018} P.~Henderson, R.~Islam, P.~Bachman, J.~Pineau, D.~Precup, and D.~Meger. Deep reinforcement learning that matters. In \textit{AAAI}, 2018.
+\bibitem{nagarajan2018} P.~Nagarajan, G.~Warnell, and P.~Stone. Deterministic implementations for reproducibility in deep reinforcement learning. \textit{arXiv:1809.05676}, 2018.
+\bibitem{nevill-manning1997} C.~G. Nevill-Manning and I.~H. Witten. Identifying hierarchical structure in sequences: A linear-time algorithm. \textit{JAIR}, 7:67--82, 1997.
+\bibitem{le2019} H.~Le, C.~Voloshin, and Y.~Yue. Batch policy learning under constraints. In \textit{ICML}, PMLR 97:3703--3712, 2019.
+\end{thebibliography}
+
+\end{document}

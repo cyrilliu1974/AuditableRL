@@ -1,0 +1,123 @@
+\begin{thebibliography}{10}
+
+\bibitem{stappert2026integrating}
+Mirko Stappert, Bernhard Lutz, Niklas Goby, and Dirk Neumann.
+\newblock Integrating human knowledge through action masking in reinforcement
+  learning for operations research.
+\newblock {\em Computers \& Industrial Engineering}, 222:112340, 2026.
+\newblock arXiv:2504.02662.
+
+\bibitem{huang2022masking}
+Shengyi Huang and Santiago Onta{\~n}{\'o}n.
+\newblock A closer look at invalid action masking in policy gradient
+  algorithms.
+\newblock In {\em Proceedings of the International Florida Artificial
+  Intelligence Research Society Conference (FLAIRS)}, volume~35, 2022.
+\newblock arXiv:2006.14171.
+
+\bibitem{garcia2015comprehensive}
+Javier Garc{\'i}a and Fernando Fern{\'a}ndez.
+\newblock A comprehensive survey on safe reinforcement learning.
+\newblock {\em Journal of Machine Learning Research}, 16(1):1839--1886, 2015.
+
+\bibitem{williams1992simple}
+Ronald~J. Williams.
+\newblock Simple statistical gradient-following algorithms for connectionist
+  reinforcement learning.
+\newblock {\em Machine Learning}, 8(3-4):229--256, 1992.
+
+\bibitem{bastani2018viper}
+Osbert Bastani, Yewen Pu, and Armando Solar-Lezama.
+\newblock Verifiable reinforcement learning via policy extraction.
+\newblock In {\em Advances in Neural Information Processing Systems 31}, 2018.
+
+\bibitem{roth2019conservative}
+Aaron~M. Roth, Nicholay Topin, Pooyan Jamshidi, and Manuela Veloso.
+\newblock Conservative {Q}-improvement: Reinforcement learning for an
+  interpretable decision-tree policy.
+\newblock arXiv:1907.01180, 2019.
+
+\bibitem{sutton2018reinforcement}
+Richard~S. Sutton and Andrew~G. Barto.
+\newblock {\em Reinforcement Learning: An Introduction}.
+\newblock MIT Press, 2nd edition, 2018.
+
+\bibitem{barreto2017successor}
+Andr{\'e} Barreto, Will Dabney, R{\'e}mi Munos, Jonathan~J. Hunt, Tom Schaul,
+  Hado~P. van Hasselt, and David Silver.
+\newblock Successor features for transfer in reinforcement learning.
+\newblock In {\em Advances in Neural Information Processing Systems 30}, 2017.
+
+\bibitem{le2019batch}
+Hoang Le, Cameron Voloshin, and Yisong Yue.
+\newblock Batch policy learning under constraints.
+\newblock In {\em Proceedings of the 36th International Conference on Machine
+  Learning}, 2019.
+
+\bibitem{voloshin2021empirical}
+Cameron Voloshin, Hoang Le, Nan Jiang, and Yisong Yue.
+\newblock Empirical study of off-policy policy evaluation for reinforcement
+  learning.
+\newblock In {\em NeurIPS Datasets and Benchmarks Track}, 2021.
+
+\bibitem{fujimoto2019offpolicy}
+Scott Fujimoto, David Meger, and Doina Precup.
+\newblock Off-policy deep reinforcement learning without exploration.
+\newblock In {\em Proceedings of the 36th International Conference on Machine
+  Learning}, pages 2052--2062, 2019.
+
+\bibitem{kumar2020cql}
+Aviral Kumar, Aurick Zhou, George Tucker, and Sergey Levine.
+\newblock Conservative {Q}-learning for offline reinforcement learning.
+\newblock In {\em Advances in Neural Information Processing Systems 33}, 2020.
+
+\bibitem{foerster2016}
+Jakob Foerster, Yannis~M. Assael, Nando de~Freitas, and Shimon Whiteson.
+\newblock Learning to communicate with deep multi-agent reinforcement learning.
+\newblock In {\em Advances in Neural Information Processing Systems 29}, 2016.
+
+\bibitem{havrylov2017}
+Serhii Havrylov and Ivan Titov.
+\newblock Emergence of language with multi-agent games: Learning to communicate
+  with sequences of symbols.
+\newblock In {\em Advances in Neural Information Processing Systems 30}, pages
+  2149--2159, 2017.
+
+\bibitem{lowe2019}
+Ryan Lowe, Jakob Foerster, Y-Lan Boureau, Joelle Pineau, and Yann Dauphin.
+\newblock On the pitfalls of measuring emergent communication.
+\newblock In {\em Proceedings of the 18th International Conference on
+  Autonomous Agents and MultiAgent Systems (AAMAS)}, pages 693--701, 2019.
+
+\bibitem{liu2025aim}
+Hung~Ming Liu.
+\newblock {AI} mother tongue: Self-emergent communication in {MARL} via
+  endogenous symbol systems.
+\newblock arXiv:2507.10566, 2025.
+
+\bibitem{madumal2020explainable}
+Prashan Madumal, Tim Miller, Liz Sonenberg, and Frank Vetere.
+\newblock Explainable reinforcement learning through a causal lens.
+\newblock In {\em Proceedings of the AAAI Conference on Artificial
+  Intelligence}, volume 34(03), pages 2493--2500, 2020.
+
+\bibitem{nevillmanning1997identifying}
+Craig~G. Nevill-Manning and Ian~H. Witten.
+\newblock Identifying hierarchical structure in sequences: A linear-time
+  algorithm.
+\newblock {\em Journal of Artificial Intelligence Research}, 7:67--82, 1997.
+
+\bibitem{towers2024gymnasium}
+Mark Towers et~al.
+\newblock Gymnasium: A standard interface for reinforcement learning
+  environments.
+\newblock arXiv:2407.17032, 2024.
+
+\bibitem{henderson2018deep}
+Peter Henderson, Riashat Islam, Philip Bachman, Joelle Pineau, Doina Precup,
+  and David Meger.
+\newblock Deep reinforcement learning that matters.
+\newblock In {\em Proceedings of the AAAI Conference on Artificial
+  Intelligence}, volume 32(1), 2018.
+
+\end{thebibliography}
