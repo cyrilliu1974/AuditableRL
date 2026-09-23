@@ -110,12 +110,18 @@ two-track split. The largest offenders are `trajectory.jsonl` traces and
 |---|---|
 | File | `AuditableRL_runs_full.tar.gz` |
 | Contents | complete `runs/` tree, 584 files, 4.7 GB uncompressed |
+| Compressed size | 1020 MB |
 | Location | `C:\AI\AuditableRL_dataset\` (staging), to be uploaded to Zenodo |
-| SHA-256 | *to be recorded after archiving* |
+| SHA-256 | `b45124669f4f9467506e36ba9b1490bcc23bade54223ae809bb15884029b4786` |
+| Checksum file | `AuditableRL_runs_full.tar.gz.sha256` |
 | Zenodo DOI | `10.5281/zenodo.XXXXXXX` — **placeholder; replace in `README.md` and here once registered** |
 | Unpack | `tar -xzf AuditableRL_runs_full.tar.gz` at the repository root restores `runs/` |
 
-Verify the download against the SHA-256 published on the Zenodo record before extraction.
+Verify the download against the SHA-256 published on the Zenodo record before extraction:
+
+```bash
+sha256sum -c AuditableRL_runs_full.tar.gz.sha256
+```
 
 ## 6. Claim boundary
 
