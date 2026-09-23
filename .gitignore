@@ -27,3 +27,30 @@ __pycache__/
 
 # Research-only upstream clones are not vendored into this repository.
 /references/
+
+# ---------------------------------------------------------------------------
+# LaTeX build intermediates
+#
+# These are regenerated on every compile and would otherwise add noise to every
+# diff. The .bbl file is deliberately NOT excluded: some venues require authors
+# to submit it alongside the sources so that the bibliography can be built
+# without running BibTeX. The compiled .pdf is also kept, as a build artifact
+# of record for the released sources.
+#
+# Rebuild the manuscript from paper/docs/ with:
+#   pdflatex merged_main && bibtex merged_main && pdflatex merged_main && pdflatex merged_main
+# ---------------------------------------------------------------------------
+*.aux
+*.blg
+*.log
+*.out
+*.synctex.gz
+*.fls
+*.fdb_latexmk
+*.toc
+*.lof
+*.lot
+
+# Keep .bbl and .pdf tracked.
+!*.bbl
+!*.pdf
