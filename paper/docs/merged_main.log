@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.4.15)  23 SEP 2026 08:20
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.4.15)  23 SEP 2026 12:31
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -712,76 +712,89 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 {C:/Users/cyril/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}] [2] [3] [4] 
 [5] [6] [7] [8] [9]
 [10] [11] [12] [13]
-<paper_figs/fig_constraint_coverage.pdf, id=389, 491.436pt x 245.718pt>
+<paper_figs/fig_constraint_coverage.pdf, id=398, 491.436pt x 245.718pt>
 File: paper_figs/fig_constraint_coverage.pdf Graphic file (type pdf)
 <use paper_figs/fig_constraint_coverage.pdf>
 Package pdftex.def Info: paper_figs/fig_constraint_coverage.pdf  used on input 
-line 876.
+line 889.
 (pdftex.def)             Requested size: 366.40834pt x 183.21198pt.
  [14] [15] [16 <./paper_figs/fig_constraint_coverage.pdf>]
-Underfull \hbox (badness 1552) in paragraph at lines 1037--1037
+[17]
+Underfull \hbox (badness 1552) in paragraph at lines 1054--1054
 []\OT1/cmr/m/n/10 Baseline and audit-only arms are training-
  []
 
 
-Underfull \hbox (badness 1038) in paragraph at lines 1040--1040
+Underfull \hbox (badness 1038) in paragraph at lines 1057--1057
 []\OT1/cmr/m/n/10 Fused mean re-turn ex-ceeds the best sin-gle
  []
 
 
-Underfull \hbox (badness 1189) in paragraph at lines 1043--1044
+Underfull \hbox (badness 1189) in paragraph at lines 1060--1061
 \OT1/cmr/m/n/10 hold-out above an action-frequency base-line,
  []
 
-[17] [18] [19]
-<paper_figs/fig_cartpole_composition.pdf, id=497, 462.52798pt x 260.17201pt>
+
+Overfull \hbox (1.84215pt too wide) in paragraph at lines 1074--1078
+[]$[]$\OT1/cmr/m/n/10.95 P8 is con-tra-dicted un-der the orig-i-nal sampled-ban
+k in-duc-tion (confidence-ranked fu-sion $\OMS/cmsy/m/n/10.95 ^^@\OT1/cmr/m/n/1
+0.95 443\OML/cmm/m/it/10.95 :\OT1/cmr/m/n/10.95 37$
+ []
+
+[18] [19]
+<paper_figs/fig_cartpole_composition.pdf, id=508, 462.52798pt x 260.17201pt>
 File: paper_figs/fig_cartpole_composition.pdf Graphic file (type pdf)
 <use paper_figs/fig_cartpole_composition.pdf>
 Package pdftex.def Info: paper_figs/fig_cartpole_composition.pdf  used on input
- line 1209.
+ line 1236.
 (pdftex.def)             Requested size: 338.22418pt x 190.26141pt.
  [20]
-<paper_figs/fig_acrobot_ablations.pdf, id=507, 491.436pt x 289.08pt>
+<paper_figs/fig_acrobot_ablations.pdf, id=519, 491.436pt x 289.08pt>
 File: paper_figs/fig_acrobot_ablations.pdf Graphic file (type pdf)
 <use paper_figs/fig_acrobot_ablations.pdf>
 Package pdftex.def Info: paper_figs/fig_acrobot_ablations.pdf  used on input li
-ne 1276.
+ne 1307.
 (pdftex.def)             Requested size: 338.22418pt x 198.96255pt.
- [21 <./paper_figs/fig_cartpole_composition.pdf>]
-<paper_figs/fig_agreement.pdf, id=567, 462.52798pt x 274.626pt>
+ [21] [22 <./paper_figs/fig_cartpole_composition.pdf>]
+<paper_figs/fig_agreement.pdf, id=584, 462.52798pt x 274.626pt>
 File: paper_figs/fig_agreement.pdf Graphic file (type pdf)
 <use paper_figs/fig_agreement.pdf>
-Package pdftex.def Info: paper_figs/fig_agreement.pdf  used on input line 1324.
+Package pdftex.def Info: paper_figs/fig_agreement.pdf  used on input line 1401.
 
 (pdftex.def)             Requested size: 338.22418pt x 200.8315pt.
- [22]
-[23 <./paper_figs/fig_acrobot_ablations.pdf>] [24 <./paper_figs/fig_agreement.p
-df>] [25]
-Overfull \hbox (22.77797pt too wide) in paragraph at lines 1471--1479
+ [23]
+[24 <./paper_figs/fig_acrobot_ablations.pdf>] [25 <./paper_figs/fig_agreement.p
+df>]
+Overfull \hbox (208.66316pt too wide) in paragraph at lines 1479--1493
+ [][] 
+ []
+
+[26]
+Overfull \hbox (22.77797pt too wide) in paragraph at lines 1552--1560
  []\OT1/cmr/bx/n/10.95 Occupancy ac-tion his-tograms as one mech-a-nism for nea
 r-chance agree-ment.[] \OT1/cmr/m/n/10.95 The behavioral-
  []
 
-[26] [27] [28] [29] (merged_main.bbl
+[27] [28] [29] [30] [31] (merged_main.bbl
 Underfull \hbox (badness 1264) in paragraph at lines 35--39
 \OT1/cmr/m/n/10.95 tive Q-improvement: Re-in-force-ment learn-ing for an in-ter
 -pretable decision-tree pol-icy.
  []
 
-[30]) [31] [32] (merged_main.aux)
+[32]) [33] [34] (merged_main.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2025-12-24>
  ***********
 Package rerunfilecheck Info: File `merged_main.out' has not changed.
-(rerunfilecheck)             Checksum: 51B55193F3E229803518689D7FA56C6F;9891.
+(rerunfilecheck)             Checksum: 80F57BE631F28A6D58A394EA1088F80C;10479.
  ) 
 Here is how much of TeX's memory you used:
- 23535 strings out of 467871
- 437249 string characters out of 5428443
- 853587 words of memory out of 5000000
- 51881 multiletter control sequences out of 15000+600000
- 643463 words of font info for 98 fonts, out of 8000000 for 9000
+ 23553 strings out of 467871
+ 437597 string characters out of 5428443
+ 854476 words of memory out of 5000000
+ 51890 multiletter control sequences out of 15000+600000
+ 643631 words of font info for 99 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  84i,11n,104p,744b,862s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\cyril\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm
@@ -805,11 +818,12 @@ m Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmr9.pfb><C:/Program Files/MiKTeX
 /public/amsfonts/cm/cmsy6.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfo
 nts/cm/cmsy7.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.
 pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Prog
-ram Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt9.pfb><C:/Program Files/MiK
-TeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on merged_main.pdf (32 pages, 551141 bytes).
+ram Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt10.pfb><C:/Program Files/Mi
+KTeX/fonts/type1/public/amsfonts/cm/cmtt9.pfb><C:/Program Files/MiKTeX/fonts/ty
+pe1/public/amsfonts/symbols/msbm10.pfb>
+Output written on merged_main.pdf (34 pages, 580177 bytes).
 PDF statistics:
- 902 PDF objects out of 1000 (max. 8388607)
- 166 named destinations out of 1000 (max. 500000)
- 409 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 937 PDF objects out of 1000 (max. 8388607)
+ 174 named destinations out of 1000 (max. 500000)
+ 425 words of extra memory for PDF output out of 10000 (max. 10000000)
 
