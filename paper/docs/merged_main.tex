@@ -1795,6 +1795,18 @@ distributions, and uncertainty intervals separately. The hash-chained trace logs
 validator, and tamper-probe results are archived with the experiment records. Analyses not pre-registered
 are labeled exploratory. No human subjects, annotators, or sensitive data were involved.
 
+\paragraph{Code and data availability.}
+The experiment code, the compact hashed result package, and the manuscript sources are released in a
+public repository. The full training traces, optimizer-update ledgers, actor and training
+checkpoints, shared calibration metadata, induced rule banks, and fitted-critic checkpoints
+(584 files, 4.7\,GB uncompressed) are deposited as an archival dataset at
+\cite{liu2026auditablerl}. The dataset archive is accompanied by a SHA-256 checksum file
+(\texttt{b4512466\ldots b4786}) so that a downloaded copy can be verified byte-for-byte before use;
+unpacking the archive at the repository root restores the \texttt{runs/} layout that the released
+reproduction commands expect. The compact result package records, for each headline number, the
+source artifact path, byte count, and SHA-256, so every reported value can be traced to the
+archived file that produced it without re-running training.
+
 \section{Conclusion}
 \label{sec:conclusion}
 
