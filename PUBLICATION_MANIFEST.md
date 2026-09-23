@@ -12,7 +12,7 @@ This release is delivered on **two tracks**, because the full trace tree cannot 
 | Track | Contents | Where | Size |
 |---|---|---|---|
 | **1 — Git repository** | Source code, compact result JSON, paper sources, figures, reviewer bundles | `github.com/cyrilliu1974/AuditableRL` | 6.7 MB / 194 files |
-| **2 — archived dataset** | Full `runs/` trace and checkpoint tree | Zenodo (DOI placeholder, see §5) | ~750 MB compressed |
+| **2 — archived dataset** | Full `runs/` trace and checkpoint tree | figshare (see §5) | 1020 MB compressed |
 
 Track 1 alone is sufficient to inspect every reported number. Track 2 is required only to replay
 traces or re-derive results from raw artifacts.
@@ -108,20 +108,30 @@ two-track split. The largest offenders are `trajectory.jsonl` traces and
 
 | Field | Value |
 |---|---|
-| File | `AuditableRL_runs_full.tar.gz` |
+| Platform | figshare |
+| DOI | `10.6084/m9.figshare.33970177` — resolved at <https://doi.org/10.6084/m9.figshare.33970177> |
+| Record | <https://figshare.com/articles/dataset/33970177> |
+| Published | 2026-09-23 |
+| Title | AIM Auditability and Rule-Level RL Fusion: Full Training Traces and Checkpoints |
+| Files | `AuditableRL_runs_full.tar.gz` (1069033552 bytes) and `AuditableRL_runs_full.tar.gz.sha256` (95 bytes) |
 | Contents | complete `runs/` tree, 584 files, 4.7 GB uncompressed |
-| Compressed size | 1020 MB |
-| Location | `C:\AI\AuditableRL_dataset\` (staging), to be uploaded to Zenodo |
 | SHA-256 | `b45124669f4f9467506e36ba9b1490bcc23bade54223ae809bb15884029b4786` |
-| Checksum file | `AuditableRL_runs_full.tar.gz.sha256` |
-| Zenodo DOI | `10.5281/zenodo.XXXXXXX` — **placeholder; replace in `README.md` and here once registered** |
+| License | CC BY 4.0 |
 | Unpack | `tar -xzf AuditableRL_runs_full.tar.gz` at the repository root restores `runs/` |
 
-Verify the download against the SHA-256 published on the Zenodo record before extraction:
+Both files were confirmed present on the published record at the byte sizes listed above.
+
+Verify a download against the published checksum before extraction:
 
 ```bash
 sha256sum -c AuditableRL_runs_full.tar.gz.sha256
 ```
+
+The record is versioned (`...33970177.v1`). The unversioned DOI above is the one cited throughout this package, so the reference survives any future corrected deposit.
+
+### Platform history
+
+The dataset was first staged for Zenodo. Browser and command-line uploads both stalled: the TCP send queue to CERN (`137.138.52.235:443`) remained near 500 KB with roughly 3 KB draining per minute, indicating a routing problem between the depositing network and Zenodo rather than a fault in the archive or the depositing host. No files were ever attached to the Zenodo draft, and it was abandoned without publishing. The archive was deposited to figshare instead, where transfer completed normally. The archive itself is unchanged from the one verified in §3.
 
 ## 6. Claim boundary
 

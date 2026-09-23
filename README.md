@@ -71,7 +71,7 @@ Current FQE failures are material. CartPole source-critic value direction differ
 
 ## Repository layout
 
-Entries marked `[Git]` ship in this repository; `[archive]` ship in the Zenodo dataset
+Entries marked `[Git]` ship in this repository; `[archive]` ship in the figshare dataset
 described under "Dataset availability".
 
 ```text
@@ -96,7 +96,7 @@ C:\AI\RL\
 `-- runs\                              # Full traces, checkpoints, and run outputs     [archive]
 ```
 
-To work from the archived tree, unpack the Zenodo archive into the repository root; it restores
+To work from the archived tree, unpack the figshare archive into the repository root; it restores
 `runs/` exactly as the reproduction commands expect.
 
 The prior nested `aim_auditability/` project content has been moved to the repository root. That directory remains only as a local Python environment/cache location and is excluded from Git. Historical log entries may contain the previous `aim_auditability/...` paths; the canonical current paths are shown above.
@@ -186,14 +186,22 @@ This release is split across two tracks because the full training trace tree can
 
 **Track 1 — this repository.** Source code (`auditability/`), the compact hashed result package (`results/`), the paper sources and figures (`paper/`, `manuscript/`, `output/`), the reviewer bundles (`review_bundle/`, `review_bundle_v2/`), and the reproduction guide. Approximately 6.7 MB, 194 files. This is sufficient to inspect every reported number: each headline result appears in a JSON file under `results/`, and `results/RESULTS_MANIFEST.json` gives the source path, byte count, and SHA-256 of every compact review copy.
 
-**Track 2 — archived dataset (DOI to be inserted on acceptance).**
+**Track 2 — archived dataset.**
 
 > Full training traces and model checkpoints for the eight-seed, two-environment experiment.
-> Zenodo DOI: `10.5281/zenodo.XXXXXXX` — **placeholder, to be replaced with the registered DOI.**
+> figshare DOI: [`10.6084/m9.figshare.33970177`](https://doi.org/10.6084/m9.figshare.33970177)
 
 The archive contains the complete `runs/` tree: per-step trajectory traces, optimizer-update ledgers, actor and training checkpoints, shared calibration metadata, induced rule banks, FQE critic checkpoints, and the legacy single-seed, grammar-merge, and private-target runs. Unpacking it into the repository root restores the exact layout the commands above expect.
 
-Verify the downloaded archive against the checksum published alongside it on Zenodo before extraction. The archive is an unmodified copy of the local run tree; the same files back every number in `results/`.
+Verify the downloaded archive against the checksum published alongside it before extraction:
+
+```bash
+sha256sum -c AuditableRL_runs_full.tar.gz.sha256
+```
+
+The expected digest is `b45124669f4f9467506e36ba9b1490bcc23bade54223ae809bb15884029b4786`. The archive is an unmodified copy of the run tree; the same files back every number in `results/`.
+
+The DOI resolves to a versioned record (`...33970177.v1`). Cite the unversioned DOI above when referring to the dataset as a whole, so the reference remains valid if corrected versions are deposited later.
 
 If you only need to inspect results rather than replay traces, Track 1 is self-contained and the archive is not required.
 
