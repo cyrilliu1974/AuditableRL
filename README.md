@@ -24,6 +24,43 @@ Experiment B directly compared the seed 11 and 29 CartPole actors on 10,000 **fr
 
 FQE-GPI remains a diagnostic-only comparison. On CartPole, FQE-GPI achieved 9.34 mean return and agreed with the actor-logit ensemble on 35.27% of held-out states. On Acrobot, it achieved -499.57 and selected action 0 on every state in a 50,000-state diagnostic sample. The critic checks do not support treating those GPI returns as a valid policy-composition conclusion.
 
+### Oracle Headroom: separating the arbitration gap from the representation gap
+
+The Acrobot random-arbitration advantage and the CartPole fusion shortfall both point at the conflict
+arbiter. The `oracle_headroom/` branch tested that premise directly, under a protocol pre-registered
+before any training or measurement.
+
+On CartPole-v1, `oracle_conflict` replaces the confidence arbiter with exact rollout Q values **at
+conflict states only**; `oracle_full` does so **at every covered state**, over the full action space.
+Because CartPole dynamics are deterministic given `(state, action)` and the continuation policy is
+deterministic, a single rollout yields the *exact* `Q(s, a)` — no Monte Carlo estimation. Premises were
+verified before the main run (set-state roundtrip 20/20, rollout determinism 20/20) and the pre-registered
+continuation sanity gate passed (best-actor argmax mean 500.00 > 400).
+
+| Policy (100 common-reset episodes) | Mean |
+|---|---:|
+| best single actor (seed 149) | 500.00 |
+| oracle_full (perfect action at every covered state) | 364.60 |
+| oracle_conflict (perfect arbiter) | 194.59 |
+| grammar fusion (confidence-first) | 59.68 |
+
+Pre-registered stop rule: STOP if `H/T < 1/3`, with `H = R_oracle_conflict − R_confidence` and
+`T = R_best − R_confidence`. Measured **`H/T = 0.306`**, 95% CI [0.274, 0.337] → **STOP (borderline)**.
+A perfect arbiter recovers only 31% of the gap; 69% is representation-side — 39% banks agreeing on wrong
+actions and 31% blind spots.
+
+A post-hoc robustness check (exploratory, clearly labeled) removed the collapsed seed-307 bank.
+Confidence fusion rises from 59.68 to 335.98, and `oracle_conflict` (322.99) then **loses** to confidence
+fusion (`H/T = −0.079`). Among the 7 healthy banks there were only **5 conflict steps in 43,510 covered
+steps** — the banks are near-unanimous, so arbitration is vacuous. The mechanism: a saturated
+deterministic policy emits high-confidence rules for bad actions, and confidence-first (= frequency)
+actively selects for them. **Frequency is not quality.** This is a robustness failure of the bank *set*,
+not a uniform absence of signal.
+
+Consequence for the research plan: the next investment is **not** a stronger arbiter (falsified here),
+but symbolizer-grid and rule-admission protocol work — bank admission health checks, rule quality, and
+coverage. Full write-up: [`oracle_headroom/ORACLE_HEADROOM_REPORT.md`](oracle_headroom/ORACLE_HEADROOM_REPORT.md).
+
 ## Evidence boundaries
 
 The experiments distinguish several questions that should not be collapsed into one “auditability” score:
@@ -91,6 +128,8 @@ C:\AI\RL\
 |-- output\                            # Compiled paper PDF and QA page renders        [Git]
 |-- review_bundle\, review_bundle_v2\ # Curated snapshots for expert review           [Git]
 |-- results\                           # Compact review package, suitable for GitHub   [Git]
+|-- oracle_headroom\                   # Pre-registered oracle-headroom branch: code,
+|                                     #   protocol, report, retrained banks and traces [Git]
 |-- references\                       # Local research-code clones; not vendored into
 |                                     #   Git (third-party licensing)                  [none]
 `-- runs\                              # Full traces, checkpoints, and run outputs     [archive]
@@ -98,6 +137,14 @@ C:\AI\RL\
 
 To work from the archived tree, unpack the figshare archive into the repository root; it restores
 `runs/` exactly as the reproduction commands expect.
+
+**Exception — `oracle_headroom/runs/` is committed.** The oracle-headroom branch ships in full, including
+its own `runs/` tree (88 files, 290 MB). This is deliberate: the branch's retrained actor checkpoints and
+induced rule banks are the direct inputs to the follow-up symbolizer/protocol work, so the branch must be
+reproducible from this repository alone without the external archive. The largest committed file is
+62.05 MB (`oracle_headroom/runs/CartPole-v1/grammar_audit_only/seed-149_.../trajectory.jsonl`) — below
+GitHub's 100 MB per-file hard limit, but above the 50 MB advisory threshold. The root `runs/` tree
+remains excluded exactly as before.
 
 The prior nested `aim_auditability/` project content has been moved to the repository root. That directory remains only as a local Python environment/cache location and is excluded from Git. Historical log entries may contain the previous `aim_auditability/...` paths; the canonical current paths are shown above.
 
@@ -178,13 +225,23 @@ Start from `results/shared_multienv_gpi/` for a fast review. The most relevant f
 - `CartPole-v1/artifact_audit.json` and `Acrobot-v1/artifact_audit.json`: replay, hash-chain, update-ledger, and provenance-reference audit summaries.
 - `results/RESULTS_MANIFEST.json`: size and SHA-256 for every compact review copy.
 
+For the oracle-headroom branch, start from `oracle_headroom/ORACLE_HEADROOM_REPORT.md` (the decision-record
+write-up, with every number linked to its source file), then:
+
+- `oracle_headroom/PROTOCOL.md`: the pre-registered estimand, oracle construction, and stop rule.
+- `oracle_headroom/results/oracle_headroom_cartpole.json`: per-episode returns, decision counts, and the premise checks for all five policies.
+- `oracle_headroom/results/oracle_diagnostics.json`: the gap decomposition, bootstrap CIs, and the stop-rule verdict.
+- `oracle_headroom/results/supplement_no307.json`, `supplement_no307_full.json`: the exploratory seed-307 robustness check.
+- `oracle_headroom/runs/CartPole-v1/stage0_manifest.json`: the eight retrained seeds with training means, rule counts, and actor hashes.
+- `oracle_headroom/EXPERIMENT_LOG.md`: the chronological run log, including the silent-reap incident and its disposition.
+
 Detailed hypotheses, negative results, implementation corrections, citations, and claim limits are in `paper/AI_Grammar_Induction_Experiment_Log.md`. The concise Traditional Chinese study summary is `paper/20260922_RL_Auditability_Study_Summary.md`; the expanded study report is `paper/20260922_RL_Grammar_Fusion_Research_Report.md`. The evidence-aligned manuscript draft is `manuscript/rl_rule_fusion_draft.md`.
 
 ## Dataset availability
 
 This release is split across two tracks because the full training trace tree cannot be hosted in Git: it is roughly 4.7 GB and contains individual files above GitHub's 100 MB per-file limit.
 
-**Track 1 — this repository.** Source code (`auditability/`), the compact hashed result package (`results/`), the paper sources and figures (`paper/`, `manuscript/`, `output/`), the reviewer bundles (`review_bundle/`, `review_bundle_v2/`), and the reproduction guide. Approximately 6.7 MB, 194 files. This is sufficient to inspect every reported number: each headline result appears in a JSON file under `results/`, and `results/RESULTS_MANIFEST.json` gives the source path, byte count, and SHA-256 of every compact review copy.
+**Track 1 — this repository.** Source code (`auditability/`), the compact hashed result package (`results/`), the paper sources and figures (`paper/`, `manuscript/`, `output/`), the reviewer bundles (`review_bundle/`, `review_bundle_v2/`), the self-contained `oracle_headroom/` branch (including its own committed `runs/` tree), and the reproduction guide. Approximately 293 MB, 235 files. This is sufficient to inspect every reported number: each headline result appears in a JSON file under `results/` or `oracle_headroom/results/`, and `results/RESULTS_MANIFEST.json` gives the source path, byte count, and SHA-256 of every compact review copy. The size is dominated by the deliberately committed `oracle_headroom/runs/` trace tree; without it the repository is about 2.7 MB.
 
 **Track 2 — archived dataset.**
 
@@ -213,6 +270,9 @@ The local `references/` directory contains public code repositories inspected du
 
 - The direct held-out action agreement for seeds 11 and 29 is near chance, so the shared symbolic core is not a reliable proxy for neural-policy behavioral consensus.
 - The Acrobot random-arbitration advantage is unexpected and requires follow-up action-frequency, rule-source, and state-occupancy analysis before publication.
+- The oracle-headroom branch falsifies "a better arbiter" as the next step on CartPole: a perfect arbiter recovers only 31% of the fusion-vs-best gap, and among healthy banks it does not beat confidence-first at all. The remaining gap is representation-side. The Acrobot random-arbitration advantage is therefore more plausibly a bank-composition or induction-protocol effect than an arbiter-ranking effect, but that has not yet been tested on Acrobot directly.
+- The next planned work is symbolizer-grid and rule-admission protocol work — bin count and clustering method, sampled vs greedy vs balanced rule induction, admission-threshold coverage/fidelity curves, and a pre-registered bank admission health check — not a learned arbiter. See `oracle_headroom/future_experiments.md`.
+- The seed-307 collapse in the oracle-headroom retrain was dispositioned as library-version RNG drift, not a code defect (the other seven seeds learned normally under identical code). Its exclusion from the supplementary analysis was post-hoc and is labeled exploratory; the confirmatory version would pre-register a bank admission health check.
 - FQE-GPI is currently unsupported as a credible baseline; Q action rankings, held-out value direction, and actor action agreement fail quality checks.
 - The Acrobot task still has many capped -500 episodes, and CartPole saturates at 500 for some agents.
 - The current claim is about recorded trace integrity/replay and transparent, provenance-linked rule composition under explicit conditions. General causal explanations and “complete auditability” of arbitrary RL training remain unproven.

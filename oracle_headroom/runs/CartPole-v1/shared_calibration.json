@@ -1,0 +1,42 @@
+{
+  "method": "pooled empirical quantiles from separate random-policy roll-ins; frozen for every seed (repo protocol)",
+  "environment": "CartPole-v1",
+  "calibration_seeds": [
+    11,
+    29,
+    43,
+    71,
+    101,
+    149,
+    211,
+    307
+  ],
+  "calibration_episodes_per_seed": 24,
+  "state_bins": {
+    "method": "per-dimension empirical quantiles",
+    "n_bins": 4,
+    "edges": [
+      [
+        -0.0420510396361351,
+        0.002227136865258217,
+        0.04708059877157211
+      ],
+      [
+        -0.3400559425354004,
+        0.015553459525108337,
+        0.38686859607696533
+      ],
+      [
+        -0.05416424572467804,
+        -0.002592809032648802,
+        0.05602552369236946
+      ],
+      [
+        -0.5645982623100281,
+        -0.02038431167602539,
+        0.4862048923969269
+      ]
+    ]
+  },
+  "state_bins_canonical_sha256": "1e97ef1ffb8bebf0bdad2785c900d749e708d705f339c5f7eaec975415fba8cc"
+}

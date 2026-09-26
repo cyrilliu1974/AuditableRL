@@ -1,0 +1,83 @@
+{
+  "means": {
+    "grammar_fusion": 59.68,
+    "oracle_conflict": 194.59,
+    "oracle_full": 364.6,
+    "best_single": 500.0,
+    "actor_mean_logits": 293.83
+  },
+  "mean_cis": {
+    "grammar_fusion": [
+      45.67,
+      74.72
+    ],
+    "oracle_conflict": [
+      184.82,
+      205.37
+    ],
+    "oracle_full": [
+      336.57,
+      393.19
+    ],
+    "best_single": [
+      500.0,
+      500.0
+    ],
+    "actor_mean_logits": [
+      286.87,
+      301.23
+    ]
+  },
+  "decomposition": {
+    "total_gap_T": 440.32,
+    "arbitration_headroom_H": 134.91,
+    "agreed_action_gap": 170.01000000000002,
+    "coverage_fallback_gap": 135.39999999999998,
+    "H_over_T": 0.3063908066860465,
+    "H_over_T_ci95": [
+      0.2739176786873088,
+      0.33726563200861215
+    ]
+  },
+  "stop_rule": {
+    "threshold": 0.3333333333333333,
+    "verdict": "STOP",
+    "reading": "banks lack usable signal; do not proceed to Stage 1-4 on these banks"
+  },
+  "decision_mix": {
+    "best_single": {
+      "steps": 50000,
+      "covered": 50000,
+      "conflicts": 0,
+      "blind": 0
+    },
+    "actor_mean_logits": {
+      "steps": 29383,
+      "covered": 29383,
+      "conflicts": 0,
+      "blind": 0
+    },
+    "grammar_fusion": {
+      "steps": 5968,
+      "covered": 5264,
+      "conflicts": 800,
+      "blind": 704
+    },
+    "oracle_conflict": {
+      "steps": 19459,
+      "covered": 17791,
+      "conflicts": 1458,
+      "blind": 1668
+    },
+    "oracle_full": {
+      "steps": 36460,
+      "covered": 34487,
+      "conflicts": 1656,
+      "blind": 1973
+    }
+  },
+  "mean_oracle_q_spread": {
+    "oracle_conflict": 0.0,
+    "oracle_full": 294.6331661205672
+  }
+}

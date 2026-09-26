@@ -1,2 +1,12 @@
 # Auto detect text files and perform LF normalization
 * text=auto
+
+# oracle_headroom: this branch is a frozen, self-contained evidence bundle.
+# Each per-seed metadata.json records trace_sha256, training_updates_sha256,
+# actor_sha256, training_checkpoint_sha256, and grammar_sha256 digests, and
+# stage0_manifest.json records actor_sha256 for all eight seeds.
+# Store the whole tree byte-exactly: with core.autocrlf=true the default
+# "text=auto" would rewrite LF to CRLF on checkout, and the recorded digests
+# would then fail to verify on a fresh clone. Byte-exactness also means a
+# reviewer's sha256sum matches on any platform.
+oracle_headroom/** -text

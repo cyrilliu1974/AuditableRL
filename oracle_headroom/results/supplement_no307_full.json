@@ -1,0 +1,12 @@
+{
+  "note": "post-hoc supplementary; does not override pre-registered verdict",
+  "excluded": "seed-307 bank (index 7)",
+  "mean_return": 450.87,
+  "median_return": 500.0,
+  "decision_counts": {
+    "steps": 45087,
+    "covered": 43510,
+    "conflicts": 5,
+    "blind": 1577
+  }
+}

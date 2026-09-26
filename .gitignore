@@ -54,3 +54,11 @@ __pycache__/
 # Keep .bbl and .pdf tracked.
 !*.bbl
 !*.pdf
+
+# ---------------------------------------------------------------------------
+# oracle_headroom run logs are part of the frozen evidence bundle, not build
+# intermediates. The LaTeX *.log / *.out rules above target compiler output;
+# override them for this branch so its stdout/stderr record ships with it.
+# ---------------------------------------------------------------------------
+!oracle_headroom/logs/*.log
+!oracle_headroom/logs/*.out

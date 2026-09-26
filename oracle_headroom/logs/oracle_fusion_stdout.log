@@ -1,0 +1,18 @@
+[2026-09-26 02:58:44] loading artifacts
+[2026-09-26 02:58:44] best_single seed = 149 (train_mean=345.5)
+[2026-09-26 02:58:44] verifying oracle premises (set-state roundtrip, rollout determinism)
+[2026-09-26 02:58:44] premises hold: True
+[2026-09-26 02:58:44] continuation sanity gate: best-actor argmax on eval seeds
+[2026-09-26 02:58:47] continuation mean return = 500.00 (gate: > 400.0)
+[2026-09-26 02:58:47] evaluating best_single ...
+[2026-09-26 02:58:49] best_single: mean=500.00 median=500.00 in 2.6s; counts={'steps': 50000, 'covered': 50000, 'conflicts': 0, 'blind': 0}
+[2026-09-26 02:58:49] evaluating actor_mean_logits ...
+[2026-09-26 02:58:58] actor_mean_logits: mean=293.83 median=285.00 in 8.7s; counts={'steps': 29383, 'covered': 29383, 'conflicts': 0, 'blind': 0}
+[2026-09-26 02:58:58] evaluating grammar_fusion ...
+[2026-09-26 02:59:00] grammar_fusion: mean=59.68 median=12.00 in 2.2s; counts={'steps': 5968, 'covered': 5264, 'conflicts': 800, 'blind': 704}
+[2026-09-26 02:59:00] evaluating oracle_conflict ...
+[2026-09-26 03:00:18] oracle_conflict: mean=194.59 median=178.50 in 78.0s; counts={'steps': 19459, 'covered': 17791, 'conflicts': 1458, 'blind': 1668}
+[2026-09-26 03:00:18] evaluating oracle_full ...
+[2026-09-26 03:19:06] oracle_full: mean=364.60 median=500.00 in 1127.7s; counts={'steps': 36460, 'covered': 34487, 'conflicts': 1656, 'blind': 1973}
+[2026-09-26 03:19:06] wrote /home/hatch/workspace/RL/oracle_headroom/results/oracle_headroom_cartpole.json in 1222.2s total
+EXIT: 0

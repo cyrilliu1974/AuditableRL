@@ -1,0 +1,60 @@
+{
+  "environment": "CartPole-v1",
+  "seeds": {
+    "11": {
+      "run_dir": "runs/CartPole-v1/grammar_audit_only/seed-11_20260925T185229Z",
+      "training_mean_return": 151.74333333333334,
+      "rule_count": 100,
+      "actor_sha256": "e3f6d277f229a33c7c020f449dea7a33d86d6e496b90fe01fee975aa2c878906"
+    },
+    "29": {
+      "run_dir": "runs/CartPole-v1/grammar_audit_only/seed-29_20260925T185301Z",
+      "training_mean_return": 199.67,
+      "rule_count": 113,
+      "actor_sha256": "ed0d9bb75e17f7db454174814e47c91328dbe38686580cf91f49dddd13b5891c"
+    },
+    "43": {
+      "run_dir": "runs/CartPole-v1/grammar_audit_only/seed-43_20260925T185344Z",
+      "training_mean_return": 267.46,
+      "rule_count": 131,
+      "actor_sha256": "41aec624ad26917429015a74e4b8c376ff5f05bf02215908cc0d2afb4a92c4ab"
+    },
+    "71": {
+      "run_dir": "runs/CartPole-v1/grammar_audit_only/seed-71_20260925T185440Z",
+      "training_mean_return": 179.07666666666665,
+      "rule_count": 98,
+      "actor_sha256": "330093982cfcf8efbccef1023273676ffe0d99ffaa00930947a30739ee2e39bc"
+    },
+    "101": {
+      "run_dir": "runs/CartPole-v1/grammar_audit_only/seed-101_20260925T185518Z",
+      "training_mean_return": 231.18666666666667,
+      "rule_count": 123,
+      "actor_sha256": "e3b07f09a3144a860af399600eeedf165207e34f78495cea9d9288d92684cf35"
+    },
+    "149": {
+      "run_dir": "runs/CartPole-v1/grammar_audit_only/seed-149_20260925T185607Z",
+      "training_mean_return": 345.52,
+      "rule_count": 146,
+      "actor_sha256": "a849595440d35c4c87ca2b18add5ffa66453e4cd9ee06c186b76f3df8ddafff2"
+    },
+    "211": {
+      "run_dir": "runs/CartPole-v1/grammar_audit_only/seed-211_20260925T185720Z",
+      "training_mean_return": 192.72,
+      "rule_count": 107,
+      "actor_sha256": "0802457a2612b47feb81af4e14c9e2f5734ad2b1f1cf9e99189ba9ebe6facb69"
+    },
+    "307": {
+      "run_dir": "runs/CartPole-v1/grammar_audit_only/seed-307_20260925T185803Z",
+      "training_mean_return": 9.74,
+      "rule_count": 33,
+      "actor_sha256": "17ea6a98d727a900897b01776a952d446f65cd104e8385f4ddb7ef5a30896a12"
+    }
+  },
+  "config": {
+    "episodes": 300,
+    "min_support": 8,
+    "min_confidence": 0.7,
+    "arm": "grammar_audit_only",
+    "symbolizer_scope": "pooled_across_all_experiment_seeds"
+  }
+}

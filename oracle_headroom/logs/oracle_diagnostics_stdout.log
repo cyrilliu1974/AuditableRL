@@ -1,0 +1,11 @@
+[2026-09-26 03:19:14] ==== ORACLE HEADROOM VERDICT ====
+[2026-09-26 03:19:14]   grammar_fusion     mean=   59.68  95%CI=[45.67, 74.72]
+[2026-09-26 03:19:14]   oracle_conflict    mean=  194.59  95%CI=[184.82, 205.37]
+[2026-09-26 03:19:14]   oracle_full        mean=  364.60  95%CI=[336.57, 393.19]
+[2026-09-26 03:19:14]   best_single        mean=  500.00  95%CI=[500.00, 500.00]
+[2026-09-26 03:19:14]   actor_mean_logits  mean=  293.83  95%CI=[286.87, 301.23]
+[2026-09-26 03:19:14]   T=440.32  H=134.91  agreed_gap=170.01  cover_gap=135.40
+[2026-09-26 03:19:14]   H/T = 0.306  95%CI=[0.274, 0.337]  threshold=0.333
+[2026-09-26 03:19:14]   VERDICT: STOP -- banks lack usable signal; do not proceed to Stage 1-4 on these banks
+[2026-09-26 03:19:14] wrote /home/hatch/workspace/RL/oracle_headroom/results/oracle_diagnostics.json
+EXIT: 0

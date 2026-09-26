@@ -1,0 +1,105 @@
+{
+  "created_at_utc": "20260925T185803Z",
+  "python": "3.12.3",
+  "torch": "2.14.0+cpu",
+  "numpy": "2.5.3",
+  "gymnasium": "1.3.0",
+  "deterministic_algorithms": true,
+  "config": {
+    "environment": "CartPole-v1",
+    "state_dim": 4,
+    "action_dim": 2,
+    "episodes": 300,
+    "optimizer": "Adam",
+    "learning_rate": 0.003,
+    "return_discount": 0.99,
+    "hidden_dim": 64,
+    "state_bins": {
+      "method": "per-dimension empirical quantiles",
+      "n_bins": 4,
+      "edges": [
+        [
+          -0.0420510396361351,
+          0.002227136865258217,
+          0.04708059877157211
+        ],
+        [
+          -0.3400559425354004,
+          0.015553459525108337,
+          0.38686859607696533
+        ],
+        [
+          -0.05416424572467804,
+          -0.002592809032648802,
+          0.05602552369236946
+        ],
+        [
+          -0.5645982623100281,
+          -0.02038431167602539,
+          0.4862048923969269
+        ]
+      ]
+    },
+    "symbolizer_scope": "pooled_across_all_experiment_seeds",
+    "grammar_update_interval": 50,
+    "grammar_min_support": 8,
+    "grammar_min_confidence": 0.7,
+    "seed": 307,
+    "arm": "grammar_audit_only"
+  },
+  "calibration_seed_offset": 100000,
+  "training_episode_reset_seed_formula": "seed * 10000 + episode_index",
+  "trace_audit": {
+    "valid": true,
+    "records": 2922,
+    "final_hash": "9c1e9700a09438e989568640533164aa182617718314d8a79a1c7a3bfc20e504"
+  },
+  "training_update_audit": {
+    "valid": true,
+    "records": 300,
+    "final_hash": "f33e1fc147742f14bd0fcaf1144381e9252289a83d4f2925ab7da51da894b39d"
+  },
+  "trace_sha256": "7ed17648e5155faf2b53b6cd0df3c5f9676da68c58c5a3992637b6cab618cc95",
+  "training_updates_sha256": "0474aab5d3aa068e3d0cc8a4c7c7d01916c858b2114d79581d7733db978804dc",
+  "training_update_core_sha256": "50e5a43cecf8bf7a94add80f0910151479dddf17feefc748093970362bf91f32",
+  "actor_sha256": "17ea6a98d727a900897b01776a952d446f65cd104e8385f4ddb7ef5a30896a12",
+  "training_checkpoint_sha256": "5ab4b61100febce10f4741deb8509741a0ff9a8f77e4c15134f004fcc77d1253",
+  "grammar_sha256": "aa90c41ef9e402a5abfcb7ffdd3cbf834d4156b53824af97349a32652017ec60",
+  "experiment_code_sha256": "5469709ae2ea9ee42069f2258e9334bfa62c58a7484639616103c2d6fc2f771f",
+  "prototype_source_sha256": "8536079d7c3ba1cede8b9283694baabaac8fffc34440b29ca1889dd995fd4117",
+  "episode_return_mean": 9.74,
+  "episode_return_last_50_mean": 9.38,
+  "episode_length_mean": 9.74,
+  "evaluation": {
+    "episodes": 20,
+    "mean_return": 9.6,
+    "median_return": 10.0,
+    "mean_length": 9.6,
+    "grammar_state_coverage": 0.96875,
+    "grammar_action_agreement_when_covered": 1.0,
+    "covered_steps": 186,
+    "total_steps": 192,
+    "return_by_episode": [
+      11.0,
+      11.0,
+      9.0,
+      10.0,
+      10.0,
+      9.0,
+      8.0,
+      9.0,
+      9.0,
+      9.0,
+      11.0,
+      10.0,
+      10.0,
+      9.0,
+      8.0,
+      10.0,
+      8.0,
+      10.0,
+      10.0,
+      11.0
+    ]
+  }
+}

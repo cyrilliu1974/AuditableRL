@@ -1,0 +1,2 @@
+/home/hatch/workspace/RL/oracle_venv/lib/python3.12/site-packages/gymnasium/utils/passive_env_checker.py:157: UserWarning: [33mWARN: The obs returned by the `step()` method is not within the observation space.[0m
+  logger.warn(f"{pre} is not within the observation space.")

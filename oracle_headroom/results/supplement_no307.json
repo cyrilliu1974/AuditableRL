@@ -1,0 +1,8 @@
+{
+  "note": "post-hoc supplementary; does not override pre-registered verdict",
+  "excluded": "seed-307 bank (index 7)",
+  "R_conf_no307": 335.98,
+  "R_oc_no307": 322.99,
+  "R_best": 500.0,
+  "H_over_T_no307": -0.07919765882209492
+}

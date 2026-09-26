@@ -139,3 +139,61 @@ This package is an existence proof that trajectory replay plus provenance-carryi
 implementable with hash and environment-replay evidence in the tested controlled settings. It does
 **not** establish general auditability, semantic universality, optimal conflict arbitration, or a
 validated GPI comparison. See `README.md` §"Evidence boundaries" and §"Limitations and next work".
+
+---
+
+## 7. Addendum — `oracle_headroom` branch (added 2026-09-26)
+
+The `oracle_headroom/` branch was added after the original package. It is a **pre-registered diagnostic
+experiment** that separates the *arbitration* gap from the *representation* gap in rule fusion. It is
+committed **in full, including its own `runs/` tree** — a deliberate exception to the two-track split
+described above.
+
+### What was added
+
+| Group | Path | Files | Size | Contents |
+|---|---|---:|---:|---|
+| Protocol and reports | `oracle_headroom/*.md` | 5 | 80 KB | Pre-registered protocol, technical verdict report, decision-record report, chronological log, follow-up plan |
+| Branch code | `oracle_headroom/*.py` | 6 | 44 KB | `stage0_train`, `oracle_q`, `oracle_fusion`, `oracle_diagnostics`, `supplement_no307`, `supplement_no307_full` |
+| Run logs | `oracle_headroom/logs/` | 15 | 33 KB | Complete stdout/stderr for every stage |
+| Compact results | `oracle_headroom/results/` | 4 | 22 KB | Machine-readable primary results, decomposition and verdict, and the two robustness checks |
+| Retrained banks and traces | `oracle_headroom/runs/` | 58 | 290 MB | 8 retrained CartPole seeds: actors, training checkpoints, induced rule banks, per-step trajectories, update ledgers, plus shared calibration and the stage-0 manifest |
+
+Total: 88 files, ~290 MB.
+
+### Why `runs/` is committed here but not at the repository root
+
+The root `runs/` tree is 4.7 GB and contains files above GitHub's per-file limit, which is why it is
+published as the separate figshare archive. The oracle-headroom `runs/` tree is 290 MB and its largest
+file is 62.05 MB — **below the 100 MB hard limit**. It is committed rather than archived because the
+retrained actor checkpoints and induced rule banks are the direct inputs to the next phase of work
+(symbolizer-grid and admission-protocol experiments), and this branch must be reproducible from this
+repository alone.
+
+### Size-compliance re-check
+
+| Check | Result |
+|---|---|
+| Files above GitHub's 100 MB hard limit | **0** |
+| Files above the 50 MB advisory threshold | 1 (`seed-149_.../trajectory.jsonl`, 62.05 MB) |
+| Track-1 total after this addition | 235 files, ~293 MB (was 147 files, ~2.7 MB) |
+
+### Key results recorded by this branch
+
+| Policy (100 common-reset CartPole episodes) | Mean |
+|---|---:|
+| best single actor (seed 149) | 500.00 |
+| oracle_full (perfect action at every covered state) | 364.60 |
+| oracle_conflict (perfect arbiter) | 194.59 |
+| grammar fusion (confidence-first) | 59.68 |
+
+Pre-registered stop rule `H/T < 1/3` → measured `H/T = 0.306`, 95% CI [0.274, 0.337] → **STOP (borderline)**.
+Post-hoc (exploratory) removal of the collapsed seed-307 bank lifts confidence fusion to 335.98 and makes
+`oracle_conflict` (322.99) lose to it (`H/T = −0.079`); the 7 healthy banks conflict on only 5 of 43,510
+covered steps. Full write-up: `oracle_headroom/ORACLE_HEADROOM_REPORT.md`.
+
+### Effect on the claim boundary
+
+This addendum does not change §6. It narrows the follow-up plan: a learned arbiter (GNN/RL) is falsified
+as the next step on CartPole, and the planned work shifts to symbolizer-grid and rule-admission protocol
+experiments. See `README.md` §"Limitations and next work".

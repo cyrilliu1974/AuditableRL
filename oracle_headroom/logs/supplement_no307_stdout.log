@@ -1,0 +1,7 @@
+[2026-09-26 03:19:33] excluded seed-307 bank; 7 banks remain
+[2026-09-26 03:19:44] no307/grammar_fusion: mean=335.98 in 11.1s
+[2026-09-26 03:19:58] no307/oracle_conflict: mean=322.99 in 14.3s
+[2026-09-26 03:19:58] no307: R_conf=335.98 R_oc=322.99 R_best=500.00
+[2026-09-26 03:19:58] no307: H/T = -0.079 (primary: 0.306, threshold 0.333)
+[2026-09-26 03:19:58] done
+EXIT: 0
